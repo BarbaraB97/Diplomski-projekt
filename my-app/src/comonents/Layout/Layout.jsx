@@ -11,6 +11,8 @@ const Layout = ({ children }) => {
           </Navbar.Brand>
           <Nav className='me-auto'>
             <Nav.Link href='/home'>Home</Nav.Link>
+            <Nav.Link href='/regression'>Linear Regression</Nav.Link>
+            <Nav.Link href='/decision-tree'>Decision Tree</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

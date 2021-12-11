@@ -3,6 +3,8 @@ import App from '../App'
 import Layout from '../comonents/Layout/Layout'
 import HomePage from './HomePage'
 import 'bootstrap/dist/css/bootstrap.css';
+import DecisionTreeStartPage from './decision-tree-container/DecisionTreeStartPage';
+import RegressionStartPage from './linear-regression-container/RegressionStartPage';
 
 export const AuthRouter = () => {
 
@@ -12,6 +14,8 @@ export const AuthRouter = () => {
         <Switch>
           <Route path='/' exact component={App} />
           <Route path='/home' exact component={HomePage} />
+          <Route path='/regression' exact component={RegressionStartPage} />
+          <Route path='/decision-tree' exact component={DecisionTreeStartPage} />
 
           <Route path='*'>
             <Redirect to='/' />
