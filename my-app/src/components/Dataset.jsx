@@ -35,6 +35,26 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted }) => {
         })
     }
 
+
+    if (isLabelHighlighted) {
+        return (
+            <Table striped bordered hover id="weatherTable" style={{ heigth: "35em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
+                <thead>
+                    <tr id="features">
+                        <th>#</th>
+                        <th>Outlook</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                        <th>Windy</th>
+                        <th style={{ backgroundColor: "rgb(197, 235, 202)" }}>Play</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {generateTable()}
+                </tbody>
+            </Table>
+        )
+    }
     if (areFeaturesHighlighted) {
         return (
             <Table striped bordered hover id="weatherTable" style={{ heigth: "35em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>

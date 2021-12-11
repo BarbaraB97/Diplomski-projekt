@@ -9,7 +9,7 @@ const Step1 = (props) => {
                 <h2>Step1:</h2>
                 <p>Decision tree explanation...</p>
                 <p>Problem...</p>
-                <p>Let's see how does decision tree works...</p>
+                <p>Let's see how does decision tree work...</p>
             </Container>
             <Row>
                 <Col >
