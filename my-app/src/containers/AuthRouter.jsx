@@ -1,6 +1,6 @@
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import App from '../App'
-import Layout from '../comonents/Layout/Layout'
+import Layout from '../components/Layout'
 import HomePage from './HomePage'
 import 'bootstrap/dist/css/bootstrap.css';
 import DecisionTreeStartPage from './decision-tree-container/DecisionTreeStartPage';
