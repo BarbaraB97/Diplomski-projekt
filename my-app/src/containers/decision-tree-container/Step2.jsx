@@ -76,7 +76,37 @@ const Step2 = (props) => {
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
+                        <Accordion defaultActiveKey="1"
+                            style={{ backgroundColor: "rgb(197, 235, 202)" }}>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>What if we have only Input data?</Accordion.Header>
+                                <Accordion.Body>
+                                    <Table striped bordered hover id="weatherTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
+                                        <thead>
+                                            <tr id="features">
+                                                <th style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>Outlook</th>
+                                                <th style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>Temperature</th>
+                                                <th style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>Humidity</th>
+                                                <th style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>Windy</th>
+                                                <th style={{ backgroundColor: "#7EB59A" }}>Play</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>sunny</td>
+                                                <td style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>hot</td>
+                                                <td style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>high</td>
+                                                <td style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>false</td>
+                                                <td style={{ backgroundColor: "#7EB59A" }}>???</td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
 
+                                    Then we make a prediction of the outcome based on a previous data using ID3 algorithm!
+
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
                     </Col>
                 </Row>
 
