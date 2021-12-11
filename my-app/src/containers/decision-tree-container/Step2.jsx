@@ -25,12 +25,15 @@ const Step2 = (props) => {
                         <Dataset areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted}></Dataset>
                     </Col>
                     <Col style={{textAlign:"left"}}>
+                    A dataset is a collection of data.<br/>
+                    Here we have a small dataset presented in a table. The data was colleced by deciding whether it was a good day to play beach volleyball.<br/><br/>
                         <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}
                             onClick={() => highlightFeatures()}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What are features?</Accordion.Header>
-                                <Accordion.Body>•Outlook <br />•Temperature <br />•Humidty <br />•Windy <br />•Play <br />
+                                <Accordion.Body>Features are distinctive attributes or aspects of something, in the dataset they are represented by columns.<br/><br/>
+                                    • Outlook <br />• Temperature <br />• Humidty <br />• Windy <br />• Play <br />
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
@@ -38,8 +41,9 @@ const Step2 = (props) => {
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}
                             onClick={() => hightlightLabel()}>
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header>What are labels?</Accordion.Header>
-                                <Accordion.Body>•Play <br />
+                                <Accordion.Header>What is a label?</Accordion.Header>
+                                <Accordion.Body>Labels are classifications of records.<br/><br/>
+                                • Play <br />
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
@@ -48,8 +52,8 @@ const Step2 = (props) => {
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What does each row in the table represent?</Accordion.Header>
                                 <Accordion.Body>
-                                    Each row represent combination of input data and its prediciton (output).<br/>
-                                    <b>Input:</b> Outlook, Temperature, Humidity i Windy.<br/>
+                                    Each row represents a combination of input data and its prediciton (output).<br/>
+                                    <b>Input:</b> Outlook, Temperature, Humidity and Windy.<br/>
                                     <b>Output:</b> Play<br/><br/>
                                     IF <b>Outlook=Sunny</b> and <b>Temperature=Hot</b> and <b>Humidity=High</b> and <b>Windy=false</b>, then outcome of playing volleyball is <b>Play=NO</b><br/>
                                     <Table striped bordered hover id="weatherTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>

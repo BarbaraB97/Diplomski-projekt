@@ -10,20 +10,23 @@ const Step3 = (props) => {
                 <hr />
 
                 <Row>
-                    <Col md={3} style={{ textAlign: "left" }}>
-                    Decision Tree and ID3 definition...<br/>
-                    <b>Entropy:</b> ...<br/> 
-                    <b>Information Gain: </b>...
+                    <Col md={6} style={{ textAlign: "left" }}>
+                    ID3 algorithm is used to generate a decision tree from existing data. <br/><br/> 
+                    In every iteration of the algorithm, it iterates through every unused feature in the data and calculates the entropy and information gain.<br/>
+                    To put it simply, <b>entropy</b> can be explained as a lack of order or predictability and <b>information gain</b> as the reduction in entropy.<br/><br/>
+                    After the calculation, the feature with the highest information gain is chosen. That feature is now a node in the tree and marked as used.
+                    
 
                     </Col>
                     <Col md={6} style={{ textAlign: "left" }}>
+
                         <div class="jumbotron">
                             <ul class="list-group">
-                                <li class="list-group-item">1. compute the entropy for data-set</li>
-                                <li class="list-group-item">2.for every attribute/feature:<br />
-                                    <ol>1.calculate entropy for all categorical values</ol>
-                                    <ol>2.take average information entropy for the current attribute<br /></ol>
-                                    <ol>3.calculate gain for the current attribute</ol></li>
+                                <li class="list-group-item">1. compute the entropy for dataset</li>
+                                <li class="list-group-item">2. for every attribute/feature:<br />
+                                    <ol>1. calculate entropy for all categorical values</ol>
+                                    <ol>2. take average information entropy for the current attribute<br /></ol>
+                                    <ol>3. calculate gain for the current attribute</ol></li>
                                 <li class="list-group-item">3. pick the highest gain attribute.</li>
                                 <li class="list-group-item">4. Repeat until we get the tree we desired.</li>
                             </ul>
@@ -31,9 +34,16 @@ const Step3 = (props) => {
                         </div>
                     </Col>
                 </Row>
+                
 
 
             </Container>
+            <Row>
+                <Col style={{ textAlign: "center" }}><br/>
+                Does this sound a bit complicated?<br/>
+                    Let's continue...<br/><br/>
+                </Col>
+            </Row>
             <Row>
                 <Col >
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.firstStep}>First Step</Button>
