@@ -5,8 +5,14 @@ const Step1 = (props) => {
 
     return (
         <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
-            <Container style={{ textAlign: "center", height: '30em'}}>
-                <h1>Step1</h1>
+            <Container style={{ textAlign: "center", height: '30em', paddingTop: "2em", paddingBottom: "2em" }}>
+                <h2>What is linear regression?</h2>
+                <p><b>Linear regression</b> is a linear approach for modeling the relationship between one dependent and one or more independent variables.
+                 When there is just one independent variable it is called simple linear regression,
+                    and if there is more of them, we are talking about multiple linear regression.<br/></p>
+                <p>Linear regression is a basic and commonly used type of predictive analysis in many fields.</p>
+                <p>In the next step you can see the example of simple linear regression problem.</p>
+
             </Container>
             <Row>
                 <Col >
