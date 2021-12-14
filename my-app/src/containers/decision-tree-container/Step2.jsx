@@ -15,24 +15,24 @@ const Step2 = (props) => {
     }
 
     return (
-        <Container  style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
+        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
                 <h3>Let's learn about datasets..</h3>
-                <hr></hr><br/>
+                <hr></hr><br />
 
                 <Row>
                     <Col>
                         <Dataset areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted}></Dataset>
                     </Col>
-                    <Col style={{textAlign:"left"}}>
-                    A dataset is a collection of data.<br/>
-                    Here we have a small dataset presented in a table. The data was colleced by deciding whether it was a good day to play beach volleyball.<br/><br/>
+                    <Col style={{ textAlign: "left" }}>
+                        A dataset is a collection of data.<br />
+                        Here we have a small dataset presented in a table. The data was colleced by deciding whether it was a good day to play beach volleyball.<br /><br />
                         <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}
                             onClick={() => highlightFeatures()}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What are features?</Accordion.Header>
-                                <Accordion.Body>Features are distinctive attributes or aspects of something, in the dataset they are represented by columns.<br/><br/>
+                                <Accordion.Body>Features are distinctive attributes or aspects of something, in the dataset they are represented by columns.<br /><br />
                                     • Outlook <br />• Temperature <br />• Humidty <br />• Windy <br />• Play <br />
                                 </Accordion.Body>
                             </Accordion.Item>
@@ -42,8 +42,8 @@ const Step2 = (props) => {
                             onClick={() => hightlightLabel()}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What is a label?</Accordion.Header>
-                                <Accordion.Body>Labels are classifications of records.<br/><br/>
-                                • Play <br />
+                                <Accordion.Body>Labels are classifications of records.<br /><br />
+                                    • Play <br />
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
@@ -52,10 +52,17 @@ const Step2 = (props) => {
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What does each row in the table represent?</Accordion.Header>
                                 <Accordion.Body>
-                                    Each row represents one <b>record</b>: combination of input data and its prediciton (output).<br/>
-                                    <b>Input:</b> Outlook, Temperature, Humidity and Windy.<br/>
-                                    <b>Output:</b> Play<br/><br/>
-                                    IF (<b>Outlook=Sunny</b> && <b>Temperature=Hot</b> && <b>Humidity=High</b> && <b>Windy=false</b>) then outcome of playing beach volleyball is <b>Play=NO</b><br/>
+                                    Each row represents one <b>record</b>: combination of input data and its prediciton (output).<br />
+                                    <ul>
+                                        <li>
+                                            <b>Input:</b> Outlook, Temperature, Humidity, Windy
+                                        </li>
+                                        <li>
+                                            <b>Output:</b> Play<br />
+                                        </li>
+                                    </ul>
+
+                                    IF (<b>Outlook=Sunny</b> && <b>Temperature=Hot</b> && <b>Humidity=High</b> && <b>Windy=false</b>) then outcome of playing beach volleyball is <b>Play=NO</b><br />
                                     <Table striped bordered hover id="weatherTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
                                         <thead>
                                             <tr id="features">
