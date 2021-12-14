@@ -23,11 +23,11 @@ const Step3 = (props) => {
                         <div class="jumbotron">
                             <ul class="list-group">
                                 <li class="list-group-item">1. compute the entropy for dataset</li>
-                                <li class="list-group-item">2. for every attribute/feature:<br />
+                                <li class="list-group-item">2. for every feature:<br />
                                     <ol>1. calculate entropy for all categorical values</ol>
-                                    <ol>2. take average information entropy for the current attribute<br /></ol>
-                                    <ol>3. calculate gain for the current attribute</ol></li>
-                                <li class="list-group-item">3. pick the highest gain attribute.</li>
+                                    <ol>2. take average information entropy for the current feture<br /></ol>
+                                    <ol>3. calculate gain for the current feture</ol></li>
+                                <li class="list-group-item">3. pick the highest gain feture.</li>
                                 <li class="list-group-item">4. Repeat until we get the tree we desired.</li>
                             </ul>
 
@@ -50,7 +50,7 @@ const Step3 = (props) => {
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}>Previous Step</Button>
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} disabled>Current Step:{props.currentStep} </Button>
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}>Next Step</Button>
-                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(3)}>Last Step</Button>
+                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(4)}>Last Step</Button>
                 </Col>
             </Row>
         </Container>

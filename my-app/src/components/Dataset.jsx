@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 
-const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted }) => {
+const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature}) => {
 
     const weatherDataset = [
         { outlook: "sunny", temperature: "hot", humidity: "high", windy: "false", play: "no" },
