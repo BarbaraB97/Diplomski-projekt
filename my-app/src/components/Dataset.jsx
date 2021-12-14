@@ -25,10 +25,10 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature }) 
             return (
                 <tr key={index}>
                     <td>{++index}</td>
-                    <td>{outlook}</td>
-                    <td>{temperature}</td>
-                    <td>{humidity}</td>
-                    <td>{windy}</td>
+                    <td style={{backgroundColor: chosenFeature === "Outlook" ? "rgb(197, 235, 202)" : null }}>{outlook}</td>
+                    <td style={{backgroundColor: chosenFeature === "Temperature" ? "rgb(197, 235, 202)" : null }}>{temperature}</td>
+                    <td style={{backgroundColor: chosenFeature === "Humidity" ? "rgb(197, 235, 202)" : null }}>{humidity}</td>
+                    <td style={{backgroundColor: chosenFeature === "Windy" ? "rgb(197, 235, 202)" : null }}>{windy}</td>
                     <td>{play}</td>
                 </tr>
             )
