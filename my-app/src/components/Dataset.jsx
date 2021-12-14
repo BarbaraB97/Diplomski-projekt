@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 
-const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature}) => {
+const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature }) => {
 
     const weatherDataset = [
         { outlook: "sunny", temperature: "hot", humidity: "high", windy: "false", play: "no" },
@@ -35,66 +35,23 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature}) =
         })
     }
 
-
-    if (isLabelHighlighted) {
-        return (
-            <Table striped bordered hover id="weatherTable" style={{ heigth: "35em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
-                <thead>
-                    <tr id="features">
-                        <th>#</th>
-                        <th>Outlook</th>
-                        <th>Temperature</th>
-                        <th>Humidity</th>
-                        <th>Windy</th>
-                        <th style={{ backgroundColor: "rgb(197, 235, 202)" }}>Play</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {generateTable()}
-                </tbody>
-            </Table>
-        )
-    }
-    if (areFeaturesHighlighted) {
-        return (
-            <Table striped bordered hover id="weatherTable" style={{ heigth: "35em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
-                <thead>
-                    <tr id="features">
-                        <th>#</th>
-                        <th style={{ backgroundColor: "rgb(197, 235, 202)" }}>Outlook</th>
-                        <th style={{ backgroundColor: "rgb(197, 235, 202)" }}>Temperature</th>
-                        <th style={{ backgroundColor: "rgb(197, 235, 202)" }}>Humidity</th>
-                        <th style={{ backgroundColor: "rgb(197, 235, 202)" }}>Windy</th>
-                        <th style={{ backgroundColor: "rgb(197, 235, 202)" }}>Play</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {generateTable()}
-                </tbody>
-            </Table>
-        )
-    }
-    else {
-        return (
-            <Table striped bordered hover id="weatherTable" style={{ heigth: "35em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
-                <thead>
-                    <tr id="features">
-                        <th>#</th>
-                        <th>Outlook</th>
-                        <th>Temperature</th>
-                        <th>Humidity</th>
-                        <th>Windy</th>
-                        <th>Play</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {generateTable()}
-                </tbody>
-            </Table>
-        )
-    }
-
-
+    return (
+        <Table striped bordered hover id="weatherTable" style={{ heigth: "35em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
+            <thead>
+                <tr id="features">
+                    <th>#</th>
+                    <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Outlook</th>
+                    <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Temperature</th>
+                    <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Humidity</th>
+                    <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Windy</th>
+                    <th style={{ backgroundColor: isLabelHighlighted ? "rgb(197, 235, 202)" : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Play</th>
+                </tr>
+            </thead>
+            <tbody>
+                {generateTable()}
+            </tbody>
+        </Table>
+    )
 }
 
 export default Dataset;

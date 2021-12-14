@@ -52,10 +52,10 @@ const Step2 = (props) => {
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What does each row in the table represent?</Accordion.Header>
                                 <Accordion.Body>
-                                    Each row represents a combination of input data and its prediciton (output).<br/>
+                                    Each row represents one <b>record</b>: combination of input data and its prediciton (output).<br/>
                                     <b>Input:</b> Outlook, Temperature, Humidity and Windy.<br/>
                                     <b>Output:</b> Play<br/><br/>
-                                    IF <b>Outlook=Sunny</b> and <b>Temperature=Hot</b> and <b>Humidity=High</b> and <b>Windy=false</b>, then outcome of playing volleyball is <b>Play=NO</b><br/>
+                                    IF (<b>Outlook=Sunny</b> && <b>Temperature=Hot</b> && <b>Humidity=High</b> && <b>Windy=false</b>) then outcome of playing beach volleyball is <b>Play=NO</b><br/>
                                     <Table striped bordered hover id="weatherTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
                                         <thead>
                                             <tr id="features">
@@ -106,7 +106,7 @@ const Step2 = (props) => {
                                         </tbody>
                                     </Table>
 
-                                    Then we make a prediction of the outcome based on a previous data using ID3 algorithm!
+                                    Then we make a prediction of the outcome based on previous data using ID3 algorithm!
 
                                 </Accordion.Body>
                             </Accordion.Item>
