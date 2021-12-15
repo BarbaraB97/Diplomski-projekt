@@ -5,6 +5,7 @@ const Step2 = (props) => {
 
     const [areFeaturesHighlighted, setHighlightFeatures] = useState(false);
     const [isLabelHighlighted, setHighlightLabel] = useState(false);
+    const [chosenFeature, setChosenFeature] = useState("");
 
     const highlightFeatures = () => {
         setHighlightFeatures(!areFeaturesHighlighted);
@@ -14,6 +15,14 @@ const Step2 = (props) => {
         setHighlightLabel(!isLabelHighlighted);
     }
 
+    const setChosenFeatureValue = (feature) => {
+        if(chosenFeature===feature){
+            setChosenFeature("");
+        }
+        else{
+            setChosenFeature(feature);
+        }
+    }
     return (
         <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
@@ -22,7 +31,7 @@ const Step2 = (props) => {
 
                 <Row>
                     <Col>
-                        <Dataset areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted}></Dataset>
+                        <Dataset areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted} chosenFeature={chosenFeature}></Dataset>
                     </Col>
                     <Col style={{ textAlign: "left" }}>
                         <ul>
@@ -46,7 +55,7 @@ const Step2 = (props) => {
                         </Accordion>
                         <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}
-                            onClick={() => hightlightLabel()}>
+                            onClick={() => setChosenFeatureValue("Play")}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What is a label?</Accordion.Header>
                                 <Accordion.Body><b>Labels</b> are classifications of records.<br /><br />
