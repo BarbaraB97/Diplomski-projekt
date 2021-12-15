@@ -1,22 +1,29 @@
 import { Container, Row, Button, Col } from "react-bootstrap";
+import decisionTreeExample from "../../assets/decision-tree-example.png"
 
 const Step1 = (props) => {
 
 
     return (
-        <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em", paddingTop:"1em" }}>
-               <h2>What is a decision tree?</h2><hr/>
-            <Container style={{ textAlign: "left", height: '30em', paddingTop: "2em", paddingBottom: "2em", width:"80%" }}>
+        <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em", paddingTop: "1em" }}>
+            <h2>What is a decision tree?</h2><hr />
+            <Container style={{ textAlign: "left", height: '30em', paddingTop: "2em", paddingBottom: "2em", width: "80%" }}>
                 <ul>
                     <li>
-                    <p>A <b>decision tree</b> is a flowchart-like structure in which each internal node represents a "test" on an attribute, each branch represents the outcome of the test, and each leaf node represents a class label (decision taken after computing all attributes).<br/></p>
+                        <p>A <b>decision tree</b> is a flowchart-like structure in which each internal node represents a "test" on an attribute, each branch represents the outcome of the test, and each leaf node represents a class label (decision taken after computing all attributes).<br /></p>
                     </li>
                     <li>
-                    <p>The decision tree model is widely known and used in many businesses to support decision making process and risk analysis.</p>
+                        <p>The decision tree model is widely known and used in many businesses to support decision making process and risk analysis.</p>
+                    </li>
+                    <li>
+                        Here's an example of decision tree:
                     </li>
                 </ul>
-               
-               
+                <Container className="justify-content-center" style={{ display:"flex", alignContent:"center" }}>
+                    <img src={decisionTreeExample} alt="example" height={250} />
+                </Container>
+
+
                 {/* <p>Problem...</p> */}
             </Container>
             <p>Let's see how does decision tree work...</p>
