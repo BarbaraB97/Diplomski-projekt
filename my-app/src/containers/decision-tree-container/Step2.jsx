@@ -134,9 +134,9 @@ const Step2 = (props) => {
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
-                    </Col>
+                    </Col>                    
                 </Row>
-
+               <br/> Let's learn more about ID3 algorithm...
             </Container>
             <Row>
                 <Col >

@@ -11,7 +11,7 @@ const Step4 = (props) => {
     }
 
     return (
-        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
+        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)' }}>
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
                 <h3>Let's take it step by step..</h3>
                 <hr></hr><br />
@@ -39,8 +39,8 @@ const Step4 = (props) => {
                                 <Accordion.Body>
                                     <li class="list-group-item">
                                         <ol>1. Calculate entropy for all categorical values</ol>
-                                        <ol>2. Take average information entropy for the current feature<br /></ol>
-                                        <ol>3. Calculate gain for the current feature</ol>
+                                        <ol>2. Take average entropy for the current feature<br /></ol>
+                                        <ol>3. Calculate information gain for the current feature</ol>
                                     </li>
 
                                     <br /><b> Choose the first feature: </b><br />
@@ -102,8 +102,9 @@ const Step4 = (props) => {
 
                     </Col>
                 </Row>
-
             </Container>
+            {chosenFeature ? <p>You've chosen the first feature. <br/> Now, let's calculate its information gain... </p>: null}
+
             <Row>
                 <Col >
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.firstStep}>First Step</Button>

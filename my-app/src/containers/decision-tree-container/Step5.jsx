@@ -62,7 +62,7 @@ const Step5 = (props) => {
                                     <Row>
                                         <Col md={9}>
                                             <ul>
-                                                <li><b>AVG. ENTROPY: 0.3454</b></li>
+                                                <li><b>AVG. ENTROPY: 0.7749</b></li>
                                             </ul>
                                         </Col>
                                         <Col md={3} >
