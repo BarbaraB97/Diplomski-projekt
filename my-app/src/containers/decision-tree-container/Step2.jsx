@@ -5,6 +5,7 @@ const Step2 = (props) => {
 
     const [areFeaturesHighlighted, setHighlightFeatures] = useState(false);
     const [isLabelHighlighted, setHighlightLabel] = useState(false);
+    const [chosenFeature, setChosenFeature] = useState("");
 
     const highlightFeatures = () => {
         setHighlightFeatures(!areFeaturesHighlighted);
@@ -14,6 +15,14 @@ const Step2 = (props) => {
         setHighlightLabel(!isLabelHighlighted);
     }
 
+    const setChosenFeatureValue = (feature) => {
+        if(chosenFeature===feature){
+            setChosenFeature("");
+        }
+        else{
+            setChosenFeature(feature);
+        }
+    }
     return (
         <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
@@ -22,27 +31,34 @@ const Step2 = (props) => {
 
                 <Row>
                     <Col>
-                        <Dataset areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted}></Dataset>
+                        <Dataset areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted} chosenFeature={chosenFeature}></Dataset>
                     </Col>
                     <Col style={{ textAlign: "left" }}>
-                        A dataset is a collection of data.<br />
-                        Here we have a small dataset presented in a table. The data was colleced by deciding whether it was a good day to play beach volleyball.<br /><br />
+                        <ul>
+                            <li>
+                            A dataset is a collection of data.<br />
+                            </li>
+                            <li>
+                            Here we have a small dataset presented in a table. The data was collected by deciding whether it was a good day to play beach volleyball.<br />
+                            </li>
+                        </ul>
+                        
                         <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}
                             onClick={() => highlightFeatures()}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What are features?</Accordion.Header>
-                                <Accordion.Body>Features are distinctive attributes or aspects of something, in the dataset they are represented by columns.<br /><br />
+                                <Accordion.Body><b>Features</b> are distinctive attributes or aspects of something. In the dataset they are represented by columns.<br /><br />
                                     • Outlook <br />• Temperature <br />• Humidty <br />• Windy <br />• Play <br />
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
                         <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}
-                            onClick={() => hightlightLabel()}>
+                            onClick={() => setChosenFeatureValue("Play")}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What is a label?</Accordion.Header>
-                                <Accordion.Body>Labels are classifications of records.<br /><br />
+                                <Accordion.Body><b>Labels</b> are classifications of records.<br /><br />
                                     • Play <br />
                                 </Accordion.Body>
                             </Accordion.Item>

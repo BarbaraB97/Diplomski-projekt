@@ -29,7 +29,7 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature }) 
                     <td style={{backgroundColor: chosenFeature === "Temperature" ? "rgb(197, 235, 202)" : null }}>{temperature}</td>
                     <td style={{backgroundColor: chosenFeature === "Humidity" ? "rgb(197, 235, 202)" : null }}>{humidity}</td>
                     <td style={{backgroundColor: chosenFeature === "Windy" ? "rgb(197, 235, 202)" : null }}>{windy}</td>
-                    <td>{play}</td>
+                    <td style={{backgroundColor: chosenFeature === "Play" ? "rgb(197, 235, 202)" : null }}>{play}</td>
                 </tr>
             )
         })
