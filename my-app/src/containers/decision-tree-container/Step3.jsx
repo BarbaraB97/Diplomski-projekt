@@ -11,11 +11,23 @@ const Step3 = (props) => {
 
                 <Row>
                     <Col md={6} style={{ textAlign: "left" }}>
-                    ID3 algorithm is used to generate a decision tree from existing data. <br/><br/> 
-                    In every iteration of the algorithm, it iterates through every unused feature in the data and calculates the entropy and information gain.<br/>
-                    To put it simply, <b>entropy</b> can be explained as a lack of order or predictability and <b>information gain</b> as the reduction in entropy.<br/><br/>
-                    After the calculation, the feature with the highest information gain is chosen. That feature is now a node in the tree and marked as used.
-                    
+                        <ul>
+                            <li>
+                            ID3 algorithm is used to generate a decision tree from existing data. 
+                            </li>
+                            <li>
+                            In every iteration of the algorithm, it iterates through every unused feature in the data and calculates the entropy and information gain.
+                            </li>
+                            <li>
+                            To put it simply, <b>entropy</b> can be explained as a lack of order or predictability and <b>information gain</b> as the reduction in entropy.<br/><br/>
+                            </li>
+                            <li>
+                            After the calculation, the feature with the highest information gain is chosen. That feature is now a node in the tree and marked as used.
+                            </li>
+                            <li>
+                                The process is repeated until we get to the leaf nodes and then we can make predictions.
+                            </li>
+                        </ul>
 
                     </Col>
                     <Col md={6} style={{ textAlign: "left" }}>

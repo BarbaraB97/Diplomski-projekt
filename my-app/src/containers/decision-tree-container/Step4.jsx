@@ -35,12 +35,12 @@ const Step4 = (props) => {
                         <Accordion defaultActiveKey="0"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}>
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header><b>2. for every feature:</b></Accordion.Header>
+                                <Accordion.Header><b>2. For every feature:</b></Accordion.Header>
                                 <Accordion.Body>
                                     <li class="list-group-item">
-                                        <ol>1. calculate entropy for all categorical values</ol>
-                                        <ol>2. take average information entropy for the current feature<br /></ol>
-                                        <ol>3. calculate gain for the current feature</ol>
+                                        <ol>1. Calculate entropy for all categorical values</ol>
+                                        <ol>2. Take average information entropy for the current feature<br /></ol>
+                                        <ol>3. Calculate gain for the current feature</ol>
                                     </li>
 
                                     <br /><b> Choose the first feature: </b><br />
