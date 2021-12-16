@@ -29,12 +29,12 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature }) 
 
 
     return (
-        <Table striped bordered hover id="weatherTable" style={{ heigth: "35em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
+        <Table striped bordered hover id="simpleRegressionTable" style={{ heigth: "35em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
             <thead>
                 <tr id="features">
                     <th>#</th>
                     <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Price (in thousands $)</th>
-                    <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Size (Square meters)</th>
+                    <th style={{ backgroundColor: isLabelHighlighted ? "rgb(197, 235, 202)" : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Size (Square meters)</th>
                 </tr>
             </thead>
             <tbody>
