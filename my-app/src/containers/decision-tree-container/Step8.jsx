@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Button, Col, Accordion, Table, Fade } from "react-bootstrap";
+import DecisionTree from '../../components/DecisionTree';
 
 const Step8 = (props) => {
 
@@ -44,6 +45,11 @@ const Step8 = (props) => {
                                 </tr>
                             </tbody>
                         </Table>
+                        <Fade in={chosenFeature === "Outlook"}>
+                            <Row>
+                                <DecisionTree></DecisionTree>
+                            </Row>
+                        </Fade>
                     </Col>
                     <Col style={{ textAlign: "left" }}>
 
@@ -69,49 +75,49 @@ const Step8 = (props) => {
                                                         Correct! Our root node in the decision tree is feature:
                                                     </li>
                                                 </ul>
-                                                <div style={{display:"flex", justifyContent:"center"}}>
+                                                <div style={{ display: "flex", justifyContent: "center" }}>
                                                     <Button style={{ backgroundColor: "#76b5c5", width: "7em" }}>{chosenFeature}</Button>
                                                 </div>
                                             </Col>
-                                    </Row>
-                                </Fade>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                    <Fade in={chosenFeature === "Outlook"}>
-                        <Accordion defaultActiveKey="0">
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header><b>4. Now we repeat the process for the rest of the nodes in the decision tree</b></Accordion.Header>
-                                <Accordion.Body>
-                                    <Row>
-                                        <Col md={9}>
-                                            <ul>
-                                                <li>
-                                                    Choose the node you would like to continue with...
-                                                </li>
-                                            </ul>
-                                        </Col>
-                                        <Col md={3} >
-                                            <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
-                                        </Col>
-                                    </Row>
-
+                                        </Row>
+                                    </Fade>
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
-                    </Fade>
+                        <Fade in={chosenFeature === "Outlook"}>
+                            <Accordion defaultActiveKey="0">
+                                <Accordion.Item eventKey="0">
+                                    <Accordion.Header><b>4. Now we repeat the process for the rest of the nodes in the decision tree</b></Accordion.Header>
+                                    <Accordion.Body>
+                                        <Row>
+                                            <Col md={9}>
+                                                <ul>
+                                                    <li>
+                                                        Choose the node you would like to continue with...
+                                                    </li>
+                                                </ul>
+                                            </Col>
+                                            <Col md={3} >
+                                                <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
+                                            </Col>
+                                        </Row>
+
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>
+                        </Fade>
+                    </Col>
+                </Row>
+            </Container>
+            {chosenFeature === "Outlook" ? <p><br />Let's do this for the rest of the nodes...</p> : null}
+            < Row >
+                <Col >
+                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.firstStep}>First Step</Button>
+                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}>Previous Step</Button>
+                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} disabled>Current Step:{props.currentStep} </Button>
+                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}>Next Step</Button>
+                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(6)}>Last Step</Button>
                 </Col>
-            </Row>
-        </Container>
-        {chosenFeature==="Outlook" ? <p><br/>Let's do this for the rest of the nodes...</p>:null }   
-        < Row >
-        <Col >
-            <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.firstStep}>First Step</Button>
-            <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}>Previous Step</Button>
-            <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} disabled>Current Step:{props.currentStep} </Button>
-            <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}>Next Step</Button>
-            <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(6)}>Last Step</Button>
-        </Col>
             </Row >
         </Container >
     );
