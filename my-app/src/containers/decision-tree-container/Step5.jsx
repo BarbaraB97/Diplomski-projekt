@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Accordion, OverlayTrigger, Popover } from "react-bootstrap";
+import { Container, Row, Button, Col, Accordion, OverlayTrigger, Popover, Collapse } from "react-bootstrap";
 import Dataset from '../../components/Dataset'
 
 const Step5 = (props) => {
 
-    const [chosenFeature, setChosenFeature ] = useState("Temperature");
+    const [chosenFeature, setChosenFeature] = useState("Temperature");
+    const [chosenFeatureValue, setChosenFeatureValue] = useState(null);
 
     return (
         <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
@@ -14,7 +15,7 @@ const Step5 = (props) => {
 
                 <Row>
                     <Col>
-                        <Dataset chosenFeature={chosenFeature}></Dataset>
+                        <Dataset chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue} isTableStriped={false}></Dataset>
                     </Col>
                     <Col style={{ textAlign: "left" }}>
 
@@ -23,33 +24,46 @@ const Step5 = (props) => {
                                 <Accordion.Header><b>1. Calculate entropy for all categorical values:</b></Accordion.Header>
                                 <Accordion.Body>
                                     <Row>
-                                        <Col md={9}>
+                                        <Col md={11}>
                                             <ul>
-                                                <li><b>HOT</b>: Entropy = <b>0.8133</b></li>
+                                                <li><b onClick={() => chosenFeatureValue === "hot" ? setChosenFeatureValue(null) : setChosenFeatureValue("hot")}>HOT</b>: Entropy = <b>0.8133</b></li>
                                             </ul>
-                                        </Col>
-                                        <Col md={3} >
-                                            <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
+                                            <Row>
+                                                <Collapse style={{ marginLeft: "2em", marginRight: "2em" }} in={chosenFeatureValue === "hot"}>
+                                                    <div >
+                                                        Explanation...             <hr />
+                                                    </div>
+                                                </Collapse>
+                                            </Row>
+
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <Col md={9}>
+                                        <Col md={11}>
                                             <ul>
-                                                <li><b>MILD</b>: Entropy = <b>0.7655</b></li>
+                                                <li><b onClick={() => chosenFeatureValue === "mild" ? setChosenFeatureValue(null) : setChosenFeatureValue("mild")}>MILD</b>: Entropy = <b>0.7655</b></li>
                                             </ul>
-                                        </Col>
-                                        <Col md={3} >
-                                            <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
+                                            <Row>
+                                                <Collapse style={{ marginLeft: "2em", marginRight: "2em" }} in={chosenFeatureValue === "mild"}>
+                                                    <div >
+                                                        Explanation...             <hr />
+                                                    </div>
+                                                </Collapse>
+                                            </Row>
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <Col md={9}>
+                                        <Col md={11}>
                                             <ul>
-                                                <li><b>COLD</b>: Entropy = <b>0.746</b></li>
+                                                <li><b onClick={() => chosenFeatureValue === "cool" ? setChosenFeatureValue(null) : setChosenFeatureValue("cool")}>COLD</b>: Entropy = <b>0.746</b></li>
                                             </ul>
-                                        </Col>
-                                        <Col md={3} >
-                                            <Button style={{marginRight: "20%", marginLeft: "70%" }}>?</Button>
+                                            <Row>
+                                                <Collapse style={{ marginLeft: "2em", marginRight: "2em" }} in={chosenFeatureValue === "cool"}>
+                                                    <div >
+                                                        Explanation...             <hr />
+                                                    </div>
+                                                </Collapse>
+                                            </Row>
                                         </Col>
                                     </Row>
                                 </Accordion.Body>
@@ -91,9 +105,9 @@ const Step5 = (props) => {
                         </Accordion>
                     </Col>
                 </Row>
-              
+
             </Container>
-            Let's do this for the rest of the features...<br/>
+            Let's do this for the rest of the features...<br />
             <Row>
                 <Col >
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.firstStep}>First Step</Button>

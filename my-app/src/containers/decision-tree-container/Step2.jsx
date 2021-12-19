@@ -31,7 +31,7 @@ const Step2 = (props) => {
 
                 <Row>
                     <Col>
-                        <Dataset areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted} chosenFeature={chosenFeature}></Dataset>
+                        <Dataset isTableStriped={true} areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted} chosenFeature={chosenFeature}></Dataset>
                     </Col>
                     <Col style={{ textAlign: "left" }}>
                         <ul>

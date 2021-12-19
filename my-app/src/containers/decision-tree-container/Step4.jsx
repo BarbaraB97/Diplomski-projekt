@@ -19,7 +19,7 @@ const Step4 = (props) => {
     const computeDatasetEntropyBody =
         <div>
             <Row>
-                <Col md={6}><Dataset isLabelHighlighted={true} chosenFeature={"Play"}></Dataset></Col>
+                <Col md={6}><Dataset isLabelHighlighted={true} chosenFeature={"Play"} isTableStriped={true}></Dataset></Col>
                 <Col md={6}>
                     <img src={datasetEntropyExample} alt="example" height={250} />
                 </Col>
@@ -35,7 +35,7 @@ const Step4 = (props) => {
             
                 <Row>
                     <Col>
-                        <Dataset></Dataset>
+                        <Dataset isTableStriped={true}></Dataset>
                     </Col>
                     <Col style={{ textAlign: "left" }}>
                         <Accordion defaultActiveKey="0"
