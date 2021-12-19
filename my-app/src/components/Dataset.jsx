@@ -44,7 +44,7 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature, ch
                     <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : chosenFeature==="Temperature" ?  "rgb(197, 235, 202)" : null }}>Temperature</th>
                     <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : chosenFeature==="Humidity" ?  "rgb(197, 235, 202)" : null  }}>Humidity</th>
                     <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : chosenFeature==="Windy" ?  "rgb(197, 235, 202)" : null  }}>Windy</th>
-                    <th style={{ backgroundColor: isLabelHighlighted ? "rgb(197, 235, 202)" : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Play</th>
+                    <th style={{ backgroundColor: isLabelHighlighted ? "rgb(197, 235, 202)" : areFeaturesHighlighted ? "rgb(197, 235, 202)" :  chosenFeature==="Play" ?  "rgb(197, 235, 202)" : null  }}>Play</th>
                 </tr>
             </thead>
             <tbody>
