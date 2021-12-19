@@ -15,7 +15,7 @@ const Step5 = (props) => {
 
                 <Row>
                     <Col>
-                        <Dataset chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue} isTableStriped={false}></Dataset>
+                        <Dataset chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue} isTableStriped={false} highLightLabelValue={true}></Dataset>
                     </Col>
                     <Col style={{ textAlign: "left" }}>
 

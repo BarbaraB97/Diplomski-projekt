@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 
-const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature, chosenFeatureValue, isTableStriped }) => {
+const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature, chosenFeatureValue, isTableStriped, highLightLabelValue }) => {
 
     const weatherDataset = [
         { outlook: "sunny", temperature: "hot", humidity: "high", windy: "false", play: "no" },
@@ -29,7 +29,7 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature, ch
                     <td style={{backgroundColor: chosenFeatureValue === temperature ? "#7EB59A" : (chosenFeature === "Temperature" ? "rgb(197, 235, 202)" : null ) }}>{temperature}</td>
                     <td style={{backgroundColor: chosenFeatureValue === humidity ? "#7EB59A" : (chosenFeature === "Humidity" ? "rgb(197, 235, 202)" : null)}}>{humidity}</td>
                     <td style={{backgroundColor:  chosenFeatureValue === windy ? "#7EB59A" : (chosenFeature === "Windy" ? "rgb(197, 235, 202)" : null) }}>{windy}</td>
-                    <td style={{backgroundColor:  chosenFeatureValue === play ? "#7EB59A" : (chosenFeature === "Play" ? "rgb(197, 235, 202)" : null )}}>{play}</td>
+                    <td style={{backgroundColor:  chosenFeatureValue === play || chosenFeatureValue === temperature  ? "#7EB59A" : (chosenFeature === "Play" ? "rgb(197, 235, 202)" : null )}}>{play}</td>
                 </tr>
             )
         })
