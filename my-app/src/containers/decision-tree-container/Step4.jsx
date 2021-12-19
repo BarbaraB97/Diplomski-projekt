@@ -1,21 +1,38 @@
 import { Container, Row, Button, Col, Accordion, OverlayTrigger, Popover } from "react-bootstrap";
 import Dataset from '../../components/Dataset'
 import { useState } from "react";
+import ModalWindow from "../../components/ModalWindow"
+import datasetEntropyExample from "../../assets/entropyExample.png"
 
 const Step4 = (props) => {
 
-    const [ chosenFeature, setChosenFeature ] = useState(null);
+    const [chosenFeature, setChosenFeature] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
     const chooseFeature = (feature) => {
         setChosenFeature(feature);
     }
 
+    const computeDatasetEntropyBody =
+        <div>
+            <Row>
+                <Col md={6}><Dataset isLabelHighlighted={true} chosenFeature={"Play"}></Dataset></Col>
+                <Col md={6}>
+                    <img src={datasetEntropyExample} alt="example" height={250} />
+                </Col>
+            </Row>
+        </div>
+
     return (
+        <>
         <Container style={{ width: '80em', background: 'rgb(252, 249, 242)' }}>
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
                 <h3>Let's take it step by step..</h3>
                 <hr></hr><br />
-
+            
                 <Row>
                     <Col>
                         <Dataset></Dataset>
@@ -27,7 +44,7 @@ const Step4 = (props) => {
                                 <Accordion.Header><b>1. Compute the entropy for whole dataset:</b></Accordion.Header>
                                 <Accordion.Body>
                                     <li class="list-group-item">
-                                        <ol>Dataset entropy = <b>0.979</b>  <Button style={{ marginRight: "1em", marginLeft: "16em" }}>?</Button></ol>
+                                        <ol>Dataset entropy = <b>0.979</b>  <Button onClick={() => handleShow()} style={{ marginRight: "1em", marginLeft: "16em" }}>?</Button></ol>
                                     </li>
                                 </Accordion.Body>
                             </Accordion.Item>
@@ -56,7 +73,7 @@ const Step4 = (props) => {
                                                 </ul>
                                             </Popover.Body>
                                         </Popover>}>
-                                        <Button onClick={() => chooseFeature("Outlook")} md={2} style={{  backgroundColor: chosenFeature === "Outlook" ? "#eab676" : "#76b5c5", marginRight: "1em", width: "7em" }}>Outlook</Button>
+                                        <Button onClick={() => chooseFeature("Outlook")} md={2} style={{ backgroundColor: chosenFeature === "Outlook" ? "#eab676" : "#76b5c5", marginRight: "1em", width: "7em" }}>Outlook</Button>
                                     </OverlayTrigger>
                                     <OverlayTrigger trigger="hover" placement="bottom"
                                         overlay={<Popover id="popover-basic">
@@ -81,7 +98,7 @@ const Step4 = (props) => {
                                                 </ul>
                                             </Popover.Body>
                                         </Popover>}>
-                                        <Button onClick={() => chooseFeature("Humidity")} md={2} style={{  backgroundColor: chosenFeature === "Humidity" ? "#eab676" : "#76b5c5", marginRight: "1em", width: "7em" }}>Humidity</Button>
+                                        <Button onClick={() => chooseFeature("Humidity")} md={2} style={{ backgroundColor: chosenFeature === "Humidity" ? "#eab676" : "#76b5c5", marginRight: "1em", width: "7em" }}>Humidity</Button>
                                     </OverlayTrigger>
                                     <OverlayTrigger trigger="hover" placement="bottom"
                                         overlay={<Popover id="popover-basic">
@@ -103,7 +120,7 @@ const Step4 = (props) => {
                     </Col>
                 </Row>
             </Container>
-            {chosenFeature ? <p>You've chosen the first feature. <br/> Now, let's calculate its information gain... </p>: null}
+            {chosenFeature ? <p>You've chosen the first feature. <br /> Now, let's calculate its information gain... </p> : null}
 
             <Row>
                 <Col >
@@ -115,6 +132,12 @@ const Step4 = (props) => {
                 </Col>
             </Row>
         </Container>
+        <ModalWindow show={showModal}
+                                    close={handleClose}
+                                    title={"How to compute entropy for the whole dataset?"}
+                                    body={computeDatasetEntropyBody}
+                                ></ModalWindow>
+        </>
     );
 }
 
