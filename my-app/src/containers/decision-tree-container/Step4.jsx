@@ -50,7 +50,7 @@ const Step4 = (props) => {
                                     <Accordion.Header><b>1. Compute the entropy for whole dataset:</b></Accordion.Header>
                                     <Accordion.Body>
                                         <li class="list-group-item">
-                                            <ol>Dataset entropy = <b>0.1207</b>  <Button onClick={() => handleClick(!show)} style={{ marginRight: "1em", marginLeft: "16em" }}>?</Button></ol>
+                                            <ol>Dataset entropy = <b>0.9403</b>  <Button onClick={() => handleClick(!show)} style={{ marginRight: "1em", marginLeft: "16em" }}>?</Button></ol>
                                         </li>
                                         <Row>
                                             <Collapse style={{ marginLeft: "2em", marginRight: "2em" }} in={show}>
@@ -101,7 +101,7 @@ const Step4 = (props) => {
                                                                                <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='Entropy(dataset) = 0.1207'
+                                                                        value='Entropy(dataset) = 0.9403'
                                                                     />
                                                             </Row>
 

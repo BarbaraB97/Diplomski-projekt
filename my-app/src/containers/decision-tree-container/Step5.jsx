@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Container, Row, Button, Col, Accordion, OverlayTrigger, Popover, Collapse } from "react-bootstrap";
 import Dataset from '../../components/Dataset'
+import { Equation, EquationEvaluate, EquationOptions, defaultErrorHandler } from 'react-equation'
+import { defaultVariables, defaultFunctions } from 'equation-resolver'
 
 const Step5 = (props) => {
 
@@ -14,56 +16,172 @@ const Step5 = (props) => {
                 <hr></hr><br />
 
                 <Row>
-                    <Col>
+                    <Col md={4}>
                         <Dataset chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue} isTableStriped={false} highLightLabelValue={true}></Dataset>
                     </Col>
-                    <Col style={{ textAlign: "left" }}>
+                    <Col md={1}></Col>
+                    <Col style={{ textAlign: "left" }} md={7}>
 
                         <Accordion defaultActiveKey="0">
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header><b>1. Calculate entropy for all categorical values:</b></Accordion.Header>
                                 <Accordion.Body>
                                     <Row>
-                                        <Col md={11}>
-                                            <ul>
-                                                <li><b onClick={() => chosenFeatureValue === "hot" ? setChosenFeatureValue(null) : setChosenFeatureValue("hot")}>HOT</b>: Entropy = <b>0.8133</b></li>
+                                        <Col md={12}>
+                                            <ul onClick={() => chosenFeatureValue === "hot" ? setChosenFeatureValue(null) : setChosenFeatureValue("hot")}>
+                                                <b >HOT</b>: Entropy = <b>1.0</b><hr />
                                             </ul>
-                                            <Row>
-                                                <Collapse style={{ marginLeft: "2em", marginRight: "2em" }} in={chosenFeatureValue === "hot"}>
-                                                    <div >
-                                                        Explanation...             <hr />
-                                                    </div>
-                                                </Collapse>
-                                            </Row>
+
+                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", marginBottom:"2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border:"1px grey solid" }} in={chosenFeatureValue === "hot"}>
+                                                <div >
+                                                    <ul>
+                                                        <li>
+                                                            Out of <b>4</b> outcomes in case when <b>Temperature=Hot</b>:<br /> <b>2</b> are <b>YES</b> and <b>2</b> are <b>NO</b>:
+                                                        </li><br />
+                                                        <EquationOptions>
+                                                            <Row>
+                                                                <Col md={3}>
+                                                                    <Equation
+                                                                        variables={defaultVariables}
+                                                                        functions={defaultFunctions}
+                                                                        value='P(YES) = 2/4'
+                                                                    /> 	&#32;
+                                                                </Col>
+                                                                <Col>
+                                                                    <Equation
+                                                                        variables={defaultVariables}
+                                                                        functions={defaultFunctions}
+                                                                        value='P(NO) = 2/4'
+                                                                    />
+                                                                </Col>
+                                                            </Row><br />
+                                                            <Row>
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Entropy(Temperature=Hot) = (-1)*p(c) * log2(p(c1)) - p(c2)*log2(p(c2))'
+                                                                />
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Entropy(Temperature=Hot) = (-1)* (2/4)*log2(2/4) - 2/4*log2(2/4)'
+                                                                />
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Entropy(Temperature=Hot) = 1.0'
+                                                                />
+                                                            </Row>
+                                                        </EquationOptions>
+                                                    </ul>              
+                                                </div>
+                                            </Collapse>
+
+
 
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <Col md={11}>
-                                            <ul>
-                                                <li><b onClick={() => chosenFeatureValue === "mild" ? setChosenFeatureValue(null) : setChosenFeatureValue("mild")}>MILD</b>: Entropy = <b>0.7655</b></li>
+                                        <Col md={12}>
+                                            <ul onClick={() => chosenFeatureValue === "mild" ? setChosenFeatureValue(null) : setChosenFeatureValue("mild")}>
+                                                <b>MILD</b>: Entropy = <b>0.7219</b><hr />
                                             </ul>
-                                            <Row>
-                                                <Collapse style={{ marginLeft: "2em", marginRight: "2em" }} in={chosenFeatureValue === "mild"}>
-                                                    <div >
-                                                        Explanation...             <hr />
-                                                    </div>
-                                                </Collapse>
-                                            </Row>
+                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", marginBottom:"2em", border:"1px grey solid", backgroundColor: "rgb(213, 213, 213, 0.3)" }} in={chosenFeatureValue === "mild"}>
+                                                <div >
+                                                    <ul>
+                                                        <li>
+                                                            Out of <b>5</b> outcomes in case when <b>Temperature=Mild</b>:<br /> <b>4</b> are labeled as <b>YES</b> and <b>1</b> as <b>NO</b>:
+                                                        </li><br />
+                                                        <EquationOptions>
+                                                            <Row>
+                                                                <Col md={3}>
+                                                                    <Equation
+                                                                        variables={defaultVariables}
+                                                                        functions={defaultFunctions}
+                                                                        value='P(YES) = 4/5'
+                                                                    /> 	&#32;
+                                                                </Col>
+                                                                <Col>
+                                                                    <Equation
+                                                                        variables={defaultVariables}
+                                                                        functions={defaultFunctions}
+                                                                        value='P(NO) = 1/5'
+                                                                    />
+                                                                </Col>
+                                                            </Row><br />
+                                                            <Row>
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Entropy(Temperature=Mild) = (-1)*p(c) * log2(p(c1)) - p(c2)*log2(p(c2))'
+                                                                />
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Entropy(Temperature=Mild) = (-1)* (4/5)*log2(4/5) - 1/5*log2(1/5)'
+                                                                />
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Entropy(Temperature=Mild) = 0.7219'
+                                                                />
+                                                            </Row>
+                                                        </EquationOptions>
+                                                    </ul>          
+                                                </div>
+                                            </Collapse>
+
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <Col md={11}>
-                                            <ul>
-                                                <li><b onClick={() => chosenFeatureValue === "cool" ? setChosenFeatureValue(null) : setChosenFeatureValue("cool")}>COLD</b>: Entropy = <b>0.746</b></li>
+                                        <Col md={12}>
+                                            <ul onClick={() => chosenFeatureValue === "cool" ? setChosenFeatureValue(null) : setChosenFeatureValue("cool")}>
+                                                <b>COLD</b>: Entropy = <b>0.8113</b>
                                             </ul>
-                                            <Row>
-                                                <Collapse style={{ marginLeft: "2em", marginRight: "2em" }} in={chosenFeatureValue === "cool"}>
-                                                    <div >
-                                                        Explanation...             <hr />
-                                                    </div>
-                                                </Collapse>
-                                            </Row>
+                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em",  marginBottom:"2em", border:"1px grey solid",  backgroundColor: "rgb(213, 213, 213, 0.3)" }} in={chosenFeatureValue === "cool"}>
+                                                <div >
+                                                    <ul>
+                                                        <li>
+                                                            Out of <b>4</b> outcomes in case when <b>Temperature=Cool</b>:<br /> <b>3</b> are labeled as <b>YES</b> and <b>1</b> as <b>NO</b>:
+                                                        </li><br />
+                                                        <EquationOptions>
+                                                            <Row>
+                                                                <Col md={3}>
+                                                                    <Equation
+                                                                        variables={defaultVariables}
+                                                                        functions={defaultFunctions}
+                                                                        value='P(YES) = 3/4'
+                                                                    /> 	&#32;
+                                                                </Col>
+                                                                <Col>
+                                                                    <Equation
+                                                                        variables={defaultVariables}
+                                                                        functions={defaultFunctions}
+                                                                        value='P(NO) = 1/4'
+                                                                    />
+                                                                </Col>
+                                                            </Row><br />
+                                                            <Row>
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Entropy(Temperature=Cool) = (-1)*p(c) * log2(p(c1)) - p(c2)*log2(p(c2))'
+                                                                />
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Entropy(Temperature=Cool) = (-1)* (3/4)*log2(3/4) - 1/4*log2(1/4)'
+                                                                />
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Entropy(Temperature=Cool) = 0.8113'
+                                                                />
+                                                            </Row>
+                                                        </EquationOptions>
+                                                    </ul>             
+                                                </div>
+                                            </Collapse>
                                         </Col>
                                     </Row>
                                 </Accordion.Body>
@@ -74,14 +192,50 @@ const Step5 = (props) => {
                                 <Accordion.Header><b>2. Take average information entropy for the current feature:</b></Accordion.Header>
                                 <Accordion.Body>
                                     <Row>
-                                        <Col md={9}>
-                                            <ul>
-                                                <li><b>AVG. ENTROPY: 0.7749</b></li>
+                                        <Col md={12}>
+                                            <ul onClick={() => chosenFeatureValue === "avg entropy" ? setChosenFeatureValue(null) : setChosenFeatureValue("avg entropy")}>
+                                                <b>AVG. ENTROPY: 0.8296</b>
                                             </ul>
+                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border:"1px grey solid"}} in={chosenFeatureValue === "avg entropy"}>
+                                                <div >
+                                                    <ul>
+                                                        <li>
+                                                            Average entropy Information for feature TEMPERATURE:
+                                                        </li><br />
+                                                        <EquationOptions>
+                                                            <Row>
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='I(Temperature) = sum(t,T,3, p(t)*H(t))'
+                                                                />
+                                                            </Row><br />
+                                                        </EquationOptions>
+                                                        <li>
+                                                            <b>P(t)</b>= possibility of feature T to take on value t<br/>
+                                                        </li>
+                                                        <li>
+                                                            <b>H(t)</b>= entropy of feature T with value t
+                                                        </li><br/>
+                                                        <EquationOptions>
+                                                            <Row>
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='I(Temperature) = 4/14*1.0 + 6/14*0.7219 + 4/14*0.8113'
+                                                                />
+                                                                 <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='I(Temperature) = 0.8296'
+                                                                />
+                                                            </Row><br />
+                                                        </EquationOptions>
+                                                    </ul>             
+                                                </div>
+                                            </Collapse>
                                         </Col>
-                                        <Col md={3} >
-                                            <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
-                                        </Col>
+
                                     </Row>
                                 </Accordion.Body>
                             </Accordion.Item>
@@ -91,14 +245,37 @@ const Step5 = (props) => {
                                 <Accordion.Header><b>3. Calculate gain for the current feature</b></Accordion.Header>
                                 <Accordion.Body>
                                     <Row>
-                                        <Col md={9}>
-                                            <ul>
-                                                <li><b>INFORMATION GAIN: 0.1445</b></li>
+                                        <Col md={12}>
+                                            <ul onClick={() => chosenFeatureValue === "information gain" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain")}>
+                                                <li><b>INFORMATION GAIN: 0.1106</b></li>
                                             </ul>
+                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border:"1px grey solid"}} in={chosenFeatureValue === "information gain"}>
+                                                <div >
+                                                    <ul>
+                                                        <li>
+                                                            Information Gain is difference between dataset entropy and average Information Entropy:
+                                                        </li><br />
+                                                        <EquationOptions>
+                                                            <Row>
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Information gain = H(dataset) - I(Temperature)'
+                                                                />
+                                                            </Row><br />
+                                                            <Row>
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='Average entropy = 0.9402 - 0.8296 = 0.1106'
+                                                                />
+                                                            </Row>
+                                                        </EquationOptions>
+                                                    </ul>             
+                                                </div>
+                                            </Collapse>
                                         </Col>
-                                        <Col md={3} >
-                                            <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
-                                        </Col>
+                                       
                                     </Row>
                                 </Accordion.Body>
                             </Accordion.Item>
