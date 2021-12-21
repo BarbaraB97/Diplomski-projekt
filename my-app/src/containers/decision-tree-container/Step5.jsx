@@ -28,11 +28,11 @@ const Step5 = (props) => {
                                 <Accordion.Body>
                                     <Row>
                                         <Col md={12}>
-                                            <ul onClick={() => chosenFeatureValue === "hot" ? setChosenFeatureValue(null) : setChosenFeatureValue("hot")}>
+                                            <ul onClick={() => chosenFeatureValue === "hot" ? setChosenFeatureValue(null) : setChosenFeatureValue("hot")} style={{cursor:"pointer"}}>
                                                 <b >HOT</b>: Entropy = <b>1.0</b><hr />
                                             </ul>
 
-                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", marginBottom:"2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border:"1px grey solid" }} in={chosenFeatureValue === "hot"}>
+                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", marginBottom: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "hot"}>
                                                 <div >
                                                     <ul>
                                                         <li>
@@ -73,7 +73,7 @@ const Step5 = (props) => {
                                                                 />
                                                             </Row>
                                                         </EquationOptions>
-                                                    </ul>              
+                                                    </ul>
                                                 </div>
                                             </Collapse>
 
@@ -83,14 +83,14 @@ const Step5 = (props) => {
                                     </Row>
                                     <Row>
                                         <Col md={12}>
-                                            <ul onClick={() => chosenFeatureValue === "mild" ? setChosenFeatureValue(null) : setChosenFeatureValue("mild")}>
-                                                <b>MILD</b>: Entropy = <b>0.7219</b><hr />
+                                            <ul onClick={() => chosenFeatureValue === "mild" ? setChosenFeatureValue(null) : setChosenFeatureValue("mild")}  style={{cursor:"pointer"}}>
+                                                <b>MILD</b>: Entropy = <b>0.9183</b><hr />
                                             </ul>
-                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", marginBottom:"2em", border:"1px grey solid", backgroundColor: "rgb(213, 213, 213, 0.3)" }} in={chosenFeatureValue === "mild"}>
+                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", marginBottom: "2em", border: "1px grey solid", backgroundColor: "rgb(213, 213, 213, 0.3)" }} in={chosenFeatureValue === "mild"}>
                                                 <div >
                                                     <ul>
                                                         <li>
-                                                            Out of <b>5</b> outcomes in case when <b>Temperature=Mild</b>:<br /> <b>4</b> are labeled as <b>YES</b> and <b>1</b> as <b>NO</b>:
+                                                            Out of <b>6</b> outcomes in case when <b>Temperature=Mild</b>:<br /> <b>4</b> are labeled as <b>YES</b> and <b>2</b> as <b>NO</b>:
                                                         </li><br />
                                                         <EquationOptions>
                                                             <Row>
@@ -98,14 +98,14 @@ const Step5 = (props) => {
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='P(YES) = 4/5'
+                                                                        value='P(YES) = 4/6'
                                                                     /> 	&#32;
                                                                 </Col>
                                                                 <Col>
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='P(NO) = 1/5'
+                                                                        value='P(NO) = 2/6'
                                                                     />
                                                                 </Col>
                                                             </Row><br />
@@ -118,16 +118,16 @@ const Step5 = (props) => {
                                                                 <Equation
                                                                     variables={defaultVariables}
                                                                     functions={defaultFunctions}
-                                                                    value='Entropy(Temperature=Mild) = (-1)* (4/5)*log2(4/5) - 1/5*log2(1/5)'
+                                                                    value='Entropy(Temperature=Mild) = (-1)* (4/6)*log2(4/6) - 2/6*log2(2/6)'
                                                                 />
                                                                 <Equation
                                                                     variables={defaultVariables}
                                                                     functions={defaultFunctions}
-                                                                    value='Entropy(Temperature=Mild) = 0.7219'
+                                                                    value='Entropy(Temperature=Mild) = 0.9183'
                                                                 />
                                                             </Row>
                                                         </EquationOptions>
-                                                    </ul>          
+                                                    </ul>
                                                 </div>
                                             </Collapse>
 
@@ -135,10 +135,10 @@ const Step5 = (props) => {
                                     </Row>
                                     <Row>
                                         <Col md={12}>
-                                            <ul onClick={() => chosenFeatureValue === "cool" ? setChosenFeatureValue(null) : setChosenFeatureValue("cool")}>
+                                            <ul onClick={() => chosenFeatureValue === "cool" ? setChosenFeatureValue(null) : setChosenFeatureValue("cool")} style={{cursor:"pointer"}}>
                                                 <b>COLD</b>: Entropy = <b>0.8113</b>
                                             </ul>
-                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em",  marginBottom:"2em", border:"1px grey solid",  backgroundColor: "rgb(213, 213, 213, 0.3)" }} in={chosenFeatureValue === "cool"}>
+                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", marginBottom: "2em", border: "1px grey solid", backgroundColor: "rgb(213, 213, 213, 0.3)" }} in={chosenFeatureValue === "cool"}>
                                                 <div >
                                                     <ul>
                                                         <li>
@@ -179,7 +179,7 @@ const Step5 = (props) => {
                                                                 />
                                                             </Row>
                                                         </EquationOptions>
-                                                    </ul>             
+                                                    </ul>
                                                 </div>
                                             </Collapse>
                                         </Col>
@@ -193,10 +193,10 @@ const Step5 = (props) => {
                                 <Accordion.Body>
                                     <Row>
                                         <Col md={12}>
-                                            <ul onClick={() => chosenFeatureValue === "avg entropy" ? setChosenFeatureValue(null) : setChosenFeatureValue("avg entropy")}>
-                                                <b>AVG. ENTROPY: 0.8296</b>
+                                            <ul onClick={() => chosenFeatureValue === "avg entropy" ? setChosenFeatureValue(null) : setChosenFeatureValue("avg entropy")} style={{cursor:"pointer"}}>
+                                                <b>AVG. INFORMATION ENTROPY = 0.9111</b>
                                             </ul>
-                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border:"1px grey solid"}} in={chosenFeatureValue === "avg entropy"}>
+                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "avg entropy"}>
                                                 <div >
                                                     <ul>
                                                         <li>
@@ -212,26 +212,31 @@ const Step5 = (props) => {
                                                             </Row><br />
                                                         </EquationOptions>
                                                         <li>
-                                                            <b>P(t)</b>= possibility of feature T to take on value t<br/>
+                                                            <b>P(t)</b>= possibility of feature T to take on value t<br />
                                                         </li>
                                                         <li>
                                                             <b>H(t)</b>= entropy of feature T with value t
-                                                        </li><br/>
+                                                        </li><br />
                                                         <EquationOptions>
                                                             <Row>
                                                                 <Equation
                                                                     variables={defaultVariables}
                                                                     functions={defaultFunctions}
-                                                                    value='I(Temperature) = 4/14*1.0 + 6/14*0.7219 + 4/14*0.8113'
+                                                                    value='I(Temperature) = P(Hot)*H(Hot) + P(Mild)*H(Mild) + P(Cool)*H(Cool)'
                                                                 />
-                                                                 <Equation
+                                                                <Equation
                                                                     variables={defaultVariables}
                                                                     functions={defaultFunctions}
-                                                                    value='I(Temperature) = 0.8296'
+                                                                    value='I(Temperature) = 4/14*1.0 + 6/14*0.9183 + 4/14*0.8113'
+                                                                />
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='I(Temperature) = 0.9111'
                                                                 />
                                                             </Row><br />
                                                         </EquationOptions>
-                                                    </ul>             
+                                                    </ul>
                                                 </div>
                                             </Collapse>
                                         </Col>
@@ -246,15 +251,15 @@ const Step5 = (props) => {
                                 <Accordion.Body>
                                     <Row>
                                         <Col md={12}>
-                                            <ul onClick={() => chosenFeatureValue === "information gain" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain")}>
-                                                <li><b>INFORMATION GAIN: 0.1106</b></li>
+                                            <ul onClick={() => chosenFeatureValue === "information gain" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain")} style={{cursor:"pointer"}}>
+                                                <b>INFORMATION GAIN = 0.03</b>
                                             </ul>
-                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border:"1px grey solid"}} in={chosenFeatureValue === "information gain"}>
+                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain"}>
                                                 <div >
                                                     <ul>
-                                                        <li>
-                                                            Information Gain is difference between dataset entropy and average Information Entropy:
-                                                        </li><br />
+
+                                                        Information Gain is difference between dataset entropy and average Information Entropy:
+                                                        <br />
                                                         <EquationOptions>
                                                             <Row>
                                                                 <Equation
@@ -267,15 +272,15 @@ const Step5 = (props) => {
                                                                 <Equation
                                                                     variables={defaultVariables}
                                                                     functions={defaultFunctions}
-                                                                    value='Average entropy = 0.9402 - 0.8296 = 0.1106'
+                                                                    value='Information gain  = 0.9402 - 0.9111 = 0.03'
                                                                 />
                                                             </Row>
                                                         </EquationOptions>
-                                                    </ul>             
+                                                    </ul>
                                                 </div>
                                             </Collapse>
                                         </Col>
-                                       
+
                                     </Row>
                                 </Accordion.Body>
                             </Accordion.Item>

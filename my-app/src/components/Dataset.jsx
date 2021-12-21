@@ -17,6 +17,7 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature, ch
         { outlook: "sunny", temperature: "mild", humidity: "normal", windy: "true", play: "yes" },
         { outlook: "overcast", temperature: "mild", humidity: "high", windy: "true", play: "yes" },
         { outlook: "overcast", temperature: "hot", humidity: "normal", windy: "false", play: "yes" },
+        { outlook: "rainy", temperature: "mild", humidity: "high", windy: "true", play: "no" }
     ]
 
     const generateTable = () => {
