@@ -1,15 +1,12 @@
 import { Container, Row, Button, Col, Accordion, OverlayTrigger, Popover, Collapse } from "react-bootstrap";
 import Dataset from '../../components/Dataset'
 import { useState } from "react";
-import ModalWindow from "../../components/ModalWindow"
-import datasetEntropyExample from "../../assets/entropyExample.png"
-import { Equation, EquationEvaluate, EquationOptions, defaultErrorHandler } from 'react-equation'
+import { Equation, EquationOptions, defaultErrorHandler } from 'react-equation'
 import { defaultVariables, defaultFunctions } from 'equation-resolver'
 
 const Step4 = (props) => {
 
     const [chosenFeature, setChosenFeature] = useState(null);
-    const [showModal, setShowModal] = useState(false);
     const [show, setShow] = useState(false);
     const [chosenFeatureValue, setChosenFeatureValue] = useState(null);
 
@@ -19,18 +16,9 @@ const Step4 = (props) => {
 
     const handleClick = () => {
         show ? setChosenFeature(null) : setChosenFeature("Play");
+        chosenFeatureValue ? setChosenFeatureValue(null) : setChosenFeatureValue("yes");
         setShow(!show);
     }
-
-    const computeDatasetEntropyBody =
-        <div>
-            <Row>
-                <Col md={6}><Dataset isLabelHighlighted={true} chosenFeature={"Play"} isTableStriped={true}></Dataset></Col>
-                <Col md={6}>
-                    <img src={datasetEntropyExample} alt="example" height={250} />
-                </Col>
-            </Row>
-        </div>
 
     return (
         <>
@@ -41,7 +29,7 @@ const Step4 = (props) => {
 
                     <Row>
                         <Col>
-                            <Dataset isTableStriped={true} chosenFeature={chosenFeature}></Dataset>
+                            <Dataset isTableStriped={false} chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue}></Dataset>
                         </Col>
                         <Col style={{ textAlign: "left" }}>
                             <Accordion defaultActiveKey="0"
@@ -203,10 +191,7 @@ const Step4 = (props) => {
                     </Col>
                 </Row>
             </Container>
-            <ModalWindow show={showModal}
-                title={"How to compute entropy for the whole dataset?"}
-                body={computeDatasetEntropyBody}
-            ></ModalWindow>
+        
         </>
     );
 }
