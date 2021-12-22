@@ -56,20 +56,26 @@ const Step4 = (props) => {
                                             <Collapse style={{ marginLeft: "2em", marginRight: "2em" }} in={show}>
                                                 <div >
                                                     <ul>
-                                                        <Row>
-                                                            <EquationOptions
-                                                                errorHandler={defaultErrorHandler}>
-                                                                <Equation
-                                                                    variables={defaultVariables}
-                                                                    functions={defaultFunctions}
-                                                                    value='Entropy = sum(c,C, 2, -p(c)* log2(p(c)))'
-                                                                />
-                                                            </EquationOptions>
-                                                        </Row><br/>
+                                                        <li>
+                                                            <b>Entropy:</b>
+                                                        </li>
+                                                        <Row style={{ textAlign: "center" }}>
+                                                            <Col md={{ span: 8, offset: 1 }}>
+                                                                <EquationOptions
+                                                                    errorHandler={defaultErrorHandler}>
+                                                                    <Equation
+                                                                        variables={defaultVariables}
+                                                                        functions={defaultFunctions}
+                                                                        value='H(X) = sum(x,X, 2, -p(x)* log2(p(x)))'
+                                                                    />
+                                                                </EquationOptions>
+                                                            </Col>
 
-                                                        <li><b>C</b>= possible outcomes = &#123; YES, NO &#125;</li>
-                                                        <li><b>P(c)</b> = possibility of certain outcome</li>
-                                                        <li>Out of <b>14</b> instances, <b>9</b> are classified as <b>YES</b> and <b>5</b> are classified as <b>NO</b> </li><br/>
+                                                        </Row><br />
+
+                                                        <li><b>X</b> = possible outcomes = &#123; YES, NO &#125;</li>
+                                                        <li><b>P(X)</b> = possibility of certain outcome</li>
+                                                        <li>Out of <b>14</b> instances, <b>9</b> are classified as <b>YES</b> and <b>5</b> are classified as <b>NO</b> </li><br />
                                                         <EquationOptions>
                                                             <Row>
                                                                 <Col md={3}>
@@ -86,23 +92,23 @@ const Step4 = (props) => {
                                                                         value='P(NO) = 5/14'
                                                                     />
                                                                 </Col>
-                                                            </Row><br/>
+                                                            </Row><br />
                                                             <Row>
-                                                            <Equation
-                                                                        variables={defaultVariables}
-                                                                        functions={defaultFunctions}
-                                                                        value='Entropy(dataset) = p(c) * log2(p(c1)) - p(c2)*log2(p(c2))'
-                                                                    />
-                                                                       <Equation
-                                                                        variables={defaultVariables}
-                                                                        functions={defaultFunctions}
-                                                                        value='Entropy(dataset) = 9/14*log2(9/14) - 5/14*log2(5/14)'
-                                                                    />
-                                                                               <Equation
-                                                                        variables={defaultVariables}
-                                                                        functions={defaultFunctions}
-                                                                        value='Entropy(dataset) = 0.9403'
-                                                                    />
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='H(dataset) = (-1)*P(YES) * log2(P(YES)) - P(NO)*log2(P(NO))'
+                                                                />
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='H(dataset) =(-1)* 9/14*log2(9/14) - 5/14*log2(5/14)'
+                                                                />
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='H(dataset) = 0.9403'
+                                                                />
                                                             </Row>
 
                                                         </EquationOptions>
