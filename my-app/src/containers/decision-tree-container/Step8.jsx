@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Accordion, Table, Fade } from "react-bootstrap";
+import { Container, Row, Button, Col, Accordion, Table, Fade, OverlayTrigger, Popover } from "react-bootstrap";
 import DecisionTree from '../../components/DecisionTree';
 
 const Step8 = (props) => {
@@ -60,24 +60,49 @@ const Step8 = (props) => {
                                     <Row>
                                         <Col md={9}>
                                             <ul>
-                                                <li>Click on feature with the highest Information gain!</li>
+                                                <li><b>Click</b> on feature with the <b>highest Information gain!</b></li>
                                             </ul>
                                         </Col>
                                         <Col md={3} >
-                                            <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
+                                            <OverlayTrigger trigger="hover" placement="bottom"
+                                                overlay={<Popover id="popover-basic">
+                                                    <Popover.Header as="h3">Why?</Popover.Header>
+                                                    <Popover.Body>
+                                                        Because <b>high Information Gain</b> means maximum reduction of Entropy, which means <b>better data classification</b>
+                                                    </Popover.Body>
+                                                </Popover>}>
+                                                <Button md={3} style={{ marginLeft: "60%" }}>?</Button>
+                                            </OverlayTrigger>
+
                                         </Col>
                                     </Row>
                                     <Fade in={chosenFeature === "Outlook"}>
                                         <Row hidden={chosenFeature !== "Outlook"}>
-                                            <Col md={9}>
+                                            <Col md={12}>
                                                 <ul>
                                                     <li>
-                                                        Correct! Our root node in the decision tree is feature:
+                                                        Correct! Our <b>root node</b> in the decision tree is feature:
+                                                    </li>
+
+                                                    
+                                                        <OverlayTrigger trigger="hover" placement="bottom"
+                                                            overlay={<Popover id="popover-basic">
+                                                                <Popover.Header as="h3">Categorical values:</Popover.Header>
+                                                                <Popover.Body>
+                                                                    <ul>
+                                                                        <li>Sunny</li>
+                                                                        <li>Overcast</li>
+                                                                        <li>Rainy</li>
+                                                                    </ul>
+                                                                </Popover.Body>
+                                                            </Popover>}>
+                                                            <Button md={2} style={{ backgroundColor: "#eab676", width: "7em", margin:"1em", marginLeft:"10em" }}>Outlook</Button>
+                                                        </OverlayTrigger>
+                                                    
+                                                    <li>
+                                                        Every link going from root node represents a case when root node takes on certain value. In this case, feature Outlook has 3 different values (Sunny, Overcast, Rainy) that make 3 outgoing links. 
                                                     </li>
                                                 </ul>
-                                                <div style={{ display: "flex", justifyContent: "center" }}>
-                                                    <Button style={{ backgroundColor: "#76b5c5", width: "7em" }}>{chosenFeature}</Button>
-                                                </div>
                                             </Col>
                                         </Row>
                                     </Fade>

@@ -200,10 +200,10 @@ const Step5 = (props) => {
                                                 <div >
                                                     <ul>
                                                         <li>
-                                                            Average entropy Information for feature TEMPERATURE:
+                                                            Average Information entropy:
                                                         </li>
                                                         <Row>
-                                                            <Col md={{ span: 8, offset: 1 }}>
+                                                            <Col md={{ offset: 3 }}>
                                                                 <EquationOptions>
 
                                                                     <Equation
@@ -216,7 +216,7 @@ const Step5 = (props) => {
                                                             </Col>
                                                         </Row>
                                                         <li>
-                                                            <b>X</b> = set of values that feature X takes on, Temperature = &#123; Hot, Mild, Cool &#125;
+                                                            <b>X</b> = set of values that feature X takes on, ex. Temperature = &#123; Hot, Mild, Cool &#125;
                                                         </li>
                                                         <li>
                                                             <b>P(x)</b>= possibility of feature X to take on value x<br />
@@ -265,7 +265,7 @@ const Step5 = (props) => {
                                                 <div >
                                                     <ul>
                                                         <li>
-                                                            Information Gain is <b>difference</b> between dataset entropy and average Information Entropy of the feature:
+                                                            Information Gain is <b>difference</b> between <b>Dataset Entropy</b> and <b>Average Information Entropy</b> of the feature:
 
                                                         </li>
                                                         <br />
