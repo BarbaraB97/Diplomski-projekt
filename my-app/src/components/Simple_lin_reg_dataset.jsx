@@ -24,9 +24,7 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature }) 
             )
         })
     }
-    
-
-
+ 
 
     return (
         <Table striped bordered hover id="simpleRegressionTable" style={{ heigth: "35em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>

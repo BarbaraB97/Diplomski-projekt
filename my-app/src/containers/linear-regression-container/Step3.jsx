@@ -1,88 +1,76 @@
 import { Container, Row, Button, Col } from "react-bootstrap";
+import regression from 'regression';
 import Dataset from '../../components/Simple_lin_reg_dataset';
-import LinearRegression from "../../assets/LinearRegression.png";
 import CanvasJSReact from './canvasjs.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Step3 = (props) => {
 
-    var chart = new CanvasJS.Chart("chartContainer", {
+   /* TO-DO
+      -- this has to be a function that converts dataset into array of points 
+   */ 
+    let housesDataset = [[100, 10],
+     [200, 25], 
+     [500, 100],
+     [1000, 220], 
+     [2000, 400]]
+
+
+    //linear regression calculation on our dataset
+    const points = regression.linear(housesDataset).points;
+
+    //transform linear regression points in format for graph
+    const getPointsData = (pointArray) => {
+        let dataPoints = []
+        for (let i = 0;i < pointArray.length; i++ ) {
+            dataPoints.push({ x: pointArray[i][0], y: pointArray[i][1]})
+        }
+        return dataPoints;
+    }
+
+    const options = {
         animationEnabled: true,
         exportEnabled: true,
         theme: "light2", // "light1", "dark1", "dark2"
         axisY: {
-            title: "Size (Square meters)",
+            title: "Size[m²]",
         },
         axisX: {
-            title: "Price (in thousands $)",
+            title: "Price[1000 $]",
         },
         width: 480,
         height: 330,
         data: [{
-            type: "scatter",
+            type: "line",
             toolTipContent: "{x}: {y}",
-            dataPoints: [
-                { x: 100, y: 10 },
-                { x: 200, y: 25 },
-                { x: 500, y: 100 },
-                { x: 1000, y: 220 },
-                { x: 2000, y: 400 }
-            ]
+            dataPoints: getPointsData(points)
+        },
+        {
+            type: "scatter",
+            axisYType: "secondary",
+            dataPoints: getPointsData(housesDataset)
         }]
-    });
-    chart.render();
-
-    calculateTrendLine(chart);
-    function calculateTrendLine(chart){
-        var a, b, c, d, e, slope, yIntercept;
-        var xSum = 0, ySum = 0, xySum = 0, xSquare = 0, dpsLength = chart.data[0].dataPoints.length;
-        for(var i = 0; i < dpsLength; i++)
-            xySum += (chart.data[0].dataPoints[i].x * chart.data[0].dataPoints[i].y)
-        a = xySum * dpsLength;
-
-        for(var i = 0; i < dpsLength; i++){
-            xSum += chart.data[0].dataPoints[i].x;
-            ySum += chart.data[0].dataPoints[i].y;
-        }
-        b = xSum * ySum;
-
-        for(var i = 0; i < dpsLength; i++)
-            xSquare += Math.pow(chart.data[0].dataPoints[i].x, 2);
-        c = dpsLength * xSquare;
-
-        d = Math.pow(xSum, 2);
-        slope = (a-b)/(c-d);
-        e = slope * xSum;
-        yIntercept = (ySum - e) / dpsLength;
-
-        var startPoint = getTrendLinePoint(chart.data[0].dataPoints[0].x, slope, yIntercept);
-        var endPoint = getTrendLinePoint(chart.data[0].dataPoints[dpsLength-1].x, slope, yIntercept);
-
-        chart.addTo("data",{
-            type: "line", //Line series showing trend
-            markerSize: 0,
-            dataPoints: [startPoint, endPoint]
-        });
     }
 
-    function getTrendLinePoint(x, slope, intercept){
-        return {x: x, y: ((slope * x) + intercept)};
-    }
-    
+
 
     return (
         <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
             <Container style={{ textAlign: "center", height: '30em'}}>
-                <h1>Simple linear regression</h1>
+                <h2>Simple linear regression</h2>
+               {/*<h3>Example: House prices by their size</h3> */}
                 <hr></hr><br />
-  
                 <Row>
-                    <Col>
+                    <Col> 
                         <Dataset></Dataset>
                     </Col>
                     <Col>
-                    <div id="chartContainer"></div>
+                    <div>
+			<CanvasJSChart options = {options}
+				// onRef={ref => this.chart = ref} 
+			    />
+		    </div>
                     </Col>
                 </Row>
             </Container>
@@ -97,6 +85,6 @@ const Step3 = (props) => {
             </Row>
         </Container>
     );
-}
 
+}
 export default Step3;
