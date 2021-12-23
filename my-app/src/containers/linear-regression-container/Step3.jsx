@@ -7,7 +7,7 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Step3 = (props) => {
 
-    const options = {
+    var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
         exportEnabled: true,
         theme: "light2", // "light1", "dark1", "dark2"
@@ -30,7 +30,46 @@ const Step3 = (props) => {
                 { x: 2000, y: 400 }
             ]
         }]
+    });
+    chart.render();
+
+    calculateTrendLine(chart);
+    function calculateTrendLine(chart){
+        var a, b, c, d, e, slope, yIntercept;
+        var xSum = 0, ySum = 0, xySum = 0, xSquare = 0, dpsLength = chart.data[0].dataPoints.length;
+        for(var i = 0; i < dpsLength; i++)
+            xySum += (chart.data[0].dataPoints[i].x * chart.data[0].dataPoints[i].y)
+        a = xySum * dpsLength;
+
+        for(var i = 0; i < dpsLength; i++){
+            xSum += chart.data[0].dataPoints[i].x;
+            ySum += chart.data[0].dataPoints[i].y;
+        }
+        b = xSum * ySum;
+
+        for(var i = 0; i < dpsLength; i++)
+            xSquare += Math.pow(chart.data[0].dataPoints[i].x, 2);
+        c = dpsLength * xSquare;
+
+        d = Math.pow(xSum, 2);
+        slope = (a-b)/(c-d);
+        e = slope * xSum;
+        yIntercept = (ySum - e) / dpsLength;
+
+        var startPoint = getTrendLinePoint(chart.data[0].dataPoints[0].x, slope, yIntercept);
+        var endPoint = getTrendLinePoint(chart.data[0].dataPoints[dpsLength-1].x, slope, yIntercept);
+
+        chart.addTo("data",{
+            type: "line", //Line series showing trend
+            markerSize: 0,
+            dataPoints: [startPoint, endPoint]
+        });
     }
+
+    function getTrendLinePoint(x, slope, intercept){
+        return {x: x, y: ((slope * x) + intercept)};
+    }
+    
 
     return (
         <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
@@ -43,12 +82,7 @@ const Step3 = (props) => {
                         <Dataset></Dataset>
                     </Col>
                     <Col>
-                    <div>
-                        <CanvasJSChart options = {options}
-                            /* onRef={ref => this.chart = ref} */
-                        />
-                        {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-                    </div>
+                    <div id="chartContainer"></div>
                     </Col>
                 </Row>
             </Container>
