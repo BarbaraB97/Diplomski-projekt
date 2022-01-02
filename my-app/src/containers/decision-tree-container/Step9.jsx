@@ -4,7 +4,7 @@ import { Equation, EquationOptions, defaultErrorHandler } from 'react-equation'
 import { defaultVariables, defaultFunctions } from 'equation-resolver'
 import Dataset from '../../components/Dataset'
 
-const Step9= (props) => {
+const Step9 = (props) => {
 
     const [chosenFeature, setChosenFeature] = useState(null);
     const [show, setShow] = useState(false);
@@ -29,6 +29,12 @@ const Step9= (props) => {
 
                     <Row>
                         <Col>
+                            <ul style={{ textAlign: "left" }} >
+                                <li>
+                                    <p>We filtered the dataset so we can calculate entropy for cases when <b>Outlook==Sunny:</b></p>
+
+                                </li>
+                            </ul>
                             <Dataset filterByValue={"sunny"} isTableStriped={false} chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue}></Dataset>
                         </Col>
                         <Col style={{ textAlign: "left" }}>
@@ -119,7 +125,7 @@ const Step9= (props) => {
                                             <ol>3. Calculate information gain for the current feature</ol>
                                         </li>
 
-                                        <br /><b> Choose the first feature: </b><br /><br/>
+                                        <br /><b> Features: </b><br />
 
                                         <OverlayTrigger trigger="hover" placement="bottom"
                                             overlay={<Popover id="popover-basic">
@@ -166,7 +172,7 @@ const Step9= (props) => {
                         </Col>
                     </Row>
                 </Container>
-                {chosenFeature ? <p>You've chosen the first feature. <br /> Now, let's calculate its information gain... </p> : null}
+                {chosenFeature ? <p>Now, let's calculate information gain for the rest of the features... </p> : null}
 
                 <Row>
                     <Col >
@@ -178,7 +184,7 @@ const Step9= (props) => {
                     </Col>
                 </Row>
             </Container>
-        
+
         </>);
 }
 
