@@ -70,8 +70,8 @@ const Step5 = (props) => {
                                     <Popover.Header as="h3">Categorical values:</Popover.Header>
                                     <Popover.Body>
                                         <ul>
-                                            <li>true</li>
-                                            <li>false</li>
+                                            <li>False</li>
+                                            <li>True</li>
                                         </ul>
                                     </Popover.Body>
                                 </Popover>}>
@@ -1122,7 +1122,7 @@ const Step5 = (props) => {
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}>Previous Step</Button>
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} disabled>Current Step:{props.currentStep} </Button>
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}>Next Step</Button>
-                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(6)}>Last Step</Button>
+                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(8)}>Last Step</Button>
                 </Col>
             </Row>
         </Container>
