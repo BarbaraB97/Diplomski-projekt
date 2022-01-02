@@ -1,9 +1,9 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 
-const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature, chosenFeatureValue, isTableStriped, highLightLabelValue }) => {
+const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature, chosenFeatureValue, isTableStriped, filterByValue }) => {
 
-    const weatherDataset = [
+    let weatherDataset = [
         { outlook: "sunny", temperature: "hot", humidity: "high", windy: "false", play: "no" },
         { outlook: "sunny", temperature: "hot", humidity: "high", windy: "true", play: "no" },
         { outlook: "overcast", temperature: "hot", humidity: "high", windy: "false", play: "yes" },
@@ -21,6 +21,9 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature, ch
     ]
 
     const generateTable = () => {
+        if(filterByValue){
+            weatherDataset = weatherDataset.filter(record => filterByValue == (record.outlook || record.temperature || record.humidity || record.windy || record.play))
+        }
         return weatherDataset.map((record, index) => {
             const { outlook, temperature, humidity, windy, play } = record;
             return (
