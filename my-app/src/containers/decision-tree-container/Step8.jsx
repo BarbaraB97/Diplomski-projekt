@@ -29,19 +29,19 @@ const Step8 = (props) => {
                             <tbody>
                                 <tr value="Temperature" onClick={(e) => handleTableClick("Temperature")} style={{ backgroundColor: chosenFeature === "Temperature" ? "rgb(237, 102, 102, 0.5)" : null }}>
                                     <td>Temperature</td>
-                                    <td>0.1537</td>
+                                    <td>0.0292</td>
                                 </tr>
                                 <tr value="Humidity" onClick={(e) => handleTableClick("Humidity")} style={{ backgroundColor: chosenFeature === "Humidity" ? "rgb(237, 102, 102, 0.5)" : null }}>
                                     <td>Humidity</td>
-                                    <td>0.2234</td>
+                                    <td>0.1518</td>
                                 </tr>
                                 <tr value="Outlook" onClick={(e) => handleTableClick("Outlook")} style={{ backgroundColor: chosenFeature === "Outlook" ? "rgb(197, 235, 202)" : null }}>
                                     <td>Outlook</td>
-                                    <td>0.2987</td>
+                                    <td>0.2467</td>
                                 </tr>
                                 <tr value="Windy" onClick={(e) => handleTableClick("Windy")} style={{ backgroundColor: chosenFeature === "Windy" ? "rgb(237, 102, 102, 0.5)" : null }}>
                                     <td>Windy</td>
-                                    <td>0.0456</td>
+                                    <td>0.0481</td>
                                 </tr>
                             </tbody>
                         </Table>

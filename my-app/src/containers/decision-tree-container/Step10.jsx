@@ -511,12 +511,12 @@ const Step10 = (props) => {
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='I(Humidity) = P(Hot)*H(Hot) + P(Mild)*H(Mild) + P(Cool)*H(Cool)'
+                                                                        value='I(Humidity) = P(High)*H(High) + P(Normal)*H(Normal)'
                                                                     />
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='I(Humidity) = 0*0 + 0*0'
+                                                                        value='I(Humidity) = 3/5*0 + 2/5*0'
                                                                     />
                                                                     <Equation
                                                                         variables={defaultVariables}
@@ -574,7 +574,7 @@ const Step10 = (props) => {
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='IG(Temperature)  = 0.9710 - 0.0 = 0.9710'
+                                                                        value='IG(Humidity)  = 0.9710 - 0.0 = 0.9710'
                                                                     />
                                                                 </Row>
                                                             </EquationOptions>
@@ -626,17 +626,17 @@ const Step10 = (props) => {
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='H(Humidity=High) = (-1)*P(YES) * log2(P(YES)) - P(NO)*log2(P(NO))'
+                                                                        value='H(Windy=False) = (-1)*P(YES) * log2(P(YES)) - P(NO)*log2(P(NO))'
                                                                     />
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='H(Humidity=High) = (-1)* (1/3)*log2(1/3) - 2/3*log2(2/3)'
+                                                                        value='H(Windy=False) = (-1)* (1/3)*log2(1/3) - 2/3*log2(2/3)'
                                                                     />
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='H(Humidity=High) = 0.9183'
+                                                                        value='H(Windy=False) = 0.9183'
                                                                     />
                                                                 </Row>
                                                             </EquationOptions>
@@ -677,17 +677,17 @@ const Step10 = (props) => {
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='H(Humidity=Normal) = (-1)*P(YES) * log2(P(YES)) - P(NO)*log2(P(NO))'
+                                                                        value='H(Windy=True) = (-1)*P(YES) * log2(P(YES)) - P(NO)*log2(P(NO))'
                                                                     />
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='H(Humidity=Normal) = (-1)* (1/2)*log2(1/2) - 1/2*log2(1/2)'
+                                                                        value='H(Windy=True) = (-1)* (1/2)*log2(1/2) - 1/2*log2(1/2)'
                                                                     />
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='H(Humidity=Normal) = 1.0'
+                                                                        value='H(Windy=True) = 1.0'
                                                                     />
                                                                 </Row>
                                                             </EquationOptions>
@@ -706,10 +706,10 @@ const Step10 = (props) => {
                                     <Accordion.Body>
                                         <Row>
                                             <Col md={12}>
-                                                <ul onClick={() => chosenFeatureValue === "avg entropy humidity" ? setChosenFeatureValue(null) : setChosenFeatureValue("avg entropy humidity")} style={{ cursor: "pointer" }}>
+                                                <ul onClick={() => chosenFeatureValue === "avg entropy windy" ? setChosenFeatureValue(null) : setChosenFeatureValue("avg entropy windy")} style={{ cursor: "pointer" }}>
                                                     <b>AVG. INFORMATION ENTROPY = 0.9510</b>
                                                 </ul>
-                                                <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "avg entropy humidity"}>
+                                                <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "avg entropy windy"}>
                                                     <div >
                                                         <ul>
                                                             <li>
@@ -742,17 +742,17 @@ const Step10 = (props) => {
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='I(Humidity) = P(Hot)*H(Hot) + P(Mild)*H(Mild) + P(Cool)*H(Cool)'
+                                                                        value='I(Windy) = P(Hot)*H(Hot) + P(Mild)*H(Mild) + P(Cool)*H(Cool)'
                                                                     />
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='I(Humidity) = 3/5*0.9183 + 2/5*1.0'
+                                                                        value='I(Windy) = 3/5*0.9183 + 2/5*1.0'
                                                                     />
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='I(Humidity) = 0.9510'
+                                                                        value='I(Windy) = 0.9510'
                                                                     />
                                                                 </Row><br />
                                                             </EquationOptions>
@@ -771,10 +771,10 @@ const Step10 = (props) => {
                                     <Accordion.Body>
                                         <Row>
                                             <Col md={12}>
-                                                <ul onClick={() => chosenFeatureValue === "information gain humidity" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain humidity")} style={{ cursor: "pointer" }}>
+                                                <ul onClick={() => chosenFeatureValue === "information gain Windy" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain Windy")} style={{ cursor: "pointer" }}>
                                                     <b style={{backgroundColor:"#7EB59A"}}>INFORMATION GAIN = 0.02</b>
                                                 </ul>
-                                                <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain humidity"}>
+                                                <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain Windy"}>
                                                     <div >
                                                         <ul>
                                                             <li>
@@ -805,7 +805,7 @@ const Step10 = (props) => {
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='IG(Humidity)  = 0.9710 - 0.9510 = 0.02'
+                                                                        value='IG(Windy)  = 0.9710 - 0.9510 = 0.02'
                                                                     />
                                                                 </Row>
                                                             </EquationOptions>

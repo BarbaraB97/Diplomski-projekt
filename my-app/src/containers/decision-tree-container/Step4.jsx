@@ -119,7 +119,7 @@ const Step4 = (props) => {
                                             <ol>3. Calculate information gain for the current feature</ol>
                                         </li>
 
-                                        <br /><b> Choose the first feature: </b><br />
+                                        <br /><b> Features: </b><br />
 
                                         <OverlayTrigger trigger="hover" placement="bottom"
                                             overlay={<Popover id="popover-basic">
@@ -179,7 +179,7 @@ const Step4 = (props) => {
                         </Col>
                     </Row>
                 </Container>
-                {chosenFeature ? <p>You've chosen the first feature. <br /> Now, let's calculate its information gain... </p> : null}
+                {chosenFeature ? <p>Now, let's calculate information gain for all features... </p> : null}
 
                 <Row>
                     <Col >
