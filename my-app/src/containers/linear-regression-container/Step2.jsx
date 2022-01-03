@@ -25,6 +25,13 @@ const Step2 = (props) => {
         }
     }
 
+    const [open, setOpen] = useState(false);
+    const handleTableClick = (feature) => {
+        setChosenFeature(feature);
+        console.log(feature);
+    }
+
+
     return (
         <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
@@ -61,7 +68,8 @@ const Step2 = (props) => {
                             </Accordion.Item>
                         </Accordion>
                         <Accordion defaultActiveKey="1"
-                            style={{ backgroundColor: "rgb(197, 235, 202)" }}>
+                            style={{ backgroundColor: "rgb(197, 235, 202)" }}
+                            onClick={() => highlightFeatures()}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What does each row in the table represent?</Accordion.Header>
                                 <Accordion.Body>

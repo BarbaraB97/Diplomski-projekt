@@ -57,8 +57,8 @@ const Step3 = (props) => {
 
     return (
         <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
-            <Container style={{ textAlign: "center", height: '30em'}}>
-                <h2>Simple linear regression</h2>
+            <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
+                <h3>Simple linear regression graph</h3>
                {/*<h3>Example: House prices by their size</h3> */}
                 <hr></hr><br />
                 <Row>
