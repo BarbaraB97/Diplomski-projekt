@@ -1,15 +1,58 @@
+
 import { useState } from "react";
 import { Container, Row, Button, Col, Accordion, Table, Fade, OverlayTrigger, Popover } from "react-bootstrap";
 import DecisionTree from '../../components/DecisionTree';
+import Dataset from '../../components/Dataset'
 
-const Step6 = (props) => {
+const Step9 = (props) => {
 
     const [chosenFeature, setChosenFeature] = useState(null);
-    const [open, setOpen] = useState(false);
+    const [chosenFeatureValue, setChosenFeatureValue] = useState(null);
+
     const handleTableClick = (feature) => {
         setChosenFeature(feature);
-        console.log(feature);
+        if (chosenFeature === "Humidity") {
+            setChosenFeatureValue("high")
+        }
     }
+
+    const TreeData = {
+        name: 'Outlook',
+        children: [
+            {
+                name: '?',
+                attributes: {
+                    "Outlook": "Rainy"
+                }
+            },
+            {
+                name: "?",
+                attributes: {
+                    "Outlook": "Overcast"
+                },
+            },
+            {
+                name: "Humidity",
+                attributes: {
+                    "Outlook": "Sunny"
+                },
+                children: [
+                    {
+                        name: "YES",
+                        attributes: {
+                            "Humidity": "Normal"
+                        },
+                    },
+                    {
+                        name: "NO",
+                        attributes: {
+                            "Humidity": "High"
+                        },
+                    }
+                ]
+            }
+        ],
+    };
 
     return (
         <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
@@ -18,8 +61,9 @@ const Step6 = (props) => {
                 <hr></hr><br />
 
                 <Row>
-                    <Col>
-                        <Table bordered hover style={{ heigth: "15em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
+                    <Col md={4}>
+
+                        <Table hidden={chosenFeature === "Humidity"} bordered hover style={{ heigth: "15em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
                             <thead>
                                 <tr>
                                     <th>Feature</th>
@@ -29,28 +73,32 @@ const Step6 = (props) => {
                             <tbody>
                                 <tr value="Temperature" onClick={(e) => handleTableClick("Temperature")} style={{ backgroundColor: chosenFeature === "Temperature" ? "rgb(237, 102, 102, 0.5)" : null }}>
                                     <td>Temperature</td>
-                                    <td>0.0292</td>
+                                    <td>0.5710</td>
                                 </tr>
-                                <tr value="Humidity" onClick={(e) => handleTableClick("Humidity")} style={{ backgroundColor: chosenFeature === "Humidity" ? "rgb(237, 102, 102, 0.5)" : null }}>
+                                <tr value="Humidity" onClick={(e) => handleTableClick("Humidity")} style={{ backgroundColor: chosenFeature === "Humidity" ? "rgb(197, 235, 202)" : null }}>
                                     <td>Humidity</td>
-                                    <td>0.1518</td>
-                                </tr>
-                                <tr value="Outlook" onClick={(e) => handleTableClick("Outlook")} style={{ backgroundColor: chosenFeature === "Outlook" ? "rgb(197, 235, 202)" : null }}>
-                                    <td>Outlook</td>
-                                    <td>0.2467</td>
+                                    <td>0.9710</td>
                                 </tr>
                                 <tr value="Windy" onClick={(e) => handleTableClick("Windy")} style={{ backgroundColor: chosenFeature === "Windy" ? "rgb(237, 102, 102, 0.5)" : null }}>
                                     <td>Windy</td>
-                                    <td>0.0481</td>
+                                    <td>0.02</td>
                                 </tr>
                             </tbody>
                         </Table>
-                        <Fade in={chosenFeature === "Outlook"}>
+
+
+                        <Fade in={chosenFeature === "Humidity"}>
+                            <Dataset filterByValue={"sunny"} chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue} isTableStriped={false} highLightLabelValue={true}></Dataset>
+
+                        </Fade>
+                        <Fade in={chosenFeature === "Humidity"}>
+
                             <Row>
-                                <DecisionTree></DecisionTree>
+                                <DecisionTree data={TreeData}></DecisionTree>
                             </Row>
                         </Fade>
                     </Col>
+                    <Col md={1}></Col>
                     <Col style={{ textAlign: "left" }}>
 
                         <Accordion defaultActiveKey="0">
@@ -76,31 +124,38 @@ const Step6 = (props) => {
 
                                         </Col>
                                     </Row>
-                                    <Fade in={chosenFeature === "Outlook"}>
-                                        <Row hidden={chosenFeature !== "Outlook"}>
+                                    <Fade in={chosenFeature === "Humidity"}>
+                                        <Row hidden={chosenFeature !== "Humidity"}>
                                             <Col md={12}>
                                                 <ul>
                                                     <li>
-                                                        Correct! Our <b>root node</b> in the decision tree is feature:
+                                                        Correct! Our <b>second node</b> in the decision tree is feature:
                                                     </li>
 
-                                                    
-                                                        <OverlayTrigger trigger="hover" placement="bottom"
-                                                            overlay={<Popover id="popover-basic">
-                                                                <Popover.Header as="h3">Categorical values:</Popover.Header>
-                                                                <Popover.Body>
-                                                                    <ul>
-                                                                        <li>Sunny</li>
-                                                                        <li>Overcast</li>
-                                                                        <li>Rainy</li>
-                                                                    </ul>
-                                                                </Popover.Body>
-                                                            </Popover>}>
-                                                            <Button md={2} style={{ backgroundColor: "#eab676", width: "7em", margin:"1em", marginLeft:"10em" }}>Outlook</Button>
-                                                        </OverlayTrigger>
-                                                    
+
+                                                    <OverlayTrigger trigger="hover" placement="bottom"
+                                                        overlay={<Popover id="popover-basic">
+                                                            <Popover.Header as="h3">Categorical values:</Popover.Header>
+                                                            <Popover.Body>
+                                                                <ul>
+                                                                    <li>High</li>
+                                                                    <li>Normal</li>
+                                                                </ul>
+                                                            </Popover.Body>
+                                                        </Popover>}>
+                                                        <Button md={2} style={{ backgroundColor: "#eab676", width: "7em", margin: "1em", marginLeft: "10em" }}>Humidity</Button>
+                                                    </OverlayTrigger>
+
                                                     <li>
-                                                        Every link going from root node represents a case when root node takes on certain value. In this case, feature Outlook has 3 different values (Sunny, Overcast, Rainy) that make 3 outgoing links. 
+                                                        Now, when we further split the dataset by <b>Humidity</b>, we can see it makes <b>perfect classification</b>.
+                                                        When Humidity is High, all outcomes are labeled as NO, and when Humidity is Normal, all outcomes are labeled as YES.
+                                                    </li><br/>
+                                                    <li>
+                                                        In case when <button onClick={() => setChosenFeatureValue("high")} style={{backgroundColor:"rgb(218, 242, 223)"}}><b>Outlook=Sunny</b> &#38; <b>Humidity=High</b></button>, it is not a good day for playing beach volleyball (<b>NO</b>).<br/> 
+                                                        In case when <button  onClick={() => setChosenFeatureValue("normal")} style={{backgroundColor:"rgb(218, 242, 223)"}}><b>Outlook=Sunny</b> &#38; <b>Humidity=Normal</b></button>, it is a good day for playing beach volleyball (<b>YES</b>).
+                                                    </li><br/>
+                                                    <li>
+                                                        Since we have reached pure leaves, there is no further splitting necessary in this particular branch.
                                                     </li>
                                                 </ul>
                                             </Col>
@@ -109,10 +164,10 @@ const Step6 = (props) => {
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
-                        <Fade in={chosenFeature === "Outlook"}>
+                        <Fade in={chosenFeature === "Humidity"}>
                             <Accordion defaultActiveKey="0">
                                 <Accordion.Item eventKey="0">
-                                    <Accordion.Header><b>4. Now we repeat the process for the rest of the nodes in the decision tree</b></Accordion.Header>
+                                    <Accordion.Header><b>4. Now we repeat the process for the rest of the branches in the decision tree</b></Accordion.Header>
                                     <Accordion.Body>
                                         <Row>
                                             <Col md={9}>
@@ -134,7 +189,7 @@ const Step6 = (props) => {
                     </Col>
                 </Row>
             </Container>
-            {chosenFeature === "Outlook" ? <p><br />Let's do this for the rest of the nodes...</p> : null}
+            {chosenFeature === "Humidity" ? <p><br />Let's do this for the rest of the nodes...</p> : null}
             < Row >
                 <Col >
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.firstStep}>First Step</Button>
@@ -148,4 +203,4 @@ const Step6 = (props) => {
     );
 }
 
-export default Step6;
+export default Step9;

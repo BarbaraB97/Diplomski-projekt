@@ -34,10 +34,16 @@ const fullTreeData = {
             },
             children: [
                 {
-                    name: "YES"
+                    name: "YES",
+                    attributes: {
+                        "Humidity": "Normal"
+                    },
                 },
                 {
-                    name: "NO"
+                    name: "NO",
+                    attributes: {
+                        "Humidity": "High"
+                    },
                 }
             ]
         }
@@ -112,11 +118,12 @@ const startingTreeData = {
     ]
 }*/
 
-export default function DecisionTree() {
+const DecisionTree = ({data}) => {
     return (
         // `<Tree />` will fill width/height of its container; in this case `#treeWrapper`.
         <div id="treeWrapper" style={{ width: '30em', height: '25em' }}>
-            <Tree data={startingTreeData} branchNodeClassName="node__branch"/>
+            <Tree data={data || startingTreeData} branchNodeClassName="node__branch"/>
         </div>
     );
 }
+export default DecisionTree;

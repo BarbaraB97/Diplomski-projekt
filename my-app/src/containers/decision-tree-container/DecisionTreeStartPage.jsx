@@ -9,6 +9,7 @@ import Step5 from './Step5'
 import Step6 from './Step6'
 import Step7 from './Step7'
 import Step8 from './Step8'
+import Step9 from './Step9'
 
 class DecisionTreeStartPage extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class DecisionTreeStartPage extends React.Component {
           <Step6></Step6>
           <Step7></Step7>
           <Step8></Step8>
+          <Step9></Step9>
         </StepWizard>
       </Container>
     )
