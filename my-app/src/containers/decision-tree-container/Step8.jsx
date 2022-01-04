@@ -260,7 +260,7 @@ const Step8 = (props) => {
                                                                         <Equation
                                                                             variables={defaultVariables}
                                                                             functions={defaultFunctions}
-                                                                            value='I(X) = sum(x,X,3, P(x)*H(x))'
+                                                                            value='I(X) = sum(x,X,2, P(x)*H(x))'
                                                                         />
                                                                         <br />
                                                                     </EquationOptions>
@@ -722,7 +722,7 @@ const Step8 = (props) => {
                                                                         <Equation
                                                                             variables={defaultVariables}
                                                                             functions={defaultFunctions}
-                                                                            value='I(X) = sum(x,X,3, P(x)*H(x))'
+                                                                            value='I(X) = sum(x,X,2, P(x)*H(x))'
                                                                         />
                                                                         <br />
                                                                     </EquationOptions>
@@ -742,7 +742,7 @@ const Step8 = (props) => {
                                                                     <Equation
                                                                         variables={defaultVariables}
                                                                         functions={defaultFunctions}
-                                                                        value='I(Windy) = P(Hot)*H(Hot) + P(Mild)*H(Mild) + P(Cool)*H(Cool)'
+                                                                        value='I(Windy) = P(False)*H(False) + P(True)*H(True)'
                                                                     />
                                                                     <Equation
                                                                         variables={defaultVariables}
