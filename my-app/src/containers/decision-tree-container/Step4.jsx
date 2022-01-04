@@ -141,7 +141,7 @@ const Step4 = (props) => {
                                                     <ul>
                                                         <li>Hot</li>
                                                         <li>Mild</li>
-                                                        <li>Cold</li>
+                                                        <li>Cool</li>
                                                     </ul>
                                                 </Popover.Body>
                                             </Popover>}>
