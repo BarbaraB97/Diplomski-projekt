@@ -23,10 +23,8 @@ const Step8 = (props) => {
                 <Row>
                     <Col md={4}>
                         <ul style={{ textAlign: "left" }} >
-                            <li>
-                                <p>We filtered the dataset so we can calculate entropy for cases when <b>Outlook==Sunny:</b></p>
+                            <p>We filtered the dataset so we can calculate entropy for cases when <b>Outlook==Sunny:</b></p>
 
-                            </li>
                         </ul>
                         <Dataset filterByValue={"sunny"} chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue} isTableStriped={false} highLightLabelValue={true}></Dataset>
                     </Col>

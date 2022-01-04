@@ -121,7 +121,7 @@ const startingTreeData = {
 const DecisionTree = ({data}) => {
     return (
         // `<Tree />` will fill width/height of its container; in this case `#treeWrapper`.
-        <div id="treeWrapper" style={{ width: '30em', height: '25em' }}>
+        <div id="treeWrapper" style={{ width: '35em', height: '35em' }}>
             <Tree data={data || startingTreeData} branchNodeClassName="node__branch"/>
         </div>
     );

@@ -26,7 +26,7 @@ const Step1 = (props) => {
 
                 {/* <p>Problem...</p> */}
             </Container>
-            <p>Let's see how does decision tree work...</p>
+            <p>Let's see how does decision trees work...</p>
 
             <Row>
                 <Col >

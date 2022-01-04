@@ -40,7 +40,7 @@ const Step13 = (props) => {
                 ]
             },
             {
-                name: "?",
+                name: "YES",
                 attributes: {
                     "Outlook": "Overcast"
                 },
@@ -167,10 +167,8 @@ const Step13 = (props) => {
                                                     <li>
                                                         In case when <button onClick={() => setChosenFeatureValue("false")} style={{backgroundColor:"rgb(218, 242, 223)"}}><b>Outlook=Rainy</b> &#38; <b>Windy=False</b></button>, it is a good day for playing beach volleyball (<b>YES</b>).<br/> 
                                                         In case when <button  onClick={() => setChosenFeatureValue("true")} style={{backgroundColor:"rgb(218, 242, 223)"}}><b>Outlook=Rainy</b> &#38; <b>Windy=True</b></button>, it is not a good day for playing beach volleyball (<b>NO</b>).
-                                                    </li><br/>
-                                                    <li>
-                                                        Since we have reached pure leaves, there is no further splitting necessary in this particular branch.
                                                     </li>
+                                                    
                                                 </ul>
                                             </Col>
                                         </Row>
@@ -181,13 +179,13 @@ const Step13 = (props) => {
                         <Fade in={chosenFeature === "Windy"}>
                             <Accordion defaultActiveKey="0">
                                 <Accordion.Item eventKey="0">
-                                    <Accordion.Header><b>4. Now we repeat the process for the rest of the branches in the decision tree</b></Accordion.Header>
+                                    <Accordion.Header><b>4. The tree is now finished and ready for prediction</b></Accordion.Header>
                                     <Accordion.Body>
                                         <Row>
                                             <Col md={9}>
                                                 <ul>
                                                     <li>
-                                                        Choose the node you would like to continue with...
+                                                    We have reached pure leaves and can now predict the outcome
                                                     </li>
                                                 </ul>
                                             </Col>
