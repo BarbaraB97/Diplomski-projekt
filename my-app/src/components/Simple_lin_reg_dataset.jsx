@@ -5,21 +5,21 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature }) 
 
 
 	const housePricesDataset = [
-        { price: 100, size: 10 },
-        { price: 200, size: 25 },
-		{ price: 500, size: 100 },
-		{ price: 1000, size: 220 },
-		{ price: 2000, size: 400 }
+        { size: 10, price: 100},
+        { size: 25, price: 200 },
+		{ size: 100, price: 500 },
+		{ size: 220, price: 1000 },
+		{ size: 400, price: 2000 }
 	]
 
     const generateTable = () => {
         return housePricesDataset.map((record, index) => {
-            const { price,size } = record;
+            const { size, price } = record;
             return (
                 <tr key={index}>
                     <td>{++index}</td>
-                    <td style={{backgroundColor: chosenFeature === "Price" ? "rgb(197, 235, 202)" : null }}>{price}</td>
                     <td style={{backgroundColor: chosenFeature === "Size" ? "rgb(197, 235, 202)" : null }}>{size}</td>
+                    <td style={{backgroundColor: chosenFeature === "Price" ? "rgb(197, 235, 202)" : null }}>{price}</td>
                 </tr>
             )
         })
@@ -31,8 +31,8 @@ const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature }) 
             <thead>
                 <tr id="features">
                     <th>#</th>
-                    <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Price (in thousands $)</th>
-                    <th style={{ backgroundColor: isLabelHighlighted ? "rgb(197, 235, 202)" : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Size (Square meters)</th>
+                    <th style={{ backgroundColor: isLabelHighlighted ? null : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Size [m<sup>2</sup>] </th>
+                    <th style={{ backgroundColor: isLabelHighlighted ? "rgb(197, 235, 202)" : areFeaturesHighlighted ? "rgb(197, 235, 202)" : null }}>Price [1000 $]</th>
                 </tr>
             </thead>
             <tbody>

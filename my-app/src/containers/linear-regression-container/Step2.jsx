@@ -49,52 +49,53 @@ const Step2 = (props) => {
                     
                     <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}
-                            onClick={() => setChosenFeatureValue("Price")}>
+                            onClick={() => setChosenFeatureValue("Size")}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What are input/independent variables?</Accordion.Header>
                                 <Accordion.Body>
-                                    • Price (in thousands $) <br />
+                                    <b>Independent</b> variables predict or forecast the values of the dependent variable(s) in the model<br/>
+                                    • Size <br />
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
                         <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}
-                            onClick={() => setChosenFeatureValue("Size")}>
+                            onClick={() => setChosenFeatureValue("Price")}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What is an output/dependent variable?</Accordion.Header>
                                 <Accordion.Body>
-                                    • Size (Square meters) <br />
+                                The <b>dependent</b> variables are values that are predicted or assumed by the predictor/independent variables<br/>
+                                    • Price <br />
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
                         <Accordion defaultActiveKey="1"
-                            style={{ backgroundColor: "rgb(197, 235, 202)" }}
-                            onClick={() => highlightFeatures()}>
+                            style={{ backgroundColor: "rgb(197, 235, 202)" }}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What does each row in the table represent?</Accordion.Header>
                                 <Accordion.Body>
-                                    Each row represents one <b>record</b>: combination of input data and its prediciton (output).<br />
+                                    Each row represents one <b>record</b> - combination of input data and its prediciton (output).<br />
                                     <ul>
                                         <li>
-                                            <b>Input:</b> Price
+                                            <b>Input:</b> Size
                                         </li>
                                         <li>
-                                            <b>Output:</b> Size <br />
+                                            <b>Output:</b> Price <br />
                                         </li>
                                     </ul>
 
-                                    IF <b>Price=200</b> then <b>Size=25</b><br />
-                                    <Table striped bordered hover id="simpleRegressionTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
+                                    If <b>Size=25</b> then <b>Price=200</b><br />
+                                    <Table striped bordered hover id="simpleRegressionTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" , textAlign: "center"}}>
                                         <thead>
                                             <tr id="features">
-                                                <th style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>Price (in thousands $)</th>
-                                                <th style={{ backgroundColor: "#7EB59A" }}>Size  (Square meters)</th>
+                                                <th style={{ backgroundColor: "rgb(197, 235, 202, 0.3)"}}>Size [m<sup>2</sup>]</th>
+                                                <th style={{ backgroundColor: "#7EB59A" }}>Price [1000 $]</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>200</td>
-                                                <td style={{ backgroundColor: "#7EB59A" }}>25</td>
+                                                <td style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>25</td>
+                                                <td style={{ backgroundColor: "#7EB59A" }}>200</td>
                                             </tr>
                                         </tbody>
                                     </Table>
