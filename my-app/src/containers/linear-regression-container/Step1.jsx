@@ -7,7 +7,7 @@ const Step1 = (props) => {
     return (
         <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
             <Container style={{ textAlign: "center", height: '30em', paddingTop: "2em", paddingBottom: "2em" }}>
-                <h3>What is linear regression?</h3>
+                <h3>What is a linear regression?</h3>
                 <hr></hr>
                 <p><b>Linear regression</b> is a linear approach for modeling the relationship between one dependent and one or more independent variables.<br></br>
                  When there is just one independent variable it is called simple linear regression

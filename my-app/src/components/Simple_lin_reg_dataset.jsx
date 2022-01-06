@@ -3,13 +3,13 @@ import { Table } from 'react-bootstrap';
 
 const Dataset = ({ areFeaturesHighlighted, isLabelHighlighted, chosenFeature }) => {
 
-
 	const housePricesDataset = [
         { size: 10, price: 100},
         { size: 25, price: 200 },
-		{ size: 100, price: 500 },
-		{ size: 220, price: 1000 },
-		{ size: 400, price: 2000 }
+		{ size: 40, price: 300 },
+		{ size: 60, price: 500 },
+		{ size: 100, price: 700 },
+        { size: 150, price: 700 }
 	]
 
     const generateTable = () => {
