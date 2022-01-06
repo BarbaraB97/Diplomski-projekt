@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Container, Row, Button, Col, Dropdown } from "react-bootstrap";
 import PolynomialRegression from "js-polynomial-regression";
-import regression from 'regression';
 import Dataset from '../../components/Simple_lin_reg_dataset';
 import CanvasJSReact from './canvasjs.react';
-var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Step3 = (props) => {
@@ -23,7 +21,7 @@ const Step3 = (props) => {
     ]
 
     //degree variable has to change when something is selected in dropdown
-    const initialDegree = 3;
+    const initialDegree = 1;
     const [degree, setDegree] = useState(initialDegree);
     const handler = (event) => setDegree(event.target.value);
 
@@ -108,18 +106,15 @@ const Step3 = (props) => {
                     <Col>
                     <Row>
                     {/*TO-DO make prettier dropdown*/}
-                  <Col>
-                        <label>Choose polynom degree:
-
-                        </label>
-                        <select id="dropdown" onChange={handler}
-                        >
+                     <div  style = {{display:"flex", flexDirection:"row", alignItems:"center",gap:"5px"}}>
+                        <label>Choose polynom degree:</label>
+                        <select id="dropdown" onChange={handler}>
                         <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
-                    </Col> 
-    
+                    </div>
+                    
                     </Row>
                     <br/>
                     <div>
