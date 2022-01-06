@@ -108,8 +108,9 @@ const Step3 = (props) => {
                     <Col>
                     <Row>
                     {/*TO-DO make prettier dropdown*/}
-                    <Col>
+                  <Col>
                         <label>Choose polynom degree:
+
                         </label>
                         <select id="dropdown" onChange={handler}
                         >
