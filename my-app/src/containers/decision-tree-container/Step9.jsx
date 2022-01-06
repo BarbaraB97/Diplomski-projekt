@@ -173,13 +173,13 @@ const Step9 = (props) => {
                                             <Col md={9}>
                                                 <ul>
                                                     <li>
-                                                        Choose the node you would like to continue with...
+                                                    Now we continue with the node where Outlook: Overcast.
                                                     </li>
                                                 </ul>
                                             </Col>
-                                            <Col md={3} >
+                                            {/* <Col md={3} >
                                                 <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
-                                            </Col>
+                                            </Col> */}
                                         </Row>
 
                                     </Accordion.Body>

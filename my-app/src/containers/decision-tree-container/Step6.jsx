@@ -118,13 +118,13 @@ const Step6 = (props) => {
                                             <Col md={9}>
                                                 <ul>
                                                     <li>
-                                                        Choose the node you would like to continue with...
+                                                        Now we continue with the node where Outlook: Sunny.
                                                     </li>
                                                 </ul>
                                             </Col>
-                                            <Col md={3} >
+                                            {/* <Col md={3} >
                                                 <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
-                                            </Col>
+                                            </Col> */}
                                         </Row>
 
                                     </Accordion.Body>
@@ -134,7 +134,7 @@ const Step6 = (props) => {
                     </Col>
                 </Row>
             </Container>
-            {chosenFeature === "Outlook" ? <p><br />Let's do this for the rest of the nodes...</p> : null}
+            {chosenFeature === "Outlook" ? <p>Let's do this for the rest of the nodes...</p> : null}
             < Row >
                 <Col >
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.firstStep}>First Step</Button>
