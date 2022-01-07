@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Dropdown } from "react-bootstrap";
+import { Container, Row, Button, Col, Dropdown, Accordion } from "react-bootstrap";
 import PolynomialRegression from "js-polynomial-regression";
 import Dataset from '../../components/Simple_lin_reg_dataset';
 import CanvasJSReact from './canvasjs.react';
@@ -62,24 +62,111 @@ const Step3 = (props) => {
     console.log(terms)
     const poly = getPolyData(terms);
 
-    const linear_regression_graph = {
+    const error_graph = {
         animationEnabled: true,
         exportEnabled: true,
         theme: "light2", // "light1", "dark1", "dark2"
         axisY: {
             title: "Price[1000 $]",
+            minimum: 0,
+            maximum: 800
         },
         axisX: {
             title: "Size[m²] ",
+            minimum: 0
         },
         width: 480,
         height: 330,
+        legend: {
+            cursor: "pointer",
+            itemclick: function (e) {
+                //console.log("legend click: " + e.dataPointIndex);
+                //console.log(e);
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else {
+                    e.dataSeries.visible = true;
+                }
+ 
+                e.chart.render();
+            }
+        },
         data: [{
             type: "line",
             toolTipContent: "{x}: {y}",
             dataPoints: getPointsData(poly)
         },
         {
+            type: "line",
+            color: "red",
+            dataPoints: getPointsData([[housesDataset[0][0], poly[housesDataset[0][0]][1]], housesDataset[0]])   
+        },
+        {
+            type: "line",
+            color: "red",
+            dataPoints: getPointsData([[housesDataset[1][0], poly[housesDataset[1][0]][1]], housesDataset[1]])   
+        },
+        {
+            type: "line",
+            color: "red",
+            dataPoints: getPointsData([[housesDataset[2][0], poly[housesDataset[2][0]][1]], housesDataset[2]])   
+        },
+        {
+            type: "line",
+            color: "red",
+            dataPoints: getPointsData([[housesDataset[3][0], poly[housesDataset[3][0]][1]], housesDataset[3]])   
+        },
+        {
+            type: "line",
+            color: "red",
+            dataPoints: getPointsData([[housesDataset[4][0], poly[housesDataset[4][0]][1]], housesDataset[4]])   
+        },
+        {
+            type: "line",
+            color: "red",
+            dataPoints: getPointsData([[housesDataset[5][0], poly[housesDataset[5][0]][1]], housesDataset[5]])   
+        }]
+    }
+
+    const linear_regression_graph = {
+        animationEnabled: true,
+        exportEnabled: true,
+        theme: "light2", // "light1", "dark1", "dark2"
+        axisY: {
+            title: "Price[1000 $]",
+            minimum: 0,
+            maximum: 800
+        },
+        axisX: {
+            title: "Size[m²] ",
+            minimum: 0
+        },
+        width: 480,
+        height: 330,
+        legend: {
+            cursor: "pointer",
+            itemclick: function (e) {
+                //console.log("legend click: " + e.dataPointIndex);
+                //console.log(e);
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else {
+                    e.dataSeries.visible = true;
+                }
+ 
+                e.chart.render();
+            }
+        },
+        data: [{
+            showInLegend: true,
+            legendText: "prediction",
+            type: "line",
+            toolTipContent: "{x}: {y}",
+            dataPoints: getPointsData(poly)
+        },
+        {
+            showInLegend: true,
+            legendText: "input",
             type: "scatter",
             axisYType: "secondary",
             dataPoints: getPointsData(housesDataset)
@@ -104,24 +191,82 @@ const Step3 = (props) => {
                         <Dataset></Dataset>
                     </Col>
                     <Col>
+                    
+                    <Accordion defaultActiveKey="1"
+                            style={{ backgroundColor: "rgb(197, 235, 202)" }}>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>Regression graph</Accordion.Header>
+                                <Accordion.Body>
+            
                     <Row>
-                    {/*TO-DO make prettier dropdown*/}
+                        {/*TO-DO make prettier dropdown*/}
                      <div  style = {{display:"flex", flexDirection:"row", alignItems:"center",gap:"5px"}}>
                         <label>Choose polynom degree:</label>
                         <select id="dropdown" onChange={handler}>
                         <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
-                    
                     </Row>
                     <br/>
                     <div>
 			            <CanvasJSChart options = {linear_regression_graph} />
 		            </div>
-                    </Col>
+                                    
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+
+                        <Accordion defaultActiveKey="1"
+                            style={{ backgroundColor: "rgb(197, 235, 202)" }}>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>Residual error</Accordion.Header>
+                                <Accordion.Body>
+                                A residual is a measure of how far away a point is vertically from the regression line.
+                                Simply, it is the error between a predicted value and the observed actual value. <br/><br/>
+                                <b>Residual (e) = observed value – predicted value</b> <br/><br/>
+                                Positive values for the residual (on the y-axis) mean the prediction was too low, and negative values mean the prediction was too high; 0 means the guess was exactly correct. <br/><br/>
+            
+                    <Row>
+                        {/*TO-DO make prettier dropdown*/}
+                     <div  style = {{display:"flex", flexDirection:"row", alignItems:"center",gap:"5px"}}>
+                        <label>Choose polynom degree:</label>
+                        <select id="dropdown" onChange={handler}>
+                        <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    </Row>
+                    <br/>
+                    <div>
+			            <CanvasJSChart options = {error_graph} />
+		            </div>
+                                    
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+
+                    
+                        <Accordion defaultActiveKey="1"
+                            style={{ backgroundColor: "rgb(197, 235, 202)" }}>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>What is overfitting?</Accordion.Header>
+                                <Accordion.Body>
+                                Overfitting a model is a condition where a statistical model begins to describe the random error in the data rather than the relationships between variables. This problem occurs when the model is too complex.<br/>
+                                <br/>In our dataset this happens with the model of polynom <b>degree 5</b>.   
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+
+                        </Col>
                 </Row>
+                
             </Container>
             <Row>
                 <Col >
