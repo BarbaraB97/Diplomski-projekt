@@ -8,6 +8,7 @@ import Step4 from './Step4'
 import Step5 from './Step5'
 import Step6 from './Step6'
 import Step7 from './Step7'
+import Step8 from './Step8'
 class RegressionStartPage extends React.Component {
   constructor(props) {
     super(props)
@@ -26,6 +27,7 @@ class RegressionStartPage extends React.Component {
           <Step5></Step5>
           <Step6></Step6>
           <Step7></Step7>
+          <Step8></Step8>
         </StepWizard>
       </Container>
     )
