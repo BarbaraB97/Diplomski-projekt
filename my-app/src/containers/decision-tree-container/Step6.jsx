@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container, Row, Button, Col, Accordion, Table, Fade, OverlayTrigger, Popover } from "react-bootstrap";
 import DecisionTree from '../../components/DecisionTree';
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Step6 = (props) => {
 
@@ -12,10 +13,15 @@ const Step6 = (props) => {
     }
 
     return (
-        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
+        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em", paddingTop:"1em"}}>
+            <Row >
+                <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+                <Col md={8}><h4>3. Which feature do we choose?</h4></Col>
+                <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+            </Row>
+            <hr />
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-                <h3>3. Which feature do we choose?</h3>
-                <hr></hr><br />
+
 
                 <Row>
                     <Col>
@@ -84,23 +90,23 @@ const Step6 = (props) => {
                                                         Correct! Our <b>root node</b> in the decision tree is feature:
                                                     </li>
 
-                                                    
-                                                        <OverlayTrigger trigger="hover" placement="bottom"
-                                                            overlay={<Popover id="popover-basic">
-                                                                <Popover.Header as="h3">Categorical values:</Popover.Header>
-                                                                <Popover.Body>
-                                                                    <ul>
-                                                                        <li>Sunny</li>
-                                                                        <li>Overcast</li>
-                                                                        <li>Rainy</li>
-                                                                    </ul>
-                                                                </Popover.Body>
-                                                            </Popover>}>
-                                                            <Button md={2} style={{ backgroundColor: "#eab676", width: "7em", margin:"1em", marginLeft:"10em" }}>Outlook</Button>
-                                                        </OverlayTrigger>
-                                                    
+
+                                                    <OverlayTrigger trigger="hover" placement="bottom"
+                                                        overlay={<Popover id="popover-basic">
+                                                            <Popover.Header as="h3">Categorical values:</Popover.Header>
+                                                            <Popover.Body>
+                                                                <ul>
+                                                                    <li>Sunny</li>
+                                                                    <li>Overcast</li>
+                                                                    <li>Rainy</li>
+                                                                </ul>
+                                                            </Popover.Body>
+                                                        </Popover>}>
+                                                        <Button md={2} style={{ backgroundColor: "#eab676", width: "7em", margin: "1em", marginLeft: "10em" }}>Outlook</Button>
+                                                    </OverlayTrigger>
+
                                                     <li>
-                                                        Every link going from root node represents a case when root node takes on certain value. In this case, feature Outlook has 3 different values (Sunny, Overcast, Rainy) that make 3 outgoing links. 
+                                                        Every link going from root node represents a case when root node takes on certain value. In this case, feature Outlook has 3 different values (Sunny, Overcast, Rainy) that make 3 outgoing links.
                                                     </li>
                                                 </ul>
                                             </Col>

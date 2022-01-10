@@ -3,6 +3,7 @@ import { Container, Row, Button, Col, Accordion, OverlayTrigger, Popover, Collap
 import Dataset from '../../components/Dataset'
 import { Equation, EquationEvaluate, EquationOptions, defaultErrorHandler } from 'react-equation'
 import { defaultVariables, defaultFunctions } from 'equation-resolver'
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Step8 = (props) => {
 
@@ -15,10 +16,15 @@ const Step8 = (props) => {
     }
 
     return (
-        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
+        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em", paddingTop:"1em" }}>
+            <Row >
+                <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+                <Col md={8}><h4>2. Let's calculate information gain for the rest of the features..</h4></Col>
+                <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+            </Row>
+            <hr />
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-                <h3>2. Let's calculate information gain for the rest of the features..</h3>
-                <hr></hr><br />
+
 
                 <Row>
                     <Col md={4}>
@@ -308,7 +314,7 @@ const Step8 = (props) => {
                                         <Row>
                                             <Col md={12}>
                                                 <ul onClick={() => chosenFeatureValue === "information gain temperature" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain temperature")} style={{ cursor: "pointer" }}>
-                                                    <b style={{backgroundColor:"#7EB59A"}}>INFORMATION GAIN = 0.5710</b>
+                                                    <b style={{ backgroundColor: "#7EB59A" }}>INFORMATION GAIN = 0.5710</b>
                                                 </ul>
                                                 <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain temperature"}>
                                                     <div >
@@ -539,7 +545,7 @@ const Step8 = (props) => {
                                         <Row>
                                             <Col md={12}>
                                                 <ul onClick={() => chosenFeatureValue === "information gain humidity" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain humidity")} style={{ cursor: "pointer" }}>
-                                                    <b style={{backgroundColor:"#7EB59A"}}>INFORMATION GAIN = 0.9710</b>
+                                                    <b style={{ backgroundColor: "#7EB59A" }}>INFORMATION GAIN = 0.9710</b>
                                                 </ul>
                                                 <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain humidity"}>
                                                     <div >
@@ -770,7 +776,7 @@ const Step8 = (props) => {
                                         <Row>
                                             <Col md={12}>
                                                 <ul onClick={() => chosenFeatureValue === "information gain Windy" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain Windy")} style={{ cursor: "pointer" }}>
-                                                    <b style={{backgroundColor:"#7EB59A"}}>INFORMATION GAIN = 0.02</b>
+                                                    <b style={{ backgroundColor: "#7EB59A" }}>INFORMATION GAIN = 0.02</b>
                                                 </ul>
                                                 <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain Windy"}>
                                                     <div >

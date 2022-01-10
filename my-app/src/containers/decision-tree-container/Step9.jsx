@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container, Row, Button, Col, Accordion, Table, Fade, OverlayTrigger, Popover } from "react-bootstrap";
 import DecisionTree from '../../components/DecisionTree';
 import Dataset from '../../components/Dataset'
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Step9 = (props) => {
 
@@ -55,10 +56,14 @@ const Step9 = (props) => {
     };
 
     return (
-        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
+        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em", paddingTop:"1em"}}>
+            <Row >
+                <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+                <Col md={8}><h4>3. Which feature do we choose?</h4></Col>
+                <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+            </Row>
+            <hr />
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-                <h3>3. Which feature do we choose?</h3>
-                <hr></hr><br />
 
                 <Row>
                     <Col md={4}>
@@ -149,11 +154,11 @@ const Step9 = (props) => {
                                                     <li>
                                                         Now, when we further split the dataset by <b>Humidity</b>, we can see it makes <b>perfect classification</b>.
                                                         When Humidity is High, all outcomes are labeled as NO, and when Humidity is Normal, all outcomes are labeled as YES.
-                                                    </li><br/>
+                                                    </li><br />
                                                     <li>
-                                                        In case when <button onClick={() => setChosenFeatureValue("high")} style={{backgroundColor:"rgb(218, 242, 223)"}}><b>Outlook=Sunny</b> &#38; <b>Humidity=High</b></button>, it is not a good day for playing beach volleyball (<b>NO</b>).<br/> 
-                                                        In case when <button  onClick={() => setChosenFeatureValue("normal")} style={{backgroundColor:"rgb(218, 242, 223)"}}><b>Outlook=Sunny</b> &#38; <b>Humidity=Normal</b></button>, it is a good day for playing beach volleyball (<b>YES</b>).
-                                                    </li><br/>
+                                                        In case when <button onClick={() => setChosenFeatureValue("high")} style={{ backgroundColor: "rgb(218, 242, 223)" }}><b>Outlook=Sunny</b> &#38; <b>Humidity=High</b></button>, it is not a good day for playing beach volleyball (<b>NO</b>).<br />
+                                                        In case when <button onClick={() => setChosenFeatureValue("normal")} style={{ backgroundColor: "rgb(218, 242, 223)" }}><b>Outlook=Sunny</b> &#38; <b>Humidity=Normal</b></button>, it is a good day for playing beach volleyball (<b>YES</b>).
+                                                    </li><br />
                                                     <li>
                                                         Since we have reached pure leaves, there is no further splitting necessary in this particular branch.
                                                     </li>
@@ -173,7 +178,7 @@ const Step9 = (props) => {
                                             <Col md={9}>
                                                 <ul>
                                                     <li>
-                                                    Now we continue with the node where Outlook: Overcast.
+                                                        Now we continue with the node where Outlook: Overcast.
                                                     </li>
                                                 </ul>
                                             </Col>

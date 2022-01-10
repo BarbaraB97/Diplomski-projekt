@@ -6,6 +6,7 @@ import { Equation, EquationOptions, defaultErrorHandler } from 'react-equation'
 import DecisionTree from '../../components/DecisionTree';
 import { defaultVariables, defaultFunctions } from 'equation-resolver'
 import Dataset from '../../components/Dataset'
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Step10 = (props) => {
 
@@ -59,30 +60,35 @@ const Step10 = (props) => {
     };
 
 
-    return(
+    return (
         <>
-        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)' }}>
-            <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-                <h4>Let's take it step by step when Outlook==Overcast..</h4>
-                <hr></hr><br />
-                <Row>
-                    
-                    <Col>
-                        <ul style={{ textAlign: "left" }} >
-                            <p>We filtered the dataset so we can calculate entropy for cases when <b>Outlook==Overcast:</b></p>
+            <Container style={{ width: '80em', background: 'rgb(252, 249, 242)',  paddingBottom: "1em", paddingTop:"1em" }}>
+                <Row >
+                    <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+                    <Col md={8}><h4>Let's take it step by step when Outlook==Overcast..</h4></Col>
+                    <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+                </Row>
+                <hr />
+                <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
 
-                            
-                        </ul>
-                    <Dataset filterByValue={"overcast"} isTableStriped={false} chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue}></Dataset>
-                    
-                    <Fade in={chosenFeature !== null }>
-                        <Row>
-                            <DecisionTree data={TreeData}></DecisionTree>
-                        </Row>
-                    </Fade>
-                    </Col>
+                    <Row>
 
-                    <Col style={{ textAlign: "left" }}>
+                        <Col>
+                            <ul style={{ textAlign: "left" }} >
+                                <p>We filtered the dataset so we can calculate entropy for cases when <b>Outlook==Overcast:</b></p>
+
+
+                            </ul>
+                            <Dataset filterByValue={"overcast"} isTableStriped={false} chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue}></Dataset>
+
+                            <Fade in={chosenFeature !== null}>
+                                <Row>
+                                    <DecisionTree data={TreeData}></DecisionTree>
+                                </Row>
+                            </Fade>
+                        </Col>
+
+                        <Col style={{ textAlign: "left" }}>
                             <Accordion defaultActiveKey="0"
                                 style={{ backgroundColor: "rgb(197, 235, 202)" }}>
                                 <Accordion.Item eventKey="0">
@@ -167,21 +173,21 @@ const Step10 = (props) => {
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header><b>Zero entropy? What does this mean?</b></Accordion.Header>
                                     <Accordion.Body>
-                                    <Row>
-                                                <div >
-                                                    <ul>
-                                                        <li>
-                                                            Zero entropy means perfect knowledge of a state.
-                                                        </li>
-                                                        <li>
-                                                            This means we are certain of the outcome &rarr; this node is a leaf.
-                                                        </li>
-                                                        <li>
-                                                            To conclude, if <button onClick={() => setChosenFeatureValue("overcast")} style={{backgroundColor:"rgb(218, 242, 223)"}}><b>Outlook=Overcast</b></button> , it is a good day for playing beach volleyball (<b>YES</b>).<br/> 
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                    </Row>                                        
+                                        <Row>
+                                            <div >
+                                                <ul>
+                                                    <li>
+                                                        Zero entropy means perfect knowledge of a state.
+                                                    </li>
+                                                    <li>
+                                                        This means we are certain of the outcome &rarr; this node is a leaf.
+                                                    </li>
+                                                    <li>
+                                                        To conclude, if <button onClick={() => setChosenFeatureValue("overcast")} style={{ backgroundColor: "rgb(218, 242, 223)" }}><b>Outlook=Overcast</b></button> , it is a good day for playing beach volleyball (<b>YES</b>).<br />
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </Row>
 
 
                                     </Accordion.Body>
@@ -189,26 +195,26 @@ const Step10 = (props) => {
                             </Accordion>
 
                         </Col>
+                    </Row>
+
+
+
+
+                </Container>
+
+                {chosenFeature !== null ? <p><br />Let's do this for the remaining node...</p> : null}
+                <Row>
+                    <Col >
+                        <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.firstStep}>First Step</Button>
+                        <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}>Previous Step</Button>
+                        <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} disabled>Current Step:{props.currentStep} </Button>
+                        <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}>Next Step</Button>
+                        <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(14)}>Last Step</Button>
+                    </Col>
                 </Row>
-                
-               
-                
-               
             </Container>
 
-            {chosenFeature !== null ? <p><br />Let's do this for the remaining node...</p> : null}
-            <Row>
-                <Col >
-                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.firstStep}>First Step</Button>
-                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}>Previous Step</Button>
-                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} disabled>Current Step:{props.currentStep} </Button>
-                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}>Next Step</Button>
-                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(14)}>Last Step</Button>
-                </Col>
-            </Row>
-        </Container>
-
-    </>);
+        </>);
 }
 
 export default Step10;
