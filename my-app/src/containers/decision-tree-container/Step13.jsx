@@ -22,9 +22,9 @@ const Step13 = (props) => {
         name: 'Outlook',
         children: [
             {
-                name: '?',
+                name: "Windy",
                 attributes: {
-                    "Outlook": "Rainy"
+                    "Outlook": "Sunny"
                 },
                 children: [
                     {
@@ -75,7 +75,7 @@ const Step13 = (props) => {
             <Container style={{ width: '80em', background: 'rgb(252, 249, 242)' , paddingBottom: "1em", paddingTop: "1em" }}>
                 <Row >
                     <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
-                    <Col md={8}><h4>3. Which feature do we choose?</h4></Col>
+                    <Col md={8}><h4><b>3.</b> Choose the feature with the highest Information gain</h4></Col>
                     <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
                 </Row>
                 <hr />
@@ -124,7 +124,7 @@ const Step13 = (props) => {
 
                             <Accordion defaultActiveKey="0">
                                 <Accordion.Item eventKey="0">
-                                    <Accordion.Header><b>3. Choose the feature with the highest Information gain</b></Accordion.Header>
+                                    <Accordion.Header><b>Choose our last node in decision tree!</b></Accordion.Header>
                                     <Accordion.Body>
                                         <Row>
                                             <Col md={9}>
@@ -150,7 +150,7 @@ const Step13 = (props) => {
                                                 <Col md={12}>
                                                     <ul>
                                                         <li>
-                                                            Correct! Our <b>second node</b> in the decision tree is feature:
+                                                            Correct! Our <b>last node</b> in the decision tree is feature:
                                                         </li>
 
 

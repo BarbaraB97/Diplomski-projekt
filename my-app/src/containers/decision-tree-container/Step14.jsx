@@ -29,9 +29,9 @@ const Step14 = (props) => {
         name: 'Outlook',
         children: [
             {
-                name: '?',
+                name: "Windy",
                 attributes: {
-                    "Outlook": "Rainy"
+                    "Outlook": "Sunny"
                 },
                 children: [
                     {
