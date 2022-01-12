@@ -110,7 +110,7 @@ const Step14 = (props) => {
                                 </Card.Body>
                             </Card>
                             <br/>
-                            <DecisionTree data={TreeData}></DecisionTree>
+                            <DecisionTree data={TreeData} width={"35em"} height={"40em"}></DecisionTree>
 
                         </Col>
                         <Col style={{ textAlign: "left" }}>

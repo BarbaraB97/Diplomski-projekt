@@ -53,7 +53,7 @@ const Step6 = (props) => {
                         </Table>
                         <Fade in={chosenFeature === "Outlook"}>
                             <Row>
-                                <DecisionTree></DecisionTree>
+                                <DecisionTree width={"35em"} height={"30em"}></DecisionTree>
                             </Row>
                         </Fade>
                     </Col>
