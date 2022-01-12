@@ -63,6 +63,7 @@ const Step3 = (props) => {
     const poly = getPolyData(terms);
 
     const error_graph = {
+        zoomEnabled: true,
         animationEnabled: true,
         exportEnabled: true,
         theme: "light2", // "light1", "dark1", "dark2"
@@ -129,6 +130,7 @@ const Step3 = (props) => {
     }
 
     const linear_regression_graph = {
+        zoomEnabled: true,
         animationEnabled: true,
         exportEnabled: true,
         theme: "light2", // "light1", "dark1", "dark2"
