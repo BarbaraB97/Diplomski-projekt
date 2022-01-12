@@ -5,6 +5,7 @@ import { Container, Row, Button, Col, Accordion, Table, Fade, OverlayTrigger, Po
 import DecisionTree from '../../components/DecisionTree';
 import Dataset from '../../components/Dataset'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import Blink from 'react-blink-text';
 
 const Step13 = (props) => {
 
@@ -76,7 +77,21 @@ const Step13 = (props) => {
                 <Row >
                     <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
                     <Col md={8}><h4><b>3.</b> Choose the feature with the highest Information gain</h4></Col>
-                    <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+                    <OverlayTrigger trigger="hover" placement="bottom"
+                        overlay={<Popover id="popover-basic">
+                            <Popover.Header as="h3">Skip calculation</Popover.Header>
+                            <Popover.Body>
+                                You can skip the rest of the calculation and go straight to solving few exercises to check your knowledge!
+                            </Popover.Body>
+                        </Popover>}>
+                        <Button onClick={() => props.goToStep(14)} style={{ width: "6em", backgroundColor: "rgb(277,277,277)", border: "1px solid black", marginRight: "1em" }}>
+                            <Blink text='Skip' fontSize='20'>
+                                Skip
+                            </Blink>
+                        </Button>
+                    </OverlayTrigger>
+                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)", marginRight: "1em" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button>
+
                 </Row>
                 <hr />
                 <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
