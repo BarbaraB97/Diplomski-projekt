@@ -26,7 +26,7 @@ class DecisionTreeStartPage extends React.Component {
 
   render() {
     return (
-      <Container className='justify-content-center' style={{ textAlign:"center", minHeight: '40em', background: 'rgb(197, 235, 202, 0.5)'}}>
+      <Container className='justify-content-center' style={{ textAlign:"center", minHeight: '40em'}}>
         <h1>Decision tree</h1>
         <StepWizard>
           <Step1/>
