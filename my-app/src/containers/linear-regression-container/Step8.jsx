@@ -49,7 +49,7 @@ const Step8 = (props) => {
         }
     ],
         responsive: true,
-        height: 300
+        height: 290
     };
     const [dps, setDps] = useState(initialDps);
     const [chart, setChart] = useState(initialChart);
@@ -88,7 +88,7 @@ const Step8 = (props) => {
             }
             ],
             responsive: true,
-            height: 300
+            height: 290
         };
         setChart(chart)
     }
@@ -120,7 +120,7 @@ const Step8 = (props) => {
             }
             ],
             responsive: true,
-            height: 300
+            height: 290
         };
         setChart(chart)
         console.log(helpDegree)
@@ -170,8 +170,11 @@ const Step8 = (props) => {
                     </Row>
                 </Form>
                 <br/>
-
-                <CanvasJSChart options = {chart} />
+                <Row>
+                    <Col>
+                        <CanvasJSChart options = {chart} />
+                    </Col>
+                </Row>
           
             </Container>
             <Row>
