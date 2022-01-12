@@ -1,12 +1,18 @@
 import { Container, Row, Button, Col } from "react-bootstrap";
 import decisionTreeExample from "../../assets/decision-tree-example.png"
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Step1 = (props) => {
 
 
     return (
-        <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em", paddingTop: "1em" }}>
-            <h2>What is a decision tree?</h2><hr />
+        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
+            <Row >
+                <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+                <Col><h4>What is a decision tree?</h4></Col>
+                <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+            </Row>
+            <hr/>
             <Container style={{ textAlign: "left", height: '30em', paddingTop: "2em", paddingBottom: "2em", width: "80%" }}>
                 <ul>
                     <li>
@@ -19,7 +25,7 @@ const Step1 = (props) => {
                         Here's an example of decision tree:
                     </li>
                 </ul>
-                <Container className="justify-content-center" style={{ display:"flex", alignContent:"center" }}>
+                <Container className="justify-content-center" style={{ display: "flex", alignContent: "center" }}>
                     <img src={decisionTreeExample} alt="example" height={250} />
                 </Container>
 
@@ -34,7 +40,7 @@ const Step1 = (props) => {
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}>Previous Step</Button>
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} disabled>Current Step:{props.currentStep} </Button>
                     <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}>Next Step</Button>
-                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(9)}>Last Step</Button>
+                    <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(14)}>Last Step</Button>
                 </Col>
             </Row>
         </Container>

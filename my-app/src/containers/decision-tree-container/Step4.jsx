@@ -3,6 +3,7 @@ import Dataset from '../../components/Dataset'
 import { useState } from "react";
 import { Equation, EquationOptions, defaultErrorHandler } from 'react-equation'
 import { defaultVariables, defaultFunctions } from 'equation-resolver'
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Step4 = (props) => {
 
@@ -22,11 +23,15 @@ const Step4 = (props) => {
 
     return (
         <>
-            <Container style={{ width: '80em', background: 'rgb(252, 249, 242)' }}>
+            <Container  className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop:"1em"}}>
+                <Row >
+                    <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+                    <Col md={8}><h4><b>1.</b> Compute the entropy for whole dataset</h4></Col>
+                    <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+                </Row>
+                <hr />
                 <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-                    <h3>Let's take it step by step..</h3>
-                    <hr></hr><br />
-
+            
                     <Row>
                         <Col>
                             <Dataset isTableStriped={false} chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue}></Dataset>
@@ -145,7 +150,7 @@ const Step4 = (props) => {
                                                     </ul>
                                                 </Popover.Body>
                                             </Popover>}>
-                                            <Button onClick={() => chooseFeature("Temperature")} md={2} style={{ backgroundColor: chosenFeature === "Temperature" ? "#eab676" : "#76b5c5", marginRight: "1em", width: "7em" }}>Temperature</Button>
+                                            <Button onClick={() => chooseFeature("Temperature")} md={2} style={{backgroundColor: chosenFeature === "Temperature" ? "#eab676" : "#76b5c5", marginRight: "1em", width: "7em" }}>Temperature</Button>
                                         </OverlayTrigger>
                                         <OverlayTrigger trigger="hover" placement="bottom"
                                             overlay={<Popover id="popover-basic">
@@ -187,11 +192,11 @@ const Step4 = (props) => {
                         <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}>Previous Step</Button>
                         <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} disabled>Current Step:{props.currentStep} </Button>
                         <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}>Next Step</Button>
-                        <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(9)}>Last Step</Button>
+                        <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={() => props.goToStep(14)}>Last Step</Button>
                     </Col>
                 </Row>
             </Container>
-        
+
         </>
     );
 }

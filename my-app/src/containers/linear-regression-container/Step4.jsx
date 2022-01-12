@@ -6,7 +6,7 @@ const Step4 = (props) => {
 
 
     return (
-        <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
+        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" }}>
             <Container style={{ textAlign: "center", height: '30em'}}>
 				<br></br>
                 <h2>Let's play a game...</h2>

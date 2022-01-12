@@ -14,6 +14,7 @@ import Step10 from './Step10'
 import Step11 from './Step11'
 import Step12 from './Step12'
 import Step13 from './Step13'
+import Step14 from './Step14'
 
 class DecisionTreeStartPage extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class DecisionTreeStartPage extends React.Component {
 
   render() {
     return (
-      <Container className='justify-content-center' style={{ textAlign:"center", minHeight: '40em', background: 'rgb(197, 235, 202, 0.5)'}}>
+      <Container className='justify-content-center' style={{ textAlign:"center", minHeight: '40em'}}>
         <h1>Decision tree</h1>
         <StepWizard>
           <Step1/>
@@ -41,6 +42,7 @@ class DecisionTreeStartPage extends React.Component {
           <Step11></Step11>
           <Step12></Step12>
           <Step13></Step13>
+          <Step14></Step14>
         </StepWizard>
       </Container>
     )

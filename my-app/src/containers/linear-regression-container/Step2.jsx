@@ -33,7 +33,7 @@ const Step2 = (props) => {
 
 
     return (
-        <Container style={{ width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
+        <Container className="card" style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" }}>
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
                 <h3>Simple linear regression</h3>
                 <hr></hr><br />
