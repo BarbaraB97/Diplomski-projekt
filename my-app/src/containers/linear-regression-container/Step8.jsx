@@ -30,7 +30,7 @@ const Step8 = (props) => {
         let dataPoints = [] 
         var maxVal = Math.max.apply(Math, dps.map(function(o) { return o[0]; }))
         // TO-DO don't use hardcoded value ?
-        for(let i = 0; i <= maxVal; i+=maxVal/50)
+        for(let i = 0; i <= maxVal; i+=maxVal/200)
             {let y = my_predict(terms,i)
             dataPoints.push([i,y]);
             }
@@ -83,6 +83,7 @@ const Step8 = (props) => {
             },
             {
                 type: "line",
+                toolTipContent: "{x}: {y}",
                 dataPoints: getPointsData(poly)
             }
             ],
@@ -92,7 +93,38 @@ const Step8 = (props) => {
         setChart(chart)
     }
 
-    const degreeChange = (event) => setDegree(event.target.value);
+    const degreeChange = (event) => {
+        var helpDegree = event.target.value
+        setDegree(helpDegree);
+        setDps(dps)
+
+        //regression
+        var data = getPointsData(dps)
+        const model = PolynomialRegression.read(data, helpDegree);
+        //coefficients of equation
+        const terms = model.getTerms();
+        const poly = getPolyData(terms);
+
+        var chart = {
+            zoomEnabled: true,
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light2",
+            data: [{
+                type: "line",
+                dataPoints: getPointsData(poly)
+            },
+            {
+                type: "scatter",
+                dataPoints : getPointsData(dps)
+            }
+            ],
+            responsive: true,
+            height: 300
+        };
+        setChart(chart)
+        console.log(helpDegree)
+    }
 
     const deleteAll = () => {
         setDps(initialDps)
@@ -114,26 +146,26 @@ const Step8 = (props) => {
                 <Form>
                     <Row>
                         <Col>
-                        <Form.Control id="xValue" type="number" step="any" placeholder="Enter x value"/>
+                        <Form.Control id="xValue" type="number" step="any" placeholder="x value"/>
                         </Col>
                         <Col>
-                        <Form.Control id="yValue" type="number" step="any" placeholder="Enter y value"/>
+                        <Form.Control id="yValue" type="number" step="any" placeholder="y value"/>
                         </Col>
                         <Col>
                         <Button id="renderButton" onClick={handler}>Add point</Button> &nbsp;
                         <Button variant="danger" id="deleteButton" onClick={deleteAll}>Delete all</Button>
                         </Col>
                         <Col>
-                        <div  style = {{display:"flex", flexDirection:"row", alignItems:"center",gap:"5px"}}>
-                        <label>Choose polynom degree:</label>
-                        <select id="dropdown" onClick={degreeChange}>
+                        <Form.Label>Choose polynom degree:</Form.Label>
+                        </Col>
+                        <Col>
+                        <Form.Select id="dropdown" onChange={degreeChange}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
-                        </select>
-                    </div>
+                        </Form.Select>
                         </Col>
                     </Row>
                 </Form>

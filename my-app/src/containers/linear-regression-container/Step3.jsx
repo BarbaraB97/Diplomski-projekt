@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Dropdown, Accordion } from "react-bootstrap";
+import { Container, Row, Button, Col, Form, Accordion } from "react-bootstrap";
 import PolynomialRegression from "js-polynomial-regression";
 import Dataset from '../../components/Simple_lin_reg_dataset';
 import CanvasJSReact from './canvasjs.react';
@@ -201,16 +201,19 @@ const Step3 = (props) => {
                                 <Accordion.Body>
             
                     <Row>
-                        {/*TO-DO make prettier dropdown*/}
                      <div  style = {{display:"flex", flexDirection:"row", alignItems:"center",gap:"5px"}}>
-                        <label>Choose polynom degree:</label>
-                        <select id="dropdown" onChange={handler}>
-                        <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
+                        <Col>
+                            <Form.Label>Choose polynom degree:</Form.Label>
+                        </Col>
+                        <Col>
+                            <Form.Select id="dropdown" onChange={handler}>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </Form.Select>
+                        </Col>
                     </div>
                     </Row>
                     <br/>
@@ -233,16 +236,19 @@ const Step3 = (props) => {
                                 Positive values for the residual (on the y-axis) mean the prediction was too low, and negative values mean the prediction was too high; 0 means the guess was exactly correct. <br/><br/>
             
                     <Row>
-                        {/*TO-DO make prettier dropdown*/}
                      <div  style = {{display:"flex", flexDirection:"row", alignItems:"center",gap:"5px"}}>
-                        <label>Choose polynom degree:</label>
-                        <select id="dropdown" onChange={handler}>
-                        <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
+                        <Col>
+                            <Form.Label>Choose polynom degree:</Form.Label>
+                        </Col>
+                        <Col>
+                            <Form.Select id="dropdown" onChange={handler}>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </Form.Select>
+                        </Col>
                     </div>
                     </Row>
                     <br/>
@@ -254,6 +260,15 @@ const Step3 = (props) => {
                             </Accordion.Item>
                         </Accordion>
 
+                        <Accordion defaultActiveKey="1"
+                            style={{ backgroundColor: "rgb(197, 235, 202)" }}>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>What is underfitting?</Accordion.Header>
+                                <Accordion.Body>
+                                Under-fitting occurs when our statistical model cannot adequately capture the underlying structure of the data.
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
                     
                         <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}>
@@ -265,7 +280,6 @@ const Step3 = (props) => {
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
-
                         </Col>
                 </Row>
                 
