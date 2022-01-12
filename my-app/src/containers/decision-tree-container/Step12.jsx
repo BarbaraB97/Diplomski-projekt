@@ -48,7 +48,7 @@ const Step12 = (props) => {
                                             </ul>
                                         </Popover.Body>
                                     </Popover>}>
-                                    <Button onClick={() => chooseFeature("Temperature")} md={2} style={{ backgroundColor: chosenFeature === "Temperature" ? "#eab676" : "#76b5c5", marginRight: "1em", width: "7em" }}>Temperature</Button>
+                                    <Button onClick={() => chooseFeature("Temperature")} md={2} style={{ backgroundColor: chosenFeature === "Temperature" ? "#eab676" : "#76b5c5", marginRight: "1em" }}>Temperature</Button>
                                 </OverlayTrigger>
                                 <OverlayTrigger trigger="hover" placement="bottom"
                                     overlay={<Popover id="popover-basic">
