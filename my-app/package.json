@@ -13,6 +13,7 @@
     "equation-resolver": "^0.3.2",
     "js-polynomial-regression": "^0.9.1",
     "react": "^17.0.2",
+    "react-blink-text": "^1.0.5",
     "react-bootstrap": "^2.0.1",
     "react-chartjs-2": "^4.0.0",
     "react-d3-library": "^1.1.8",

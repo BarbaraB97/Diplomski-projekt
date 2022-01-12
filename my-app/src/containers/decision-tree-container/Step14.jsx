@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Col, Container, Row, Table, Form } from "react-bootstrap";
+import { Button, Col, Container, Row, Table, Form, Card } from "react-bootstrap";
 import DecisionTree from '../../components/DecisionTree';
 import TestDataset from '../../components/TestDataset';
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
@@ -79,7 +79,7 @@ const Step14 = (props) => {
 
     return (
         <>
-            <Container  className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
+            <Container className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
                 <Row >
                     <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
                     <Col md={8}><h4>Good job! We have finished our Decision tree!</h4></Col>
@@ -90,21 +90,27 @@ const Step14 = (props) => {
 
                     <Row>
                         <Col md={5} style={{ textAlign: "left" }}>
-                            <ul>
-                                <li>
-                                    From the dataset in the beggining, we've created a Decision Tree using ID3 algorithm.
-                                </li>
-                                <li>
-                                    Now, let's test our model..
-                                </li>
-                                <li>
-                                    <b>Click</b> on every row of the dataset and <b>check</b> if the predicted value of feature "Play" matches with the one we predicted using our Decision tree model!
-                                </li>
-                                <li>
-                                    For the last row mark Outcome as <b>YES</b> or <b>NO</b>
-                                </li>
-                            </ul>
-                            <DecisionTree data={TreeData}></DecisionTree>
+                            <Card >
+                                <Card.Body>
+                                    <Card.Text>       <ul>
+                                        <li>
+                                            From the dataset in the beggining, we've created a Decision Tree using ID3 algorithm.
+                                        </li>
+                                        <li>
+                                            Now, let's test our model..
+                                        </li>
+                                        <li>
+                                            <b>Click</b> on every row of the dataset and <b>check</b> if the predicted value of feature "Play" matches with the one we predicted using our Decision tree model!
+                                        </li>
+                                        <li>
+                                            For the last row mark Outcome as <b>YES</b> or <b>NO</b>
+                                        </li>
+                                    </ul></Card.Text>
+
+                                </Card.Body>
+                            </Card>
+                            <br/>
+                            <DecisionTree data={TreeData} width={"35em"} height={"40em"}></DecisionTree>
 
                         </Col>
                         <Col style={{ textAlign: "left" }}>

@@ -1,40 +1,55 @@
-import { Container, Row, Button, Col } from "react-bootstrap";
+import { Container, Row, Button, Col, Card } from "react-bootstrap";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Step3 = (props) => {
 
 
     return (
-        <Container  className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.3)', paddingBottom: "1em", paddingTop:"1em"}}>
-              <Row >
-                    <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
-                    <Col><h4>ID3 algorithm</h4></Col>
-                    <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
-                </Row>
-                <hr/>
+        <Container className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.3)', paddingBottom: "1em", paddingTop: "1em" }}>
+            <Row >
+                <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+                <Col><h4>ID3 algorithm</h4></Col>
+                <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+            </Row>
+            <hr />
             <Container style={{ textAlign: "center", height: '30em', width: "auto", paddingTop: "2em", paddingBottom: "2em" }}>
 
                 <Row>
-                    <Col md={6} style={{ textAlign: "left" }}>
-                        <ul>
-                            <li>
-                            ID3 algorithm is used to generate a decision tree from existing data. 
-                            </li>
-                            <li>
-                            In every iteration of the algorithm, it iterates through every unused feature in the data and calculates the entropy and information gain.
-                            </li>
-                            <li>
-                            To put it simply, <b>entropy</b> can be explained as a lack of order or predictability and <b>information gain</b> as the reduction in entropy.<br/><br/>
-                            </li>
-                            <li>
-                            After the calculation, the feature with the highest information gain is chosen. That feature is now a node in the tree and marked as used.
-                            </li>
-                            <li>
-                                The process is repeated until we get to the leaf nodes and then we can make predictions.
-                            </li>
-                        </ul>
+                    <Col md={5} style={{ textAlign: "left", marginLeft: "3em", marginRight: "3em", marginBottom: "1em" }}>
+                        <Card style={{marginBottom:"1em"}} >
+                            <Card.Body>
+                                <Card.Text>
+
+                                    ID3 algorithm is used to generate a decision tree from existing data.
+
+                                    In every iteration of the algorithm, it iterates through every unused feature in the data and calculates the entropy and information gain.
+
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{marginBottom:"1em"}}>
+                            <Card.Body>
+                                <Card.Text>
+
+                                    To put it simply, <b>entropy</b> can be explained as a lack of order or predictability and <b>information gain</b> as the reduction in entropy.<br /><br />
+
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card >
+                            <Card.Body>
+                                <Card.Text>
+
+                                    After the calculation, the feature with the highest information gain is chosen. That feature is now a node in the tree and marked as used.
+
+                                    The process is repeated until we get to the leaf nodes and then we can make predictions.
+
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
 
                     </Col>
+
                     <Col md={6} style={{ textAlign: "left" }}>
 
                         <div class="jumbotron">
@@ -51,14 +66,14 @@ const Step3 = (props) => {
                         </div>
                     </Col>
                 </Row>
-                
+
 
 
             </Container>
             <Row>
-                <Col style={{ textAlign: "center" }}><br/>
-                Does this sound a bit complicated?<br/>
-                    Let's continue...<br/><br/>
+                <Col style={{ textAlign: "center" }}><br />
+                    Does this sound a bit complicated?<br />
+                    Let's continue...<br /><br />
                 </Col>
             </Row>
             <Row>

@@ -4,6 +4,7 @@ import Dataset from '../../components/Dataset'
 import { Equation, EquationEvaluate, EquationOptions, defaultErrorHandler } from 'react-equation'
 import { defaultVariables, defaultFunctions } from 'equation-resolver'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import Blink from 'react-blink-text';
 
 const Step8 = (props) => {
 
@@ -16,11 +17,24 @@ const Step8 = (props) => {
     }
 
     return (
-        <Container  className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop:"1em" }}>
+        <Container className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
             <Row >
                 <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
                 <Col md={8}><h4><b>2.</b> Calculate information gain for the rest of the features</h4></Col>
-                <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+                <OverlayTrigger trigger="hover" placement="bottom"
+                    overlay={<Popover id="popover-basic">
+                        <Popover.Header as="h3">Skip calculation</Popover.Header>
+                        <Popover.Body>
+                            You can skip the rest of the calculation and go straight to solving few exercises to check your knowledge!
+                        </Popover.Body>
+                    </Popover>}>
+                    <Button onClick={() => props.goToStep(14)} style={{ width: "6em", backgroundColor: "rgb(277,277,277)", border: "1px solid black", marginRight: "1em" }}>
+                        <Blink text='Skip' fontSize='20'>
+                            Skip
+                        </Blink>
+                    </Button>
+                </OverlayTrigger>
+                <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)", marginRight:"1em" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button>
             </Row>
             <hr />
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
@@ -48,7 +62,7 @@ const Step8 = (props) => {
                                         </ul>
                                     </Popover.Body>
                                 </Popover>}>
-                                <Button onClick={() => chooseFeature("Temperature")} md={2} style={{ backgroundColor: chosenFeature === "Temperature" ? "#eab676" : "#76b5c5", marginRight: "1em", width: "7em" }}>Temperature</Button>
+                                <Button onClick={() => chooseFeature("Temperature")} md={2} style={{ backgroundColor: chosenFeature === "Temperature" ? "#eab676" : "#76b5c5", marginRight: "1em" }}>Temperature</Button>
                             </OverlayTrigger>
                             <OverlayTrigger trigger="hover" placement="bottom"
                                 overlay={<Popover id="popover-basic">
