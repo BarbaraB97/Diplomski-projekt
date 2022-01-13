@@ -169,6 +169,7 @@ const Step15 = (props) => {
                 <br/>
                 <Collapse in={task === 1}>
                 <Row>
+                    <Col></Col>
                     <Col style={{ textAlign: "center" }}>
                         <br/>
                                 
@@ -244,6 +245,7 @@ const Step15 = (props) => {
                             
 
                     </Col>
+                    <Col></Col>
                     
                 </Row>
                 </Collapse>
