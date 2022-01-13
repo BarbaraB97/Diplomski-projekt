@@ -118,11 +118,11 @@ const startingTreeData = {
     ]
 }*/
 
-const DecisionTree = ({data, width, height}) => {
+const DecisionTree = ({data, width, height, orientation}) => {
     return (
         // `<Tree />` will fill width/height of its container; in this case `#treeWrapper`.
         <div id="treeWrapper" style={{ width: width ? width :'25em', height: height ? height : '25em' }}>
-            <Tree translate={{x: 100, y:180}} zoom="0.62" data={data || startingTreeData} branchNodeClassName="node__branch"/>
+            <Tree translate={{x: 100, y:180}} zoom="0.62" orientation={orientation || "horizontal"} data={data || startingTreeData} branchNodeClassName="node__branch"/>
         </div>
     );
 }
