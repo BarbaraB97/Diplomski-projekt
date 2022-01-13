@@ -1,5 +1,6 @@
 import React from 'react';
 import Tree from 'react-d3-tree';
+import { Point } from 'chart.js';
 
 // This is a simplified example of an org chart with a depth of 2.
 // Note how deeper levels are defined recursively via the `children` property.
@@ -118,12 +119,12 @@ const startingTreeData = {
     ]
 }*/
 
-const DecisionTree = ({data, width, height}) => {
+const DecisionTree2 = ({data, width, height}) => {
     return (
         // `<Tree />` will fill width/height of its container; in this case `#treeWrapper`.
-        <div id="treeWrapper" style={{ width: width ? width :'25em', height: height ? height : '25em' }}>
-            <Tree translate={{x: 100, y:180}} zoom="0.62" data={data || startingTreeData} branchNodeClassName="node__branch"/>
+        <div id="treeWrapper" style={{ width: width ? width :'80em', height: height ? height : '25em' }}>
+            <Tree translate={{x: 350, y:50}} zoom="0.7" orientation="vertical" data={data || startingTreeData} branchNodeClassName="node__branch" separation={{siblings: 1.3, nonSiblings: 3}}/>
         </div>
     );
 }
-export default DecisionTree;
+export default DecisionTree2;

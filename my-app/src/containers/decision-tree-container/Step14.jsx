@@ -11,7 +11,7 @@ const Step14 = (props) => {
     const [chosenFeatureValue, setChosenFeatureValue] = useState(null);
     const [rowData, setRowData] = useState({ outlook: "sunny", temperature: "hot", humidity: "high", windy: "false", play: "no" })
     const [rowIndex, setRowIndex] = useState(1)
-    const [rowChecked, setRowChecked] = useState(["","","","","1"])
+    const [rowChecked, setRowChecked] = useState(["","","","",""])
     const [readyToCheck, setReadyToCheck] = useState(null);
     const [text, setText] = useState(null)
     const [incorrect, setIncorrect] = useState([0,0,0,0,0])
