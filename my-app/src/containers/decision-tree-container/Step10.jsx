@@ -97,7 +97,7 @@ const Step10 = (props) => {
 
                             <Fade in={true}>
                                 <Row>
-                                    <DecisionTree data={TreeData}></DecisionTree>
+                                    <DecisionTree data={TreeData} width={"35em"} height={"30em"} orientation={"vertical"}></DecisionTree>
                                 </Row>
                             </Fade>
                         </Col>

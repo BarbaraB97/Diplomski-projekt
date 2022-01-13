@@ -122,7 +122,6 @@ const Step13 = (props) => {
                                 </tbody>
                             </Table>
 
-
                             <Fade in={chosenFeature === "Windy"}>
                                 <Dataset filterByValue={"rainy"} chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue} isTableStriped={false} highLightLabelValue={true}></Dataset>
 
@@ -130,7 +129,7 @@ const Step13 = (props) => {
                             <Fade in={chosenFeature === "Windy"}>
 
                                 <Row>
-                                    <DecisionTree data={TreeData}></DecisionTree>
+                                    <DecisionTree data={TreeData} width={"45em"} height={"30em"} orientation={"vertical"}></DecisionTree>
                                 </Row>
                             </Fade>
                         </Col>

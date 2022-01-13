@@ -113,7 +113,7 @@ const Step9 = (props) => {
                         <Fade in={chosenFeature === "Humidity"}>
 
                             <Row>
-                                <DecisionTree data={TreeData}></DecisionTree>
+                                <DecisionTree data={TreeData} orientation={"vertical"} width={"45em"} height={"30em"}></DecisionTree>
                             </Row>
                         </Fade>
                     </Col>
