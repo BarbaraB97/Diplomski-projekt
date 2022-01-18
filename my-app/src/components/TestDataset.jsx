@@ -43,7 +43,7 @@ const TestDataset = ({ isTableStriped, handleRowData }) => {
        
 
             chosenAnswers.filter(chosenAnswer => chosenAnswer.chosenAnswer!==null).forEach((chosenAnswer) => {
-                if (chosenAnswer.chosenAnswer === weatherDataset[chosenAnswer.index - 1].play) {
+                if (chosenAnswer.chosenAnswer === weatherDataset[chosenAnswer.index - 1].correct) {
                     //highlight correct answer
                     document.getElementById(chosenAnswer.index + chosenAnswer.chosenAnswer).style.backgroundColor = "rgb(52, 191, 73, 0.7)";
                 }
@@ -66,11 +66,11 @@ const TestDataset = ({ isTableStriped, handleRowData }) => {
     };
 
     let weatherDataset = [
-        { outlook: "sunny", temperature: "hot", humidity: "high", windy: "false", play: "NO" },
-        { outlook: "overcast", temperature: "hot", humidity: "high", windy: "false", play: "YES" },
-        { outlook: "rainy", temperature: "cool", humidity: "normal", windy: "false", play: "YES" },
-        { outlook: "rainy", temperature: "mild", humidity: "normal", windy: "false", play: "YES" },
-        { outlook: "sunny", temperature: "mild", humidity: "normal", windy: "true", play: "YES" },
+        { outlook: "sunny", temperature: "hot", humidity: "high", windy: "false", play: "NO", correct:"NO" },
+        { outlook: "overcast", temperature: "hot", humidity: "high", windy: "false", play: "NO", correct:"NO"},
+        { outlook: "rainy", temperature: "cool", humidity: "normal", windy: "false", play: "YES", correct:"YES" },
+        { outlook: "rainy", temperature: "mild", humidity: "normal", windy: "false", play: "YES", correct:"YES" },
+        { outlook: "sunny", temperature: "mild", humidity: "normal", windy: "true", play: "YES", correct:"NO" },
     ]
 
     const generateTable = () => {
@@ -84,6 +84,7 @@ const TestDataset = ({ isTableStriped, handleRowData }) => {
                     <td >{temperature}</td>
                     <td >{humidity}</td>
                     <td >{windy}</td>
+                    <td >{play}</td>
                 </tr>
             )
         })
@@ -100,6 +101,7 @@ const TestDataset = ({ isTableStriped, handleRowData }) => {
                             <th>Temperature</th>
                             <th>Humidity</th>
                             <th>Windy</th>
+                            <th>Play</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -112,7 +114,7 @@ const TestDataset = ({ isTableStriped, handleRowData }) => {
                 <Table hover style={{ textAlign: "center" }}>
                     <thead>
                         <tr id="features">
-                            <th>Play</th>
+                            <th>Is outcome correct?</th>
                         </tr>
                     </thead>
                     <tbody>
