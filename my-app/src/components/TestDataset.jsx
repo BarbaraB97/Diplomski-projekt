@@ -41,7 +41,7 @@ const TestDataset = ({ isTableStriped, handleRowData }) => {
             return;
         }*/
        
-            setShowPopover(false)
+
             chosenAnswers.filter(chosenAnswer => chosenAnswer.chosenAnswer!==null).forEach((chosenAnswer) => {
                 if (chosenAnswer.chosenAnswer === weatherDataset[chosenAnswer.index - 1].play) {
                     //highlight correct answer
