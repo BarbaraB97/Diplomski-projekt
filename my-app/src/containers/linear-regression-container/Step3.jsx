@@ -263,14 +263,24 @@ const Step3 = (props) => {
                         <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}>
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header>What is underfitting?</Accordion.Header>
+                                <Accordion.Header>How to find the right model?</Accordion.Header>
                                 <Accordion.Body>
-                                Under-fitting occurs when our statistical model cannot adequately capture the underlying structure of the data.
+                                There are two main concepts to consider when choosing the right regression model for your data:
+                                <ul>
+                                    <li>
+                                    <b>Underfitting</b> occurs when our statistical model cannot adequately capture the underlying structure of the data
+                                    </li>
+                                    <li>
+                                    <b>Overfitting</b> is a condition where a statistical model begins to describe the random error in the data rather than the relationships between variables
+                                    </li>
+                                    </ul>
+                                    Underfitted model performs poorly both on test and training data and overfitting causes the model to perform great on the training set, but bad on unknown data.<br></br>
+                                    <br/>In our dataset this happens with the model of polynom with <b>degree 5</b>.   
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
                     
-                        <Accordion defaultActiveKey="1"
+                        {/* <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>What is overfitting?</Accordion.Header>
@@ -279,7 +289,7 @@ const Step3 = (props) => {
                                 <br/>In our dataset this happens with the model of polynom <b>degree 5</b>.   
                                 </Accordion.Body>
                             </Accordion.Item>
-                        </Accordion>
+                        </Accordion> */}
                         </Col>
                 </Row>
                 
