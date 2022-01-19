@@ -1,20 +1,13 @@
 import { useState } from "react";
 import { Container, Row, Button, Col, Accordion, Table } from "react-bootstrap";
 import Dataset from '../../components/Simple_lin_reg_dataset'
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Step2 = (props) => {
 
     const [areFeaturesHighlighted, setHighlightFeatures] = useState(false);
     const [isLabelHighlighted, setHighlightLabel] = useState(false);
     const [chosenFeature, setChosenFeature] = useState("");
-
-    const highlightFeatures = () => {
-        setHighlightFeatures(!areFeaturesHighlighted);
-    }
-
-    const hightlightLabel = () => {
-        setHighlightLabel(!isLabelHighlighted);
-    }
 
     const setChosenFeatureValue = (feature) => {
         if(chosenFeature===feature){
@@ -25,19 +18,16 @@ const Step2 = (props) => {
         }
     }
 
-    const [open, setOpen] = useState(false);
-    const handleTableClick = (feature) => {
-        setChosenFeature(feature);
-        console.log(feature);
-    }
-
-
+    
     return (
-        <Container className="card" style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" }}>
+        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" , paddingTop: "1em" }}>
+        <Row >
+            <Col style={{ textAlign: "left" }}> <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+            <Col><h3>Simple linear regression</h3></Col>
+            <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+        </Row>
+        <hr />
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-                <h3>Simple linear regression</h3>
-                <hr></hr><br />
-  
                 <Row>
                     <Col>
                         <Dataset areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted} chosenFeature={chosenFeature}></Dataset>

@@ -3,6 +3,7 @@ import { Container, Row, Button, Col, Form, Accordion } from "react-bootstrap";
 import PolynomialRegression from "js-polynomial-regression";
 import Dataset from '../../components/Simple_lin_reg_dataset';
 import CanvasJSReact from './canvasjs.react';
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Step3 = (props) => {
@@ -22,8 +23,10 @@ const Step3 = (props) => {
 
     //degree variable has to change when something is selected in dropdown
     const initialDegree = 1;
-    const [degree, setDegree] = useState(initialDegree);
-    const handler = (event) => setDegree(event.target.value);
+    const [degree1, setDegree1] = useState(initialDegree);
+    const [degree2, setDegree2] = useState(initialDegree);
+    const handler1 = (event) => setDegree1(event.target.value);
+    const handler2 = (event) => setDegree2(event.target.value);
 
     //function that transforms array of points in format for graph (array of JSONs)
     const getPointsData = (pointArray) => {
@@ -36,9 +39,11 @@ const Step3 = (props) => {
 
     //regression
     var data = getPointsData(housesDataset)
-    const model = PolynomialRegression.read(data, degree);
+    const model1 = PolynomialRegression.read(data, degree1);
+    const model2 = PolynomialRegression.read(data, degree2);
     //coefficients of equation
-    const terms = model.getTerms();
+    const terms1 = model1.getTerms();
+    const terms2 = model2.getTerms();
 
     //function that calculates regression based on obtained terms
     const my_predict = (coeffs,X) => {
@@ -59,8 +64,8 @@ const Step3 = (props) => {
          }
         return dataPoints;
     }
-    console.log(terms)
-    const poly = getPolyData(terms);
+    const poly1 = getPolyData(terms1);
+    const poly2 = getPolyData(terms2);
 
     const error_graph = {
         zoomEnabled: true,
@@ -95,37 +100,37 @@ const Step3 = (props) => {
         data: [{
             type: "line",
             toolTipContent: "{x}: {y}",
-            dataPoints: getPointsData(poly)
+            dataPoints: getPointsData(poly2)
         },
         {
             type: "line",
             color: "red",
-            dataPoints: getPointsData([[housesDataset[0][0], poly[housesDataset[0][0]][1]], housesDataset[0]])   
+            dataPoints: getPointsData([[housesDataset[0][0], poly2[housesDataset[0][0]][1]], housesDataset[0]])   
         },
         {
             type: "line",
             color: "red",
-            dataPoints: getPointsData([[housesDataset[1][0], poly[housesDataset[1][0]][1]], housesDataset[1]])   
+            dataPoints: getPointsData([[housesDataset[1][0], poly2[housesDataset[1][0]][1]], housesDataset[1]])   
         },
         {
             type: "line",
             color: "red",
-            dataPoints: getPointsData([[housesDataset[2][0], poly[housesDataset[2][0]][1]], housesDataset[2]])   
+            dataPoints: getPointsData([[housesDataset[2][0], poly2[housesDataset[2][0]][1]], housesDataset[2]])   
         },
         {
             type: "line",
             color: "red",
-            dataPoints: getPointsData([[housesDataset[3][0], poly[housesDataset[3][0]][1]], housesDataset[3]])   
+            dataPoints: getPointsData([[housesDataset[3][0], poly2[housesDataset[3][0]][1]], housesDataset[3]])   
         },
         {
             type: "line",
             color: "red",
-            dataPoints: getPointsData([[housesDataset[4][0], poly[housesDataset[4][0]][1]], housesDataset[4]])   
+            dataPoints: getPointsData([[housesDataset[4][0], poly2[housesDataset[4][0]][1]], housesDataset[4]])   
         },
         {
             type: "line",
             color: "red",
-            dataPoints: getPointsData([[housesDataset[5][0], poly[housesDataset[5][0]][1]], housesDataset[5]])   
+            dataPoints: getPointsData([[housesDataset[5][0], poly2[housesDataset[5][0]][1]], housesDataset[5]])   
         }]
     }
 
@@ -164,7 +169,7 @@ const Step3 = (props) => {
             legendText: "prediction",
             type: "line",
             toolTipContent: "{x}: {y}",
-            dataPoints: getPointsData(poly)
+            dataPoints: getPointsData(poly1)
         },
         {
             showInLegend: true,
@@ -177,13 +182,16 @@ const Step3 = (props) => {
 
     
     return (
-        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" }}>
+        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" , paddingTop: "1em" }}>
+        <Row >
+            <Col style={{ textAlign: "left" }}> <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+            <Col><h3>Simple linear regression graph</h3></Col>
+            <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+        </Row>
+        <hr />
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-                <h3>Simple linear regression graph</h3> 
-                <hr></hr><br />
                 <Row>
                     <Col> 
-                     {/*TO-DO add description of what is on the graph and what can you do with it*/}
                      <div style={{textAlign: "left"}}>
                         On the right, you can see the graphical representation of linear regression for the previous example.
                             The graph shows the most accurate representation of the current dataset that can be obtained by a <b>linear function</b>.
@@ -206,7 +214,7 @@ const Step3 = (props) => {
                             <Form.Label>Choose polynom degree:</Form.Label>
                         </Col>
                         <Col>
-                            <Form.Select id="dropdown" onChange={handler}>
+                            <Form.Select id="dropdown" onChange={handler1}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -241,7 +249,7 @@ const Step3 = (props) => {
                             <Form.Label>Choose polynom degree:</Form.Label>
                         </Col>
                         <Col>
-                            <Form.Select id="dropdown" onChange={handler}>
+                            <Form.Select id="dropdown" onChange={handler2}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>

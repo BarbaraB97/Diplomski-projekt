@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Container, Row, Button, Col, Table, Modal } from "react-bootstrap";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import PolynomialRegression from "js-polynomial-regression";
 import CanvasJSReact from './canvasjs.react';
-import ModalWindow from '../../components/ModalWindow'
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -174,13 +174,17 @@ const Step5 = (props) => {
 
 
     return (
-        <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
-            <Container style={{ textAlign: "center", height: '30em'}}>
-				<br></br>
-                <h2>Problem 1</h2>
-				<hr></hr><br />
+        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" , paddingTop: "1em" }}>
+            <Row >
+                <Col style={{ textAlign: "left" }}> <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+                <Col> <h2>Problem 1</h2>
+                </Col>
+                <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
+            </Row>
+            <hr />
+            <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
                 <Row>
-                    <h4><b>Task:</b> Choose the best model for the given data</h4>
+                    <h4><b>Task: </b>Choose the best model for the given data</h4>
                 </Row>
 				<Table striped bordered hover id="simpleRegressionTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
                 {/*TO-DO find some dataset and put in this table*/}
@@ -190,21 +194,22 @@ const Step5 = (props) => {
                     <Modal.Header closeButton>
                         <Modal.Title>Good job!</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>That is correct answer. Move on to next task.</Modal.Body>
+                    <Modal.Body>That is correct answer. Move on to the next task.</Modal.Body>
                         <Modal.Footer>
-                        <Button variant="primary" onClick={handleClose}>
-                        Close
+                        <Button variant="primary" onClick={() => {
+                            handleClose()
+                            props.nextStep()}}>
+                            Next
                         </Button>
                      </Modal.Footer>
                 </Modal>
-                <Modal show={showWrong} onHide={handleClose}>
+                <Modal show={showWrong} onHide={handleClose} >
                     <Modal.Header closeButton>
                         <Modal.Title>Too bad!</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>That is not the best choice for this data. Try again!</Modal.Body>
                         <Modal.Footer>
                         <Button variant="primary" onClick={handleClose}>
-                        {/* TO-do: not close but 'next' button */}
                         Close
                         </Button>
                      </Modal.Footer>
@@ -212,19 +217,19 @@ const Step5 = (props) => {
                 <Row>
                     <Col>
                     <div class= "card-header">degree = 1</div>
-                        <div class = "card text-center" style = {graphStyles.graph1} onClick = {()=> updateStyles("graph1")} >
+                        <div class = "card" style = {graphStyles.graph1} onClick = {()=> updateStyles("graph1")} >
                             <CanvasJSChart options = {graph1} />
                         </div>
                     </Col>
                     <Col>
                     <div class= "card-header">degree = 2</div>
-                        <div class = "card text-center" style = {graphStyles.graph2} onClick = {()=> updateStyles("graph2")} >
+                        <div class = "card" style = {graphStyles.graph2} onClick = {()=> updateStyles("graph2")} >
                             <CanvasJSChart options = {graph2} />
                         </div>
                     </Col>
                     <Col>
                     <div class= "card-header">degree = 5</div>
-                        <div class = "card text-center" style = {graphStyles.graph3} onClick = {()=> updateStyles("graph3")} >
+                        <div class = "card" style = {graphStyles.graph3} onClick = {()=> updateStyles("graph3")} >
                             <CanvasJSChart options = {graph3} />
                         </div>
                     </Col>

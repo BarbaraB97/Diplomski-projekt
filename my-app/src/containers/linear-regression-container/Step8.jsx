@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Button, Col, Table, Form } from "react-bootstrap";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import PolynomialRegression from "js-polynomial-regression";
 import CanvasJSReact from './canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -29,8 +30,9 @@ const Step8 = (props) => {
     const getPolyData = (terms) => {
         let dataPoints = [] 
         var maxVal = Math.max.apply(Math, dps.map(function(o) { return o[0]; }))
+        var minVal = Math.min.apply(Math, dps.map(function(o) { return o[0]; }))
         // TO-DO don't use hardcoded value ?
-        for(let i = 0; i <= maxVal; i+=maxVal/200)
+        for(let i = minVal; i <= maxVal; i+=0.01)
             {let y = my_predict(terms,i)
             dataPoints.push([i,y]);
             }
@@ -133,16 +135,15 @@ const Step8 = (props) => {
     
 
     return (
-        <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
-            <Container style={{ textAlign: "center", height: '30em'}}>
-				<br></br>
-                <h2>Regression playground</h2>
-				<hr></hr>
-
-				<Table striped bordered hover id="simpleRegressionTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
-                                  
-                </Table>
-
+        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" , paddingTop: "1em" }}>
+            <Row >
+                <Col style={{ textAlign: "left" }}> <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
+                <Col> <h2>Regression playground</h2>
+                </Col>
+            <Col></Col>
+            </Row>
+            <hr />
+            <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
                 <Form>
                     <Row>
                         <Col>
