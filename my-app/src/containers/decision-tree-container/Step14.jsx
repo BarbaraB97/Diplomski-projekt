@@ -133,30 +133,33 @@ const Step14 = (props) => {
                                     <li>
                                         From the dataset in the beggining, we've created a Decision Tree using ID3 algorithm. Now, let's test your knowledge...
                                     </li>
-                            
+
                                     <li>
-                                        For each row in the table check <b>YES</b> or <b>NO</b> if you think beach volleyball should be played under that circumstances. Use our decision tree as a guide.
+                                        For each row in the table check <b>YES</b> or <b>NO</b> if you think that <b>given outcome is correct.</b> Use our decision tree as a guide.
                                     </li>
                                     <li>
-                                        Check your answers afterwards to see how much you've learned. Good luck!
+                                        <b>Check</b> your answers afterwards to see how much you've learned. Good luck!
                                     </li>
                                 </ul>
                                 </Card.Body>
                             </Card>
 
-                            <DecisionTree data={TreeData} orientation={"vertical"} width={550} height={450}></DecisionTree>
-
                         </Col>
                         <Col style={{ textAlign: "left" }}>
                             <Row>
                                 <Col sm={{ offset: 1 }}>
-                                    <TestDataset handleRowData={handleRowData}></TestDataset>
+                                    <TestDataset handleRowData={handleRowData} nextStep =  {() => props.nextStep()}></TestDataset>
 
                                 </Col>
                             </Row>
-                           
 
 
+
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={{ offset: 2 }}>
+                            <DecisionTree data={TreeData} orientation={"vertical"} width={800} height={500}></DecisionTree>
                         </Col>
                     </Row>
 

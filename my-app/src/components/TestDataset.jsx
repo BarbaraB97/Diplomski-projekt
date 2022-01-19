@@ -1,17 +1,20 @@
 import React from 'react'
 import { useState } from 'react'
-import { Table, Container, Col, Row, Button, OverlayTrigger, Popover } from 'react-bootstrap'
+import { Table, Container, Col, Row, Button, Fade, Card } from 'react-bootstrap'
+import { BsFillArrowRightCircleFill } from "react-icons/bs"
+const TestDataset = ({ isTableStriped, handleRowData, nextStep }) => {
 
-const TestDataset = ({ isTableStriped, handleRowData }) => {
-
-    const [selectedRowIndex, setSelectedRowIndex] = useState(1)
+    const [selectedRowIndex, setSelectedRowIndex] = useState(null)
     const [selectedRowData, setSelectedRowData] = useState(null)
+    const [allAnswersCorrect, setAllAnswersCorrect] = useState(false);
 
     let chosenAnswers = [{ index: 1, chosenAnswer: null },
     { index: 2, chosenAnswer: null },
     { index: 3, chosenAnswer: null },
     { index: 4, chosenAnswer: null },
     { index: 5, chosenAnswer: null }]
+
+    let correctAnswers = ["YES", "YES", "NO", "NO", "YES"]
 
     const highlightButtonsOnClick = (index, answer) => {
         //update chosen answer
@@ -40,17 +43,20 @@ const TestDataset = ({ isTableStriped, handleRowData }) => {
             setShowPopover(true)
             return;
         }*/
-       
 
-            chosenAnswers.filter(chosenAnswer => chosenAnswer.chosenAnswer!==null).forEach((chosenAnswer) => {
-                if (chosenAnswer.chosenAnswer === weatherDataset[chosenAnswer.index - 1].correct) {
-                    //highlight correct answer
-                    document.getElementById(chosenAnswer.index + chosenAnswer.chosenAnswer).style.backgroundColor = "rgb(52, 191, 73, 0.7)";
-                }
-                else {
-                    document.getElementById(chosenAnswer.index + chosenAnswer.chosenAnswer).style.backgroundColor = "rgb(255, 76, 76, 0.7)";
-                }
-            })
+        let cnt = 0;
+        chosenAnswers.filter(chosenAnswer => chosenAnswer.chosenAnswer !== null).forEach((chosenAnswer) => {
+
+            if (chosenAnswer.chosenAnswer === correctAnswers[chosenAnswer.index - 1]) {
+                //highlight correct answer
+                cnt++;
+                document.getElementById(chosenAnswer.index + chosenAnswer.chosenAnswer).style.backgroundColor = "rgb(52, 191, 73, 0.7)";
+            }
+            else {
+                document.getElementById(chosenAnswer.index + chosenAnswer.chosenAnswer).style.backgroundColor = "rgb(255, 76, 76, 0.7)";
+            }
+        })
+        if (cnt === 5) setAllAnswersCorrect(true);
     }
 
     const handleRowClick = (record, index) => {
@@ -66,11 +72,11 @@ const TestDataset = ({ isTableStriped, handleRowData }) => {
     };
 
     let weatherDataset = [
-        { outlook: "sunny", temperature: "hot", humidity: "high", windy: "false", play: "NO", correct:"NO" },
-        { outlook: "overcast", temperature: "hot", humidity: "high", windy: "false", play: "NO", correct:"NO"},
-        { outlook: "rainy", temperature: "cool", humidity: "normal", windy: "false", play: "YES", correct:"YES" },
-        { outlook: "rainy", temperature: "mild", humidity: "normal", windy: "false", play: "YES", correct:"YES" },
-        { outlook: "sunny", temperature: "mild", humidity: "normal", windy: "true", play: "YES", correct:"NO" },
+        { outlook: "sunny", temperature: "hot", humidity: "high", windy: "true", play: "NO" },
+        { outlook: "overcast", temperature: "hot", humidity: "high", windy: "false", play: "YES" },
+        { outlook: "rainy", temperature: "cool", humidity: "normal", windy: "true", play: "YES" },
+        { outlook: "sunny", temperature: "cool", humidity: "normal", windy: "false", play: "NO" },
+        { outlook: "overcast", temperature: "hot", humidity: "normal", windy: "false", play: "YES" },
     ]
 
     const generateTable = () => {
@@ -146,13 +152,27 @@ const TestDataset = ({ isTableStriped, handleRowData }) => {
 
         </Row>
         <Row>
+            <Col md={3}>
+                <Button onClick={() => checkAnswers()}>Check answers</Button>
+            </Col>
             <Col>
-                <OverlayTrigger placement="bottom"
-                    overlay={<Popover id="popover-basic">
-                        <Popover.Header as="h3">Please answer all questions before checking</Popover.Header>
-                    </Popover>}>
-                    <Button onClick={() => checkAnswers()}>Check answers</Button>
-                </OverlayTrigger>
+                <Fade in={allAnswersCorrect}>
+                    <Row>
+                        <Col md={8}>
+                            <Card>
+                                <Card.Body>
+                                    <h6>Great job! You answered everything correctly! You can proceed to our next quiz... Good luck! </h6>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        <Col style={{}}>
+                            <br/>
+                            <BsFillArrowRightCircleFill size={50} onClick={nextStep} style={{cursor:"pointer"}}></BsFillArrowRightCircleFill>
+                        </Col>
+                    </Row>
+
+                </Fade>
+
             </Col>
         </Row>
 
