@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Table } from "react-bootstrap";
+import { Container, Row, Button, Col, Table, Modal } from "react-bootstrap";
 import PolynomialRegression from "js-polynomial-regression";
 import CanvasJSReact from './canvasjs.react';
+import ModalWindow from '../../components/ModalWindow'
+
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Step5 = (props) => {
@@ -21,10 +23,18 @@ const Step5 = (props) => {
     const initialStyles = undefined
     const correct_answer = "graph2";
     const[graphStyles, setGraphStyles]=useState({initialStyles})
-    
+    const [showCorrect, setShowCorrect] = useState(false);
+    const [showWrong, setShowWrong] = useState(false);
+
+    //close modal window
+    const handleClose = () => {
+        setShowCorrect(false);
+        setShowWrong(false);
+    }
+
     //update style of graph based on accuracy of answer
     const updateStyles = (answer) => {
-        if(answer===correct_answer) 
+        if(answer===correct_answer) {
             setGraphStyles({graphStyles,[answer]:
             {
             borderStyle:"solid",
@@ -32,7 +42,9 @@ const Step5 = (props) => {
             borderWidth:"5px"
             }
         })
-        if(answer!==correct_answer) 
+        setShowCorrect(true);
+    }
+        if(answer!==correct_answer) {
             setGraphStyles({graphStyles,[answer]:
             {
                 borderStyle:"solid",
@@ -40,6 +52,8 @@ const Step5 = (props) => {
                 borderWidth:"5px"
             }
         })
+        setShowWrong(true);
+    }
     }
 
     //function that transforms array of points in format for graph (array of JSONs)
@@ -160,15 +174,41 @@ const Step5 = (props) => {
 
 
     return (
-        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" }}>
+        <Container className='justify-content-center' style={{ textAlign: "center", width: '80em', background: 'rgb(252, 249, 242)', paddingBottom: "1em" }}>
             <Container style={{ textAlign: "center", height: '30em'}}>
 				<br></br>
                 <h2>Problem 1</h2>
-				{/*TO-DO Description of the problem */}
 				<hr></hr><br />
+                <Row>
+                    <h4><b>Task:</b> Choose the best model for the given data</h4>
+                </Row>
 				<Table striped bordered hover id="simpleRegressionTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
                 {/*TO-DO find some dataset and put in this table*/}
                 </Table>
+                {/* TO-DO: make this out of this class */}
+                <Modal show={showCorrect} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Good job!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>That is correct answer. Move on to next task.</Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="primary" onClick={handleClose}>
+                        Close
+                        </Button>
+                     </Modal.Footer>
+                </Modal>
+                <Modal show={showWrong} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Too bad!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>That is not the best choice for this data. Try again!</Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="primary" onClick={handleClose}>
+                        {/* TO-do: not close but 'next' button */}
+                        Close
+                        </Button>
+                     </Modal.Footer>
+                </Modal>
                 <Row>
                     <Col>
                     <div class= "card-header">degree = 1</div>
@@ -196,7 +236,7 @@ const Step5 = (props) => {
                     <Button style={{backgroundColor:"rgb(197, 235, 202)", color:"rgb(0,0,0)", borderColor:"rgb(158, 250, 192)"}} onClick={props.previousStep}>Previous Step</Button>
                     <Button style={{backgroundColor:"rgb(197, 235, 202)", color:"rgb(0,0,0)", borderColor:"rgb(158, 250, 192)"}} disabled>Current Step:{props.currentStep} </Button>
                     <Button style={{backgroundColor:"rgb(197, 235, 202)", color:"rgb(0,0,0)", borderColor:"rgb(158, 250, 192)"}} onClick={props.nextStep}>Next Step</Button>
-                    <Button style={{backgroundColor:"rgb(197, 235, 202)", color:"rgb(0,0,0)", borderColor:"rgb(158, 250, 192)"}} onClick={() => props.goToStep(8)}>Last Step</Button>
+                    <Button style={{backgroundColor:"rgb(197, 235, 202)", color:"rgb(0,0,0)", borderColor:"rgb(158, 250, 192)"}} onClick={() => props.goToStep(3)}>Last Step</Button>
                 </Col>
             </Row>
         </Container>

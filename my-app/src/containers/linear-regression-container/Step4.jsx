@@ -1,6 +1,5 @@
 import { Container, Row, Button, Col } from "react-bootstrap";
 import question from "../../assets/question_mark.png"
-import CanvasJSReact from './canvasjs.react';
 
 const Step4 = (props) => {
 
@@ -22,6 +21,9 @@ const Step4 = (props) => {
                             </li>
                             <li>
 							You will then be able to check the accuracy of your solution
+                            </li>
+                            <li>
+							When you are done you can go to the <b>playground</b> and try out regression for your own data
                             </li>
                         </ul>
 					</Col>

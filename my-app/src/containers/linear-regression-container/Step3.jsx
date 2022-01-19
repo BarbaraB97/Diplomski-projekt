@@ -279,17 +279,6 @@ const Step3 = (props) => {
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
-                    
-                        {/* <Accordion defaultActiveKey="1"
-                            style={{ backgroundColor: "rgb(197, 235, 202)" }}>
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header>What is overfitting?</Accordion.Header>
-                                <Accordion.Body>
-                                Overfitting a model is a condition where a statistical model begins to describe the random error in the data rather than the relationships between variables. This problem occurs when the model is too complex.<br/>
-                                <br/>In our dataset this happens with the model of polynom <b>degree 5</b>.   
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion> */}
                         </Col>
                 </Row>
                 
