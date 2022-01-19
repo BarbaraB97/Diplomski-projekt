@@ -127,20 +127,18 @@ const Step14 = (props) => {
                 <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
 
                     <Row>
-                        <Col md={5} style={{ textAlign: "left" }}>
+                        <Col md={4} style={{ textAlign: "left" }}>
                             <Card>
                                 <Card.Body><ul>
                                     <li>
-                                        From the dataset in the beggining, we've created a Decision Tree using ID3 algorithm.
+                                        From the dataset in the beggining, we've created a Decision Tree using ID3 algorithm. Now, let's test your knowledge...
+                                    </li>
+                            
+                                    <li>
+                                        For each row in the table check <b>YES</b> or <b>NO</b> if you think beach volleyball should be played under that circumstances. Use our decision tree as a guide.
                                     </li>
                                     <li>
-                                        Now, let's test our model..
-                                    </li>
-                                    <li>
-                                        <b>Click</b> on every row and <b>check</b> if the value of feature "Play" matches with the one we predicted using our Decision tree model!
-                                    </li>
-                                    <li>
-                                        For the last row mark Outcome as <b>YES</b> by checking the box or <b>NO</b> by leaving it unchecked
+                                        Check your answers afterwards to see how much you've learned. Good luck!
                                     </li>
                                 </ul>
                                 </Card.Body>
@@ -156,44 +154,7 @@ const Step14 = (props) => {
 
                                 </Col>
                             </Row>
-                            <Row>
-                                <Col sm={{ offset: 1 }}>
-                                    <Table bordered hover style={{ backgroundColor: "rgb(190, 214, 220)", width: "35em" }}>
-                                        <tbody>
-                                            <tr>
-                                                <td>{rowIndex}</td>
-                                                <td>{rowData.outlook}</td>
-                                                <td>{rowData.temperature}</td>
-                                                <td>{rowData.humidity}</td>
-                                                <td>{rowData.windy}</td>
-                                                <td>{rowData.play}</td>
-                                                <td><Form><Form.Check type="checkbox" checked={rowChecked[rowIndex - 1]} onChange={handleCheckboxChange} label="Is Prediction Right?" /></Form></td>
-                                            </tr>
-                                        </tbody>
-                                    </Table>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col sm={{ offset: 1 }}>
-                                    <Button onClick={checkTheTable}>Check</Button>
-                                </Col>
-                            </Row>
-                            <Fade in={readyToCheck === "ready"}>
-                                <Row>
-                                    <Col sm={{ offset: 1 }} style={{ position: "center" }}>
-                                        <br />
-                                        <Collapse in={incorrectNo === 0}>
-                                            <p><Button style={{ color: "black", background: "transparent", borderColor: "rgb(0, 102, 0)" }}><b>Correct!!!</b></Button></p>
-                                        </Collapse>
-                                        <Collapse in={incorrectNo > 0}>
-                                            <p><Button style={{ color: "black", background: "transparent", borderColor: "rgb(255, 153, 153)" }}><b>Incorrect!!!</b></Button>
-                                                <br /> <br />
-                                                You have {incorrectNo} wrong answers!
-                                            </p>
-                                        </Collapse>
-                                    </Col>
-                                </Row>
-                            </Fade>
+                           
 
 
                         </Col>
