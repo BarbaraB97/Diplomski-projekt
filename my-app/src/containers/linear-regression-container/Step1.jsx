@@ -1,4 +1,4 @@
-import { Container, Row, Button, Col } from "react-bootstrap";
+import { Container, Row, Button, Col, Card } from "react-bootstrap";
 import LinearRegression from "../../assets/LinearRegression.png"
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
@@ -14,12 +14,22 @@ const Step1 = (props) => {
             </Row>
             <hr />
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-                <p><b>Linear regression</b> is a linear approach for modeling the relationship between one dependent and one or more independent variables.<br></br>
-                 When there is just one independent variable it is called simple linear regression
-                    and if there is more of them, we are talking about multiple linear regression.<br/>
-                 Linear regression is a basic and commonly used type of predictive analysis in many fields.</p>
-                <img src={LinearRegression} alt="example" height={250} />
+            <Card >
+                            <Card.Body>
+                                <Card.Text>
+                                        <p><b>Linear regression</b> is a linear approach for modeling the relationship between one dependent and one or more independent variables.<br></br>
+                                            When there is just one independent variable it is called simple linear regression
+                                                and if there is more of them, we are talking about multiple linear regression.<br/>
+                                            Linear regression is a basic and commonly used type of predictive analysis in many fields.</p>
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card >
+                            <Card.Body>
+                            <img src={LinearRegression} alt="example" height={250} />
                 <p>In the next step you can see the example of a simple linear regression problem.</p>
+                            </Card.Body>
+                        </Card>
             </Container>
             <Row>
                 <Col >

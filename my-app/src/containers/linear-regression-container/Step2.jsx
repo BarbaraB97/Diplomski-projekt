@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Accordion, Table } from "react-bootstrap";
+import { Container, Row, Button, Col, Accordion, Table, Card } from "react-bootstrap";
 import Dataset from '../../components/Simple_lin_reg_dataset'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
@@ -33,9 +33,16 @@ const Step2 = (props) => {
                         <Dataset areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted} chosenFeature={chosenFeature}></Dataset>
                     </Col>
                     <Col style={{ textAlign: "left" }}>
-                    <b>Simple linear regression</b> is a linear regression model with a single explanatory variable. That is, it concerns two-dimensional sample points 
+                    <Card >
+                            <Card.Body>
+                                <Card.Text>
+                                <b>Simple linear regression</b> is a linear regression model with a single explanatory variable. That is, it concerns two-dimensional sample points 
                     with one independent and one dependent variable and finds a linear function that, 
                     as accurately as possible, predicts the dependent variable values as a function of the independent variable.<br /><br />
+                    
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
                     
                     <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}

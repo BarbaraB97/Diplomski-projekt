@@ -191,7 +191,7 @@ const Step7 = (props) => {
                     <Modal.Header closeButton>
                         <Modal.Title>Good job!</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>That is correct answer! You can try out the playground now.</Modal.Body>
+                    <Modal.Body>That is the correct answer! You can try out the playground now.</Modal.Body>
                         <Modal.Footer>
                         <Button variant="primary" onClick={() => {
                             handleClose()

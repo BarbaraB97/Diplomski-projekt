@@ -1,4 +1,4 @@
-import { Container, Row, Button, Col } from "react-bootstrap";
+import { Container, Row, Button, Col, Card } from "react-bootstrap";
 import question from "../../assets/question_mark.png"
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
@@ -18,7 +18,10 @@ const Step4 = (props) => {
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
 				<Row style = {{textAlign:"center"}}>
 					<Col md={6} style={{ textAlign: "left" ,fontSize: 16}}>
-					<ul>
+                    <Card >
+                            <Card.Body>
+                                <Card.Text>
+                                <ul>
                             <li>
                             In the following steps, you will get several dataset examples and corresponding graphs of <b>different degrees</b> of regression for each of them
                             </li>
@@ -32,6 +35,9 @@ const Step4 = (props) => {
 							When you are done you can go to the <b>playground</b> and try out regression for your own data
                             </li>
                         </ul>
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
 					</Col>
 					<Col md={6} style={{ textAlign: "center" }}>
 						<img src={question} alt="questionmark" height={250} />

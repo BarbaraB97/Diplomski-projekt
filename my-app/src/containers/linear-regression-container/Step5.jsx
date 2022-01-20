@@ -194,7 +194,7 @@ const Step5 = (props) => {
                     <Modal.Header closeButton>
                         <Modal.Title>Good job!</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>That is correct answer. Move on to the next task.</Modal.Body>
+                    <Modal.Body>That is the correct answer. Move on to the next task.</Modal.Body>
                         <Modal.Footer>
                         <Button variant="primary" onClick={() => {
                             handleClose()
