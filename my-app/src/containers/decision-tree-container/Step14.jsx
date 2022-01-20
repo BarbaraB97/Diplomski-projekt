@@ -137,10 +137,10 @@ const Step14 = (props) => {
                     </Row>
                     <br/>
                     <Row>
-                        <Col md={5}>
-                            <DecisionTree data={TreeData} orientation={"vertical"} width={500}></DecisionTree>
+                        <Col md={6}>
+                            <DecisionTree data={TreeData} orientation={"vertical"} width={600} heigth={500}></DecisionTree>
                         </Col>
-                        <Col md={7}>
+                        <Col md={6}>
                             <TestDataset handleRowData={handleRowData} nextStep={() => props.nextStep()}></TestDataset>
                         </Col>
                     </Row>

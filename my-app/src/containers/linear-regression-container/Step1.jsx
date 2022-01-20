@@ -23,7 +23,7 @@ const Step1 = (props) => {
                                             Linear regression is a basic and commonly used type of predictive analysis in many fields.</p>
                                 </Card.Text>
                             </Card.Body>
-                        </Card>
+                        </Card><br/>
                         <Card >
                             <Card.Body>
                             <img src={LinearRegression} alt="example" height={250} />
