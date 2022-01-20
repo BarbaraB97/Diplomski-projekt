@@ -94,7 +94,7 @@ const Step13 = (props) => {
 
                 </Row>
                 <hr />
-                <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
+                <Container style={{ paddingBottom: "1em" }}>
 
                     <Row>
                         <Col md={4}>
@@ -128,9 +128,9 @@ const Step13 = (props) => {
                             </Fade>
                             <Fade in={chosenFeature === "Windy"}>
 
-                                <Row>
+                              
                                     <DecisionTree data={TreeData} width={"45em"} height={"30em"} orientation={"vertical"}></DecisionTree>
-                                </Row>
+                            
                             </Fade>
                         </Col>
                         <Col md={1}></Col>

@@ -41,7 +41,7 @@ const Step12 = (props) => {
 
                 </Row>
                 <hr />
-                <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
+                <Container style={{ paddingBottom: "1em" }}>
 
                     <Row>
                         <Col md={4}>

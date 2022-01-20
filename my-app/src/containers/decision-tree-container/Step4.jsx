@@ -30,7 +30,7 @@ const Step4 = (props) => {
                     <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
                 </Row>
                 <hr />
-                <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
+                <Container style={{ paddingBottom: "1em" }}>
             
                     <Row>
                         <Col>

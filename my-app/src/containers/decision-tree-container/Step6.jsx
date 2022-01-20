@@ -20,9 +20,7 @@ const Step6 = (props) => {
                 <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
             </Row>
             <hr />
-            <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-
-
+            <Container style={{ paddingBottom: "1em" }}>
                 <Row>
                     <Col>
                         <Table bordered hover style={{ heigth: "15em", width: "30em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
@@ -53,7 +51,7 @@ const Step6 = (props) => {
                         </Table>
                         <Fade in={chosenFeature === "Outlook"}>
                             <Row>
-                                <DecisionTree width={"35em"} height={"30em"} orientation={"vertical"}></DecisionTree>
+                                <DecisionTree width={"35em"} orientation={"vertical"}></DecisionTree>
                             </Row>
                         </Fade>
                     </Col>

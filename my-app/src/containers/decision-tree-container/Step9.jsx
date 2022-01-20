@@ -77,7 +77,7 @@ const Step9 = (props) => {
                 <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)", marginRight:"1em" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button>
             </Row>
             <hr />
-            <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
+            <Container style={{paddingBottom: "1em" }}>
 
                 <Row>
                     <Col md={4}>

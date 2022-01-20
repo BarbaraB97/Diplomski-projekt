@@ -12,7 +12,7 @@ const Step3 = (props) => {
                 <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
             </Row>
             <hr />
-            <Container style={{ textAlign: "center", height: '30em', width: "auto", paddingTop: "2em", paddingBottom: "2em" }}>
+            <Container style={{ textAlign: "center", height: '30em', width: "auto", paddingBottom: "1em" }}>
 
                 <Row>
                     <Col md={5} style={{ textAlign: "left", marginLeft: "3em", marginRight: "3em", marginBottom: "1em" }}>
