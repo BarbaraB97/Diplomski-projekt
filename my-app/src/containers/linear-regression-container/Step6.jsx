@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Table, Modal } from "react-bootstrap";
+import { Container, Row, Button, Col, Table, Modal, Popover, OverlayTrigger } from "react-bootstrap";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import PolynomialRegression from "js-polynomial-regression";
 import CanvasJSReact from './canvasjs.react';
@@ -11,12 +11,13 @@ const Step6 = (props) => {
       -- this has to be a function that converts dataset into array of points 
       -- dataset has to be read from some file
     */ 
+      const [show, setShow] = useState(false);
       const dataset = [
-        [5, 5],
-        [20, 23], 
-        [40, 45],
-        [60, 56],
-        [70, 71],
+        [10, 100],
+        [25, 180], 
+        [40, 320],
+        [60, 500],
+        [100, 700]
     ]
 
     const initialStyles = undefined
@@ -77,7 +78,7 @@ const Step6 = (props) => {
     const getPolyData = (terms) => {
         let dataPoints = [] 
         // TO-DO don't use hardcoded value ?
-        for(let i = 0; i <= 70; i+=1)
+        for(let i = 9; i <= 100; i+=1)
             {let y = my_predict(terms,i)
             dataPoints.push([i,y]);
             }
@@ -89,10 +90,10 @@ const Step6 = (props) => {
     let model = PolynomialRegression.read(data, 1);
     const terms1 = model.getTerms();
 
-    model = PolynomialRegression.read(data, 2);
+    model = PolynomialRegression.read(data, 3);
     const terms2 = model.getTerms();
 
-    model = PolynomialRegression.read(data, 3);
+    model = PolynomialRegression.read(data, 5);
     const terms3 = model.getTerms();
 
     const points1 = getPolyData(terms1);
@@ -109,7 +110,7 @@ const Step6 = (props) => {
         axisX: {
             title: "",
         },
-        width: 350,
+        width: 550,
         height: 250,
         data: [{
             type: "line",
@@ -133,7 +134,7 @@ const Step6 = (props) => {
         axisX: {
             title: "",
         },
-        width: 350,
+        width: 550,
         height: 250,
         data: [{
             type: "line",
@@ -184,7 +185,20 @@ const Step6 = (props) => {
         <hr />
         <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
             <Row>
-                <h4><b>Task: </b>Choose the best model for the given data</h4>
+                <h4><b>Task: </b>Choose the best model for the given data &nbsp;
+                <OverlayTrigger show={show} placement="bottom"
+                                            overlay={<Popover id="popover-basic">
+                                                <Popover.Header as="h3">Story behind the data:</Popover.Header>
+                                                <Popover.Body>
+                                                    <ul>
+                                                        <li>x-axis - size of apartment</li>
+                                                        <li>y-axis - price of apartment</li>
+                                                    </ul>
+                                                </Popover.Body>
+                                            </Popover>}>
+                                            <Button onClick={() => setShow(!show)}>Help</Button>
+                                        </OverlayTrigger>
+                                        </h4>
             </Row>
 				<Table striped bordered hover id="simpleRegressionTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
                 {/*TO-DO find some dataset and put in this table*/}
@@ -222,17 +236,17 @@ const Step6 = (props) => {
                         </div>
                     </Col>
                     <Col>
-                    <div class= "card-header">degree = 2</div>
+                    <div class= "card-header">degree = 3</div>
                         <div class = "card text-center" style = {graphStyles.graph2} onClick = {()=> updateStyles("graph2")} >
                             <CanvasJSChart options = {graph2} />
                         </div>
                     </Col>
-                    <Col>
-                    <div class= "card-header">degree = 3</div>
+                    {/* <Col>
+                    <div class= "card-header">degree = 5</div>
                         <div class = "card text-center" style = {graphStyles.graph3} onClick = {()=> updateStyles("graph3")} >
                             <CanvasJSChart options = {graph3} />
                         </div>
-                    </Col>
+                    </Col> */}
 		        </Row>
           
             </Container>

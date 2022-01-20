@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Table, Modal } from "react-bootstrap";
+import { Container, Row, Button, Col, Table, Modal, Popover, OverlayTrigger } from "react-bootstrap";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import PolynomialRegression from "js-polynomial-regression";
 import CanvasJSReact from './canvasjs.react';
@@ -12,6 +12,7 @@ const Step5 = (props) => {
       -- this has to be a function that converts dataset into array of points 
       -- dataset has to be read from some file
     */ 
+    const [show, setShow] = useState(false);
     const dataset = [
         [10, 100],
         [25, 400], 
@@ -184,7 +185,24 @@ const Step5 = (props) => {
             <hr />
             <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
                 <Row>
-                    <h4><b>Task: </b>Choose the best model for the given data</h4>
+                    <h4><b>Task: </b>Choose the best model for the given data &nbsp;
+                    <OverlayTrigger show={show} placement="bottom"
+                                            overlay={<Popover id="popover-basic">
+                                                <Popover.Header as="h3">Remember under- and overfitting?</Popover.Header>
+                                                <Popover.Body>
+                                                <ul>
+                                    <li>
+                                    <b>Underfitting</b> occurs when our statistical model cannot adequately capture the underlying structure of the data
+                                    </li>
+                                    <li>
+                                    <b>Overfitting</b> is a condition where a statistical model begins to describe the random error in the data rather than the relationships between variables
+                                    </li>
+                                    </ul>
+                                                </Popover.Body>
+                                            </Popover>}>
+                                            <Button onClick={() => setShow(!show)}>Help</Button>
+                                        </OverlayTrigger>
+                    </h4>
                 </Row>
 				<Table striped bordered hover id="simpleRegressionTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
                 {/*TO-DO find some dataset and put in this table*/}
