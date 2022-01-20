@@ -124,42 +124,24 @@ const Step14 = (props) => {
                     <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
                 </Row>
                 <hr />
-                <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
+                <Container style={{ paddingBottom: "2em" }}>
 
                     <Row>
-                        <Col md={4} style={{ textAlign: "left" }}>
-                            <Card>
-                                <Card.Body><ul>
-                                    <li>
-                                        From the dataset in the beggining, we've created a Decision Tree using ID3 algorithm. Now, let's test your knowledge...
-                                    </li>
-
-                                    <li>
-                                        For each row in the table check <b>YES</b> or <b>NO</b> if you think that <b>given outcome is correct.</b> Use our decision tree as a guide.
-                                    </li>
-                                    <li>
-                                        <b>Check</b> your answers afterwards to see how much you've learned. Good luck!
-                                    </li>
-                                </ul>
-                                </Card.Body>
-                            </Card>
-
-                        </Col>
-                        <Col style={{ textAlign: "left" }}>
-                            <Row>
-                                <Col sm={{ offset: 1 }}>
-                                    <TestDataset handleRowData={handleRowData} nextStep =  {() => props.nextStep()}></TestDataset>
-
-                                </Col>
-                            </Row>
-
-
-
-                        </Col>
+                        <Card>
+                            <Card.Body>
+                                From the dataset in the beggining, we've created a Decision Tree using ID3 algorithm. Now, let's test your knowledge...
+                                For each row in the table check <b>YES</b> or <b>NO</b> if you think that <b>given outcome is correct.</b> Use our decision tree as a guide.
+                                <b> Check</b> your answers afterwards to see how much you've learned. Good luck!
+                            </Card.Body>
+                        </Card>
                     </Row>
+                    <br/>
                     <Row>
-                        <Col md={{ offset: 2 }}>
-                            <DecisionTree data={TreeData} orientation={"vertical"} width={800} height={500}></DecisionTree>
+                        <Col md={5}>
+                            <DecisionTree data={TreeData} orientation={"vertical"} width={500}></DecisionTree>
+                        </Col>
+                        <Col md={7}>
+                            <TestDataset handleRowData={handleRowData} nextStep={() => props.nextStep()}></TestDataset>
                         </Col>
                     </Row>
 

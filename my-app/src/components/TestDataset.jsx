@@ -158,17 +158,16 @@ const TestDataset = ({ isTableStriped, handleRowData, nextStep }) => {
             <Col>
                 <Fade in={allAnswersCorrect}>
                     <Row>
-                        <Col md={8}>
+                        <Col md={10}>
                             <Card>
                                 <Card.Body>
                                     <h6>Great job! You answered everything correctly! You can proceed to our next quiz... Good luck! </h6>
+                                    <BsFillArrowRightCircleFill size={50} onClick={nextStep} style={{ cursor: "pointer" }}></BsFillArrowRightCircleFill>
                                 </Card.Body>
+
                             </Card>
                         </Col>
-                        <Col style={{}}>
-                            <br/>
-                            <BsFillArrowRightCircleFill size={50} onClick={nextStep} style={{cursor:"pointer"}}></BsFillArrowRightCircleFill>
-                        </Col>
+
                     </Row>
 
                 </Fade>
