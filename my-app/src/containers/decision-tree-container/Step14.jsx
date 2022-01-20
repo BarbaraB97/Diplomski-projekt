@@ -12,17 +12,7 @@ const Step14 = (props) => {
     const [rowData, setRowData] = useState({ outlook: "sunny", temperature: "hot", humidity: "high", windy: "false", play: "no" })
     const [rowIndex, setRowIndex] = useState(1)
     const [rowChecked, setRowChecked] = useState(["", "", "", "", ""])
-    const [readyToCheck, setReadyToCheck] = useState(null);
-    const [text, setText] = useState(null)
-    const [incorrect, setIncorrect] = useState([0, 0, 0, 0, 0])
-    const [incorrectNo, setIncorrectNo] = useState(0)
 
-    const handleTableClick = (feature) => {
-        setChosenFeature(feature);
-        if (chosenFeature === "Windy") {
-            setChosenFeatureValue("high")
-        }
-    }
 
     const handleRowData = (record, index) => {
         setRowData(record);
@@ -30,37 +20,6 @@ const Step14 = (props) => {
         console.log(rowChecked)
 
     }
-
-    const handleCheckboxChange = () => {
-        let c = rowChecked
-        c[rowIndex - 1] = rowChecked[rowIndex - 1] === "" ? "1" : ""
-        setRowChecked(c)
-        handleRowData(rowData, rowIndex)
-        console.log(rowIndex)
-        console.log(rowChecked)
-    }
-
-    const checkTheTable = () => {
-        setReadyToCheck("ready")
-        let inc = 0
-        let correct = ["", "1", "", "1", "1"]
-        let incorrect_ = [0, 0, 0, 0, 0]
-        for (let i = 0; i < 5; i++) {
-            if (rowChecked[i] !== correct[i]) {
-                inc += 1
-                incorrect_[i] = 1
-            }
-        }
-        if (inc === 0) {
-            setText("Correct!")
-        } else {
-            setText("Incorrect! You have " + inc + " wrong answers. Try again")
-        }
-        setIncorrect(incorrect_)
-        setIncorrectNo(inc)
-
-    }
-
 
 
     const TreeData = {
@@ -130,7 +89,7 @@ const Step14 = (props) => {
                         <Card>
                             <Card.Body>
                                 From the dataset in the beggining, we've created a Decision Tree using ID3 algorithm. Now, let's test your knowledge...
-                                For each row in the table check <b>YES</b> or <b>NO</b> if you think that <b>given outcome is correct.</b> Use our decision tree as a guide.
+                                For each row in the table check the checkbox if you think that <b>given outcome is correct.</b> Use our decision tree as a guide.
                                 <b> Check</b> your answers afterwards to see how much you've learned. Good luck!
                             </Card.Body>
                         </Card>

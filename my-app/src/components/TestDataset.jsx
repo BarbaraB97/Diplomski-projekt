@@ -58,7 +58,7 @@ const TestDataset = ({ isTableStriped, handleRowData, nextStep }) => {
         return weatherDataset.map((record, index) => {
             const { outlook, temperature, humidity, windy, play } = record;
             return (
-                <tr key={index} onClick={() => handleRowClick(record, index)} className={selectedRowIndex === index ? "tableSelected" : ""} style={{ backgroundColor: selectedRowIndex === index + 1 ? "#7EB59A" : "" }}>
+                <tr key={index} className={selectedRowIndex === index ? "tableSelected" : ""} style={{ backgroundColor: selectedRowIndex === index + 1 ? "#7EB59A" : "" }}>
                     <td>{++index}</td>
                     <td >{outlook}</td>
                     <td >{temperature}</td>
@@ -75,7 +75,7 @@ const TestDataset = ({ isTableStriped, handleRowData, nextStep }) => {
         <Row>
 
             <Col>
-                <Table striped={isTableStriped} bordered hover id="weatherTable" style={{ heigth: "35em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
+                <Table striped={true} bordered hover id="weatherTable" style={{ heigth: "35em", backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
                     <thead>
                         <tr id="features">
                             <th>#</th>
