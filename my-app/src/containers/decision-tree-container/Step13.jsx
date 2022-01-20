@@ -1,11 +1,12 @@
 
 //Outlook==Rainy
 import { useState } from "react";
-import { Container, Row, Button, Col, Accordion, Table, Fade, OverlayTrigger, Popover } from "react-bootstrap";
+import { Container, Row, Button, Col, Accordion, Table, Fade, OverlayTrigger, Popover, Card } from "react-bootstrap";
 import DecisionTree from '../../components/DecisionTree';
 import Dataset from '../../components/Dataset'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import Blink from 'react-blink-text';
+import { BsFillArrowRightCircleFill } from "react-icons/bs"
 
 const Step13 = (props) => {
 
@@ -73,10 +74,10 @@ const Step13 = (props) => {
 
     return (
         <>
-            <Container  className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)' , paddingBottom: "1em", paddingTop: "1em" }}>
+            <Container className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
                 <Row >
                     <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
-                    <Col md={8}><h4><b>3.</b> Choose the feature with the highest Information gain</h4></Col>
+                    <Col md={8}><h4>3. Step</h4></Col>
                     <OverlayTrigger trigger="hover" placement="bottom"
                         overlay={<Popover id="popover-basic">
                             <Popover.Header as="h3">Skip calculation</Popover.Header>
@@ -95,7 +96,14 @@ const Step13 = (props) => {
                 </Row>
                 <hr />
                 <Container style={{ paddingBottom: "1em" }}>
-
+                    <Row style={{ textAlign: "center" }}>
+                        <Card>
+                            <Card.Body>
+                                Last step is to <b>choose the feature with the highest Information gain </b> which will represent the next node in our decision tree.
+                            </Card.Body>
+                        </Card>
+                    </Row>
+                    <br />
                     <Row>
                         <Col md={4}>
 
@@ -128,9 +136,9 @@ const Step13 = (props) => {
                             </Fade>
                             <Fade in={chosenFeature === "Windy"}>
 
-                              
-                                    <DecisionTree data={TreeData} width={"45em"} height={"30em"} orientation={"vertical"}></DecisionTree>
-                            
+
+                                <DecisionTree data={TreeData} width={"45em"} height={"30em"} orientation={"vertical"}></DecisionTree>
+
                             </Fade>
                         </Col>
                         <Col md={1}></Col>
@@ -178,7 +186,7 @@ const Step13 = (props) => {
                                                                     </ul>
                                                                 </Popover.Body>
                                                             </Popover>}>
-                                                            <Button md={2} style={{ backgroundColor: "#eab676", width: "7em", margin: "1em", marginLeft: "10em" }}>Windy</Button>
+                                                            <Button md={2} style={{ backgroundColor: "#76b5c5", width: "7em", margin: "1em", marginLeft: "10em" }}>Windy</Button>
                                                         </OverlayTrigger>
 
                                                         <li>
@@ -186,8 +194,8 @@ const Step13 = (props) => {
                                                             When Windy is False, all outcomes are labeled as YES, and when Windy is True, all outcomes are labeled as NO.
                                                         </li><br />
                                                         <li>
-                                                            In case when <button onClick={() => setChosenFeatureValue("false")} style={{ backgroundColor: "rgb(218, 242, 223)" }}><b>Outlook=Rainy</b> &#38; <b>Windy=False</b></button>, it is a good day for playing beach volleyball (<b>YES</b>).<br />
-                                                            In case when <button onClick={() => setChosenFeatureValue("true")} style={{ backgroundColor: "rgb(218, 242, 223)" }}><b>Outlook=Rainy</b> &#38; <b>Windy=True</b></button>, it is not a good day for playing beach volleyball (<b>NO</b>).
+                                                            In case when <text onClick={() => setChosenFeatureValue("false")} style={{ color:"rgb(17, 105, 78)", cursor:"pointer" }}><b>Outlook=Rainy</b> &#38; <b>Windy=False</b></text>, it is a good day for playing beach volleyball (<b>YES</b>).<br />
+                                                            In case when <text onClick={() => setChosenFeatureValue("true")} style={{ color:"rgb(17, 105, 78)", cursor:"pointer"}}><b>Outlook=Rainy</b> &#38; <b>Windy=True</b></text>, it is not a good day for playing beach volleyball (<b>NO</b>).
                                                         </li>
 
                                                     </ul>
@@ -197,34 +205,23 @@ const Step13 = (props) => {
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>
+                            <br />
                             <Fade in={chosenFeature === "Windy"}>
-                                <Accordion defaultActiveKey="0">
-                                    <Accordion.Item eventKey="0">
-                                        <Accordion.Header><b>4. The tree is now finished and ready for prediction</b></Accordion.Header>
-                                        <Accordion.Body>
-                                            <Row>
-                                                <Col md={9}>
-                                                    <ul>
-                                                        <li>
-                                                            We have reached pure leaves and can now predict the outcome
-                                                        </li>
-                                                    </ul>
-                                                </Col>
-                                                <Col md={3} >
-                                                    <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
-                                                </Col>
-                                            </Row>
-
-                                        </Accordion.Body>
-                                    </Accordion.Item>
-                                </Accordion>
+                                <Card style={{textAlign:"center"}}>
+                                    <Card.Body>
+                                        <b>The tree is now finished and ready for prediction</b><br/>
+                                        We have reached pure leaves and can now predict the outcome
+                                        <br /><br />
+                                        <Row>
+                                            <Col>
+                                                <BsFillArrowRightCircleFill size={45} onClick={props.nextStep} style={{ cursor: "pointer" }}></BsFillArrowRightCircleFill>
+                                            </Col>
+                                        </Row></Card.Body>
+                                </Card>
                             </Fade>
-                        </Col>
+                           </Col>
                     </Row>
-
                 </Container>
-
-
                 <Row>
                     <Col >
                         <Button style={{ backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.firstStep}>First Step</Button>

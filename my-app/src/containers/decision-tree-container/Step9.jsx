@@ -82,7 +82,7 @@ const Step9 = (props) => {
                 <Row style={{ textAlign: "center" }}>
                     <Card>
                         <Card.Body>
-                            Last step is to <b>choose the feature with the highest Information gain </b> which will represent the root node in our decision tree.
+                            Last step is to <b>choose the feature with the highest Information gain </b> which will represent the next node in our decision tree.
                         </Card.Body>
                     </Card>
                 </Row>
