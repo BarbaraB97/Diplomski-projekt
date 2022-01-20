@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Accordion, OverlayTrigger, Popover, Collapse } from "react-bootstrap";
+import { Container, Row, Button, Col, Accordion, OverlayTrigger, Popover, Collapse, Card } from "react-bootstrap";
 import Dataset from '../../components/Dataset'
 import { Equation, EquationEvaluate, EquationOptions, defaultErrorHandler } from 'react-equation'
 import { defaultVariables, defaultFunctions } from 'equation-resolver'
@@ -20,7 +20,7 @@ const Step8 = (props) => {
         <Container className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
             <Row >
                 <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
-                <Col md={8}><h4><b>2.</b> Calculate information gain for the rest of the features</h4></Col>
+                <Col md={8}><h4>2. Step</h4></Col>
                 <OverlayTrigger trigger="hover" placement="bottom"
                     overlay={<Popover id="popover-basic">
                         <Popover.Header as="h3">Skip calculation</Popover.Header>
@@ -34,18 +34,22 @@ const Step8 = (props) => {
                         </Blink>
                     </Button>
                 </OverlayTrigger>
-                <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)", marginRight:"1em" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button>
+                <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)", marginRight: "1em" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button>
             </Row>
             <hr />
-            <Container style={{paddingBottom: "1em" }}>
-
-
+            <Container style={{ paddingBottom: "1em" }}>
+                <Row style={{ textAlign: "left" }}>
+                    <Card>
+                        <Card.Body>
+                            Second step is to <b>calculate Information gain for all features. </b> First we need to calculate entropy for all categorical values of the feature (1), take average entropy (2) and then calculate Information gain for the selected features (3).
+                            Click on each feature to see the whole calculation...
+                        </Card.Body>
+                    </Card>
+                </Row>
+                <br />
                 <Row>
                     <Col md={4}>
-                        <ul style={{ textAlign: "left" }} >
-                            <p>We filtered the dataset so we can calculate entropy for cases when <b>Outlook==Sunny:</b></p>
 
-                        </ul>
                         <Dataset filterByValue={"sunny"} chosenFeature={chosenFeature} chosenFeatureValue={chosenFeatureValue} isTableStriped={false} highLightLabelValue={true}></Dataset>
                     </Col>
                     <Col md={1}></Col>
@@ -328,7 +332,7 @@ const Step8 = (props) => {
                                         <Row>
                                             <Col md={12}>
                                                 <ul onClick={() => chosenFeatureValue === "information gain temperature" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain temperature")} style={{ cursor: "pointer" }}>
-                                                    <b style={{ backgroundColor: "#7EB59A" }}>INFORMATION GAIN = 0.5710</b>
+                                                    <b style={{ color:"rgb(17, 105, 78)" }}>INFORMATION GAIN = 0.5710</b>
                                                 </ul>
                                                 <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain temperature"}>
                                                     <div >
@@ -559,7 +563,7 @@ const Step8 = (props) => {
                                         <Row>
                                             <Col md={12}>
                                                 <ul onClick={() => chosenFeatureValue === "information gain humidity" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain humidity")} style={{ cursor: "pointer" }}>
-                                                    <b style={{ backgroundColor: "#7EB59A" }}>INFORMATION GAIN = 0.9710</b>
+                                                    <b style={{ color:"rgb(17, 105, 78)" }}>INFORMATION GAIN = 0.9710</b>
                                                 </ul>
                                                 <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain humidity"}>
                                                     <div >
@@ -790,7 +794,7 @@ const Step8 = (props) => {
                                         <Row>
                                             <Col md={12}>
                                                 <ul onClick={() => chosenFeatureValue === "information gain Windy" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain Windy")} style={{ cursor: "pointer" }}>
-                                                    <b style={{ backgroundColor: "#7EB59A" }}>INFORMATION GAIN = 0.02</b>
+                                                    <b style={{ color:"rgb(17, 105, 78)" }}>INFORMATION GAIN = 0.02</b>
                                                 </ul>
                                                 <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain Windy"}>
                                                     <div >

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Accordion, Table } from "react-bootstrap";
+import { Container, Row, Button, Col, Accordion, Table, Card } from "react-bootstrap";
 import Dataset from '../../components/Dataset'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
@@ -40,15 +40,14 @@ const Step2 = (props) => {
                         <Dataset isTableStriped={true} areFeaturesHighlighted={areFeaturesHighlighted} isLabelHighlighted={isLabelHighlighted} chosenFeature={chosenFeature}></Dataset>
                     </Col>
                     <Col style={{ textAlign: "left" }}>
-                        <ul>
-                            <li>
-                                A dataset is a collection of data.<br />
-                            </li>
-                            <li>
-                                Here we have a small dataset presented in a table. The data was collected by deciding whether it was a good day to play beach volleyball.<br />
-                            </li>
-                        </ul>
+                        <Card>
+                            <Card.Body>
+                            <b>A dataset is a collection of data. </b>
+                            Here we have a small dataset presented in a table. The data was collected by deciding whether it was a good day to play beach volleyball.<br />
 
+                            </Card.Body>
+                        </Card><br/>
+            
                         <Accordion defaultActiveKey="1"
                             style={{ backgroundColor: "rgb(197, 235, 202)" }}
                             onClick={() => highlightFeatures()}>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Button, Col, Accordion, OverlayTrigger, Popover, Collapse } from "react-bootstrap";
+import { Container, Row, Button, Col, Accordion, OverlayTrigger, Popover, Collapse, Card } from "react-bootstrap";
 import Dataset from '../../components/Dataset'
 import { Equation, EquationEvaluate, EquationOptions, defaultErrorHandler } from 'react-equation'
 import { defaultVariables, defaultFunctions } from 'equation-resolver'
@@ -16,15 +16,23 @@ const Step5 = (props) => {
     }
 
     return (
-        <Container  className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
+        <Container className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
             <Row >
                 <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
-                <Col md={8}><h4><b>2.</b> Calculate Information gain for all features..</h4></Col>
+                <Col md={8}><h4>2. Step</h4></Col>
                 <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
             </Row>
-            <hr/>
+            <hr />
             <Container style={{ paddingBottom: "1em" }}>
-
+                <Row style={{ textAlign: "left" }}>
+                    <Card>
+                        <Card.Body>
+                            Second step is to <b>calculate Information gain for all features. </b> First we need to calculate entropy for all categorical values of the feature (1), take average entropy (2) and then calculate Information gain for the selected features (3).
+                            Click on each feature to see the whole calculation...
+                        </Card.Body>
+                    </Card>
+                </Row>
+                <br />
 
                 <Row>
                     <Col md={4}>
@@ -57,7 +65,7 @@ const Step5 = (props) => {
                                         </ul>
                                     </Popover.Body>
                                 </Popover>}>
-                                <Button onClick={() => chooseFeature("Temperature")} md={2} style={{ backgroundColor: chosenFeature === "Temperature" ? "#eab676" : "#76b5c5", marginRight: "1em"}}>Temperature</Button>
+                                <Button onClick={() => chooseFeature("Temperature")} md={2} style={{ backgroundColor: chosenFeature === "Temperature" ? "#eab676" : "#76b5c5", marginRight: "1em" }}>Temperature</Button>
                             </OverlayTrigger>
                             <OverlayTrigger trigger="hover" placement="bottom"
                                 overlay={<Popover id="popover-basic">
@@ -322,7 +330,7 @@ const Step5 = (props) => {
                                         <Row>
                                             <Col md={12}>
                                                 <ul onClick={() => chosenFeatureValue === "information gain outlook" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain outlook")} style={{ cursor: "pointer" }}>
-                                                    <b style={{ backgroundColor: "#7EB59A" }}>INFORMATION GAIN = 0.2467</b>
+                                                    <b style={{ color:"rgb(17, 105, 78)"}}>INFORMATION GAIN = 0.2467</b>
                                                 </ul>
                                                 <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain outlook"}>
                                                     <div >
@@ -607,7 +615,7 @@ const Step5 = (props) => {
                                         <Row>
                                             <Col md={12}>
                                                 <ul onClick={() => chosenFeatureValue === "information gain" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain")} style={{ cursor: "pointer" }}>
-                                                    <b style={{ backgroundColor: "#7EB59A" }}>INFORMATION GAIN = 0.0292</b>
+                                                    <b style={{ color:"rgb(17, 105, 78)" }}>INFORMATION GAIN = 0.0292</b>
                                                 </ul>
                                                 <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain"}>
                                                     <div >
@@ -838,7 +846,7 @@ const Step5 = (props) => {
                                         <Row>
                                             <Col md={12}>
                                                 <ul onClick={() => chosenFeatureValue === "information gain humidity" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain humidity")} style={{ cursor: "pointer" }}>
-                                                    <b style={{ backgroundColor: "#7EB59A" }}>INFORMATION GAIN = 0.1518</b>
+                                                    <b style={{ color:"rgb(17, 105, 78)" }}>INFORMATION GAIN = 0.1518</b>
                                                 </ul>
                                                 <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain humidity"}>
                                                     <div >

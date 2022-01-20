@@ -1,10 +1,11 @@
 
 import { useState } from "react";
-import { Container, Row, Button, Col, Accordion, Table, Fade, OverlayTrigger, Popover } from "react-bootstrap";
+import { Container, Row, Button, Col, Accordion, Table, Fade, OverlayTrigger, Popover, Card } from "react-bootstrap";
 import DecisionTree from '../../components/DecisionTree';
 import Dataset from '../../components/Dataset'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import Blink from 'react-blink-text';
+import { BsFillArrowRightCircleFill } from "react-icons/bs"
 
 const Step9 = (props) => {
 
@@ -57,10 +58,10 @@ const Step9 = (props) => {
     };
 
     return (
-        <Container  className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop:"1em"}}>
+        <Container className='card' style={{ width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
             <Row >
                 <Col style={{ textAlign: "left" }}>                    <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
-                <Col md={8}><h4><b>3.</b> Choose the feature with the highest Information gain</h4></Col>
+                <Col md={8}><h4>3. Step</h4></Col>
                 <OverlayTrigger trigger="hover" placement="bottom"
                     overlay={<Popover id="popover-basic">
                         <Popover.Header as="h3">Skip calculation</Popover.Header>
@@ -74,11 +75,18 @@ const Step9 = (props) => {
                         </Blink>
                     </Button>
                 </OverlayTrigger>
-                <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)", marginRight:"1em" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button>
+                <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)", marginRight: "1em" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button>
             </Row>
             <hr />
-            <Container style={{paddingBottom: "1em" }}>
-
+            <Container style={{ paddingBottom: "1em" }}>
+                <Row style={{ textAlign: "center" }}>
+                    <Card>
+                        <Card.Body>
+                            Last step is to <b>choose the feature with the highest Information gain </b> which will represent the root node in our decision tree.
+                        </Card.Body>
+                    </Card>
+                </Row>
+                <br />
                 <Row>
                     <Col md={4}>
 
@@ -162,7 +170,7 @@ const Step9 = (props) => {
                                                                 </ul>
                                                             </Popover.Body>
                                                         </Popover>}>
-                                                        <Button md={2} style={{ backgroundColor: "#eab676", width: "7em", margin: "1em", marginLeft: "10em" }}>Humidity</Button>
+                                                        <Button md={2} style={{ backgroundColor: "#76b5c5", width: "7em", margin: "1em", marginLeft: "10em" }}>Humidity</Button>
                                                     </OverlayTrigger>
 
                                                     <li>
@@ -170,8 +178,8 @@ const Step9 = (props) => {
                                                         When Humidity is High, all outcomes are labeled as NO, and when Humidity is Normal, all outcomes are labeled as YES.
                                                     </li><br />
                                                     <li>
-                                                        In case when <button onClick={() => setChosenFeatureValue("high")} style={{ backgroundColor: "rgb(218, 242, 223)" }}><b>Outlook=Sunny</b> &#38; <b>Humidity=High</b></button>, it is not a good day for playing beach volleyball (<b>NO</b>).<br />
-                                                        In case when <button onClick={() => setChosenFeatureValue("normal")} style={{ backgroundColor: "rgb(218, 242, 223)" }}><b>Outlook=Sunny</b> &#38; <b>Humidity=Normal</b></button>, it is a good day for playing beach volleyball (<b>YES</b>).
+                                                        In case when <text onClick={() => setChosenFeatureValue("high")} style={{ color:"rgb(17, 105, 78)", cursor:"pointer" }}><b>Outlook=Sunny</b> &#38; <b>Humidity=High</b></text>, it is not a good day for playing beach volleyball (<b>NO</b>).<br />
+                                                        In case when <text onClick={() => setChosenFeatureValue("normal")} style={{ color:"rgb(17, 105, 78)", cursor:"pointer" }}><b>Outlook=Sunny</b> &#38; <b>Humidity=Normal</b></text>, it is a good day for playing beach volleyball (<b>YES</b>).
                                                     </li><br />
                                                     <li>
                                                         Since we have reached pure leaves, there is no further splitting necessary in this particular branch.
@@ -183,27 +191,17 @@ const Step9 = (props) => {
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
+                        <br/>
                         <Fade in={chosenFeature === "Humidity"}>
-                            <Accordion defaultActiveKey="0">
-                                <Accordion.Item eventKey="0">
-                                    <Accordion.Header><b>4. Now we repeat the process for the rest of the branches in the decision tree</b></Accordion.Header>
-                                    <Accordion.Body>
-                                        <Row>
-                                            <Col md={9}>
-                                                <ul>
-                                                    <li>
-                                                        Now we continue with the node where Outlook: Overcast.
-                                                    </li>
-                                                </ul>
-                                            </Col>
-                                            {/* <Col md={3} >
-                                                <Button style={{ marginRight: "20%", marginLeft: "70%" }}>?</Button>
-                                            </Col> */}
-                                        </Row>
-
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                            </Accordion>
+                            <Card>
+                                <Card.Body>Now <b>repeat the process for the rest of the nodes</b> in the decision tree.<br /> We will continue with the outgoing link  <b>Outlook: Overcast.</b>
+                                    <br /><br />
+                                    <Row>
+                                        <Col md={{ offset: 5 }}>
+                                            <BsFillArrowRightCircleFill size={45} onClick={props.nextStep} style={{ cursor: "pointer" }}></BsFillArrowRightCircleFill>
+                                        </Col>
+                                    </Row></Card.Body>
+                            </Card>
                         </Fade>
                     </Col>
                 </Row>
