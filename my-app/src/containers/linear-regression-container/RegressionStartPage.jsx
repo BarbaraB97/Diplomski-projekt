@@ -18,7 +18,7 @@ class RegressionStartPage extends React.Component {
   render() {
     return (
       <Container className='justify-content-center' style={{ textAlign:"center", minHeight: '40em'}}>
-        <h1>Linear Regression</h1>
+        <h1 style={{color:"rgb(17, 105, 78, 0.8)"}}>Linear Regression</h1>
         <StepWizard>
           <Step1/>
           <Step2></Step2>
