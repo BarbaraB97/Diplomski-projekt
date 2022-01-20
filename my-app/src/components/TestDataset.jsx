@@ -7,7 +7,7 @@ const TestDataset = ({ isTableStriped, handleRowData, nextStep }) => {
 
     const [selectedRowIndex, setSelectedRowIndex] = useState(null)
     const [selectedRowData, setSelectedRowData] = useState(null)
-    const [allAnswersCorrect, setAllAnswersCorrect] = useState(false);
+    const [allAnswersCorrect, setAllAnswersCorrect] = useState(null);
     const [checkedAnswers, setCheckedAnswers] = useState([false, false, false, false, false])
     let chosenAnswers = [{ index: 1, chosenAnswer: null },
     { index: 2, chosenAnswer: "" },
@@ -18,7 +18,7 @@ const TestDataset = ({ isTableStriped, handleRowData, nextStep }) => {
 
     const updateCheckboxes = (index, isChecked) => {
         let arr = checkedAnswers;
-        arr[index-1] = isChecked
+        arr[index - 1] = isChecked
         setCheckedAnswers(arr);
         console.log(arr)
     }
@@ -26,12 +26,15 @@ const TestDataset = ({ isTableStriped, handleRowData, nextStep }) => {
 
     const checkAnswers = () => {
         let cnt = 0;
-        for(var i =0; i<5; i++){
-            if(checkedAnswers[i]===correctAnswers[i]){
+        for (var i = 0; i < 5; i++) {
+            if (checkedAnswers[i] === correctAnswers[i]) {
                 cnt++;
             }
         }
         if (cnt === 5) setAllAnswersCorrect(true);
+        else {
+            setAllAnswersCorrect(false)
+        }
         console.log(cnt)
     }
 
@@ -100,7 +103,21 @@ const TestDataset = ({ isTableStriped, handleRowData, nextStep }) => {
                 <Button style={{ backgroundColor: "#76b5c5" }} onClick={() => checkAnswers()}>Check answers</Button>
             </Col>
             <Col>
-                <Fade in={allAnswersCorrect}>
+                {allAnswersCorrect === false && <Fade in={!allAnswersCorrect}>
+                    <Row>
+                        <Col md={12}>
+                            <Card>
+                                <Card.Body>
+                                    <h6>Keep on trying... You almost got it right!</h6>
+                                </Card.Body>
+
+                            </Card>
+                        </Col>
+
+                    </Row>
+
+                </Fade>}
+                {allAnswersCorrect && <Fade in={allAnswersCorrect}>
                     <Row>
                         <Col md={12}>
                             <Card>
@@ -115,6 +132,7 @@ const TestDataset = ({ isTableStriped, handleRowData, nextStep }) => {
                     </Row>
 
                 </Fade>
+                }
 
             </Col>
         </Row>
