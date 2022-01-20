@@ -1077,7 +1077,7 @@ const Step5 = (props) => {
                                         <Row>
                                             <Col md={12}>
                                                 <ul onClick={() => chosenFeatureValue === "information gain humidity" ? setChosenFeatureValue(null) : setChosenFeatureValue("information gain humidity")} style={{ cursor: "pointer" }}>
-                                                    <b style={{ backgroundColor: "#7EB59A" }}>INFORMATION GAIN = 0.0481</b>
+                                                    <b style={{ color:"rgb(17, 105, 78)" }}>INFORMATION GAIN = 0.0481</b>
                                                 </ul>
                                                 <Collapse style={{ marginLeft: "2em", marginRight: "2em", backgroundColor: "rgb(213, 213, 213, 0.3)", border: "1px grey solid" }} in={chosenFeatureValue === "information gain humidity"}>
                                                     <div >

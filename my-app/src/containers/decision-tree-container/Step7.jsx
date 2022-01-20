@@ -47,7 +47,7 @@ const Step7 = (props) => {
                 </Row>
                 <hr />
                 <Container style={{ paddingBottom: "1em" }}>
-                    <Row style={{textAlign:"left"}}>
+                    <Row style={{ textAlign: "left" }}>
                         <Card>
                             <Card.Body>
                                 We filtered the dataset so we can calculate entropy for cases when <b>Outlook==Sunny. </b>
@@ -69,75 +69,75 @@ const Step7 = (props) => {
                                         <li class="list-group-item">
                                             <ol>Dataset entropy = <b>0.9710</b>  <Button onClick={() => handleClick(!show)} style={{ marginRight: "1em", marginLeft: "16em" }}>?</Button></ol>
                                         </li>
-                                        <Row>
-                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em" }} in={show}>
-                                                <div >
-                                                    <ul>
-                                                        <li>
-                                                            <b>Entropy:</b>
-                                                        </li>
-                                                        <Row style={{ textAlign: "center" }}>
-                                                            <Col md={{ span: 8, offset: 1 }}>
-                                                                <EquationOptions
-                                                                    errorHandler={defaultErrorHandler}>
-                                                                    <Equation
-                                                                        variables={defaultVariables}
-                                                                        functions={defaultFunctions}
-                                                                        value='H(X) = sum(x,X, 2, -p(x)* log2(p(x)))'
-                                                                    />
-                                                                </EquationOptions>
+                                        <br />
+                                        <Collapse  in={show}>
+                                            <div >
+                                                <ul>
+                                                    <li>
+                                                        <b>Entropy:</b>
+                                                    </li>
+                                                    <Row style={{ textAlign: "center" }}>
+                                                        <Col md={{ span: 8, offset: 1 }}>
+                                                            <EquationOptions
+                                                                errorHandler={defaultErrorHandler}>
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='H(X) = sum(x,X, 2, -p(x)* log2(p(x)))'
+                                                                />
+                                                            </EquationOptions>
+                                                        </Col>
+
+                                                    </Row><br />
+
+                                                    <li><b>X</b> = possible outcomes = &#123; YES, NO &#125;</li>
+                                                    <li><b>P(X)</b> = possibility of certain outcome</li>
+                                                    <li>Out of <b>5</b> instances, <b>2</b> are classified as <b>YES</b> and <b>3</b> are classified as <b>NO</b> </li><br />
+                                                    <EquationOptions>
+                                                        <Row>
+                                                            <Col md={3}>
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='P(YES) = 2/5'
+                                                                /> 	&#32;
                                                             </Col>
-
+                                                            <Col>
+                                                                <Equation
+                                                                    variables={defaultVariables}
+                                                                    functions={defaultFunctions}
+                                                                    value='P(NO) = 3/5'
+                                                                />
+                                                            </Col>
                                                         </Row><br />
+                                                        <Row>
+                                                            <Equation
+                                                                variables={defaultVariables}
+                                                                functions={defaultFunctions}
+                                                                value='H(dataset) = (-1)*P(YES) * log2(P(YES)) - P(NO)*log2(P(NO))'
+                                                            />
+                                                            <Equation
+                                                                variables={defaultVariables}
+                                                                functions={defaultFunctions}
+                                                                value='H(dataset) =(-1)* 2/5*log2(2/5) - 3/5*log2(3/5)'
+                                                            />
+                                                            <Equation
+                                                                variables={defaultVariables}
+                                                                functions={defaultFunctions}
+                                                                value='H(dataset) = 0.9710'
+                                                            />
+                                                        </Row>
 
-                                                        <li><b>X</b> = possible outcomes = &#123; YES, NO &#125;</li>
-                                                        <li><b>P(X)</b> = possibility of certain outcome</li>
-                                                        <li>Out of <b>5</b> instances, <b>2</b> are classified as <b>YES</b> and <b>3</b> are classified as <b>NO</b> </li><br />
-                                                        <EquationOptions>
-                                                            <Row>
-                                                                <Col md={3}>
-                                                                    <Equation
-                                                                        variables={defaultVariables}
-                                                                        functions={defaultFunctions}
-                                                                        value='P(YES) = 2/5'
-                                                                    /> 	&#32;
-                                                                </Col>
-                                                                <Col>
-                                                                    <Equation
-                                                                        variables={defaultVariables}
-                                                                        functions={defaultFunctions}
-                                                                        value='P(NO) = 3/5'
-                                                                    />
-                                                                </Col>
-                                                            </Row><br />
-                                                            <Row>
-                                                                <Equation
-                                                                    variables={defaultVariables}
-                                                                    functions={defaultFunctions}
-                                                                    value='H(dataset) = (-1)*P(YES) * log2(P(YES)) - P(NO)*log2(P(NO))'
-                                                                />
-                                                                <Equation
-                                                                    variables={defaultVariables}
-                                                                    functions={defaultFunctions}
-                                                                    value='H(dataset) =(-1)* 2/5*log2(2/5) - 3/5*log2(3/5)'
-                                                                />
-                                                                <Equation
-                                                                    variables={defaultVariables}
-                                                                    functions={defaultFunctions}
-                                                                    value='H(dataset) = 0.9710'
-                                                                />
-                                                            </Row>
+                                                    </EquationOptions>
 
-                                                        </EquationOptions>
+                                                </ul>
+                                            </div>
+                                        </Collapse>
 
-                                                    </ul>
-                                                </div>
-                                            </Collapse>
-                                        </Row>
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>
-                        
+
 
                         </Col>
                     </Row>

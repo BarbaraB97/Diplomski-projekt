@@ -52,8 +52,8 @@ const Step4 = (props) => {
                                         <li class="list-group-item">
                                             <ol>Dataset entropy = <b>0.9403</b>  <Button onClick={() => handleClick(!show)} style={{ marginRight: "1em", marginLeft: "16em" }}>?</Button></ol>
                                         </li>
-                                        <Row>
-                                            <Collapse style={{ marginLeft: "2em", marginRight: "2em" }} in={show}>
+                                        <br/>
+                                            <Collapse in={show}>
                                                 <div >
                                                     <ul>
                                                         <li>
@@ -116,7 +116,7 @@ const Step4 = (props) => {
                                                     </ul>
                                                 </div>
                                             </Collapse>
-                                        </Row>
+                                    
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>

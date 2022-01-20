@@ -153,7 +153,7 @@ const TestDataset = ({ isTableStriped, handleRowData, nextStep }) => {
         </Row>
         <Row>
             <Col md={3}>
-                <Button onClick={() => checkAnswers()}>Check answers</Button>
+                <Button style={{backgroundColor:"#76b5c5"}} onClick={() => checkAnswers()}>Check answers</Button>
             </Col>
             <Col>
                 <Fade in={allAnswersCorrect}>

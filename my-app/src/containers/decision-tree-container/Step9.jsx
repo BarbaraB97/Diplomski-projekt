@@ -78,7 +78,7 @@ const Step9 = (props) => {
                 <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)", marginRight: "1em" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button>
             </Row>
             <hr />
-            <Container style={{ paddingBottom: "1em" }}>
+            <Container >
                 <Row style={{ textAlign: "center" }}>
                     <Card>
                         <Card.Body>
@@ -193,11 +193,11 @@ const Step9 = (props) => {
                         </Accordion>
                         <br/>
                         <Fade in={chosenFeature === "Humidity"}>
-                            <Card>
+                            <Card style={{textAlign:"center"}}>
                                 <Card.Body>Now <b>repeat the process for the rest of the nodes</b> in the decision tree.<br /> We will continue with the outgoing link  <b>Outlook: Overcast.</b>
                                     <br /><br />
                                     <Row>
-                                        <Col md={{ offset: 5 }}>
+                                        <Col>
                                             <BsFillArrowRightCircleFill size={45} onClick={props.nextStep} style={{ cursor: "pointer" }}></BsFillArrowRightCircleFill>
                                         </Col>
                                     </Row></Card.Body>
