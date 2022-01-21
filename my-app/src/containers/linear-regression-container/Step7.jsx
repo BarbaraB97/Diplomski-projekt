@@ -174,36 +174,15 @@ const Step7 = (props) => {
 
 
     return (
-        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" , paddingTop: "1em" }}>
+        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
             <Row >
                 <Col style={{ textAlign: "left" }}> <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
-                <Col> <h2>Problem 3</h2>
-                </Col>
+                 <Col><h4 style={{ width: "30em"}}><b>Task 3: </b>Choose the best model for the given data </h4></Col>
+                
                 <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
             </Row>
             <hr />
-            <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-                <Row>
-                    <h4><b>Task: </b>Choose the best model for the given data &nbsp;
-                    <OverlayTrigger show={show} placement="bottom"
-                                            overlay={<Popover id="popover-basic">
-                                                <Popover.Header as="h3">Remember under- and overfitting?</Popover.Header>
-                                                <Popover.Body>
-                                                <ul>
-                                    <li>
-                                    <b>Underfitting</b> occurs when our statistical model cannot adequately capture the underlying structure of the data
-                                    </li>
-                                    <li>
-                                    <b>Overfitting</b> is a condition where a statistical model begins to describe the random error in the data rather than the relationships between variables
-                                    </li>
-                                    </ul>
-                                                </Popover.Body>
-                                            </Popover>}>
-                                            <Button onClick={() => setShow(!show)}>Help</Button>
-                                        </OverlayTrigger></h4>
-                </Row>
-				<Table striped bordered hover id="simpleRegressionTable" style={{ backgroundColor: "rgb(197, 235, 202, 0.3)" }}>
-                </Table>
+            <Container style={{ paddingBottom: "2em", paddingTop: "1em"  }}>
                 <Modal show={showCorrect} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Good job!</Modal.Title>
@@ -248,7 +227,25 @@ const Step7 = (props) => {
                         </div>
                     </Col>
 		        </Row>
-          
+                <Row>
+                    <Col style={{ textAlign: "right", paddingTop: "1em" }}>
+                    <OverlayTrigger show={show} placement="left" overlay={<Popover id="popover-basic">
+                            <Popover.Header as="h3">Remember under- and overfitting?</Popover.Header>
+                                <Popover.Body>
+                                    <ul>
+                                    <li>
+                                    <b>Underfitting</b> occurs when our statistical model cannot adequately capture the underlying structure of the data
+                                    </li>
+                                    <li>
+                                    <b>Overfitting</b> is a condition where a statistical model begins to describe the random error in the data rather than the relationships between variables
+                                    </li>
+                                    </ul>
+                                </Popover.Body>
+                            </Popover>}>
+                        <Button class="btn btn-secondary" style={{ width: "6em"}} onClick={() => setShow(!show)}>Help</Button>
+                    </OverlayTrigger>
+                    </Col>
+                </Row>          
           
             </Container>
             <Row>

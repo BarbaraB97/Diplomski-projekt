@@ -7,15 +7,15 @@ const Step4 = (props) => {
 
 
     return (
-        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em" , paddingTop: "1em" }}>
+        <Container className='card' style={{ textAlign: "center", width: '80em', background: 'rgb(242, 239, 229, 0.2)', paddingBottom: "1em", paddingTop: "1em" }}>
             <Row >
                 <Col style={{ textAlign: "left" }}> <Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.previousStep}><AiOutlineArrowLeft size={25}></AiOutlineArrowLeft></Button></Col>
-                <Col> <h2>Let's play a game...</h2>
+                <Col> <h4>Let's play a game...</h4>
                 </Col>
                 <Col style={{ textAlign: "right" }}><Button style={{ width: "6em", backgroundColor: "rgb(197, 235, 202)", color: "rgb(0,0,0)", borderColor: "rgb(158, 250, 192)" }} onClick={props.nextStep}><AiOutlineArrowRight size={25}></AiOutlineArrowRight></Button></Col>
             </Row>
             <hr /><br></br>
-            <Container style={{ paddingTop: "2em", paddingBottom: "2em" }}>
+            <Container style={{ paddingBottom: "2em" }}>
 				<Row style = {{textAlign:"center"}}>
 					<Col md={6} style={{ textAlign: "left" ,fontSize: 16}}>
                     <Card >
