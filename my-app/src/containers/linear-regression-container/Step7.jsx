@@ -229,7 +229,7 @@ const Step7 = (props) => {
 		        </Row>
                 <Row>
                     <Col style={{ textAlign: "right", paddingTop: "1em" }}>
-                    <OverlayTrigger show={show} placement="left" overlay={<Popover id="popover-basic">
+                    <OverlayTrigger hover placement="left" overlay={<Popover id="popover-basic">
                             <Popover.Header as="h3">Remember under- and overfitting?</Popover.Header>
                                 <Popover.Body>
                                     <ul>
@@ -242,7 +242,7 @@ const Step7 = (props) => {
                                     </ul>
                                 </Popover.Body>
                             </Popover>}>
-                        <Button class="btn btn-secondary" style={{ width: "6em"}} onClick={() => setShow(!show)}>Help</Button>
+                        <Button class="btn btn-secondary" style={{ width: "6em"}} >Help</Button>
                     </OverlayTrigger>
                     </Col>
                 </Row>          
